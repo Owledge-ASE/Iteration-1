@@ -19,7 +19,8 @@ $border-dark: rgba($base-color, 0.88);
 $color-white: #F5F5F5;
 $center-distance-header: 30px;
 $background-black: #121212;
-$background-black-l1: rgba($background-black, 0.84);
+$background-black-l1: rgba($background-black, 0.95);
+$background-black-l2: rgba($background-black, 0.89);
 
 .header{
      color:$color-white;
@@ -45,6 +46,7 @@ $background-black-l1: rgba($background-black, 0.84);
 .main-section{
      margin:0px;
      height:90vh;
+     overflow:scroll;
 
 
 }
@@ -58,4 +60,11 @@ $background-black-l1: rgba($background-black, 0.84);
 }
 .bg-dark-l1{
     background-color: $background-black-l1;
+}
+.bg-dark-l2{
+    background-color: $background-black-l2;
+}
+
+.main-card{
+    margin-bottom:20px;
 }
