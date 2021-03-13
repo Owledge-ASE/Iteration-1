@@ -20,7 +20,7 @@ Background: notes have been added to the database
 
 Scenario:Once user navigates to Owledge then they should be on the homepage
   When I go to the homepage
-  Then I should be on the notebook index page
+  Then I should be on the notebooks page
 
 Scenario:On the homepage there should be a list of notebooks
   When I go to the homepage
