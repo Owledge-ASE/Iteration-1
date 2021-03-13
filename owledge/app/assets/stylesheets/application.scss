@@ -28,6 +28,12 @@ $background-black-l1: rgba($background-black, 0.84);
     height:10vh;
     margin-left:0px;
 }
+
+.header-title{
+    
+    color:$color-white;
+    text-decoration: none;
+}
 .main-bar{
     padding: $center-distance-header;
 }
