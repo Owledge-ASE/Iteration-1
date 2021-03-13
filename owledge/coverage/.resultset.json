@@ -1,7 +1,7 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/Volumes/code/p1/owledge/app/channels/application_cable/channel.rb": {
+      "C:/Users/georg/Documents/Coursework/ASE/Project/Iteration-1/owledge/app/channels/application_cable/channel.rb": {
         "lines": [
           0,
           0,
@@ -11,7 +11,7 @@
         "branches": {
         }
       },
-      "/Volumes/code/p1/owledge/app/channels/application_cable/connection.rb": {
+      "C:/Users/georg/Documents/Coursework/ASE/Project/Iteration-1/owledge/app/channels/application_cable/connection.rb": {
         "lines": [
           0,
           0,
@@ -21,7 +21,7 @@
         "branches": {
         }
       },
-      "/Volumes/code/p1/owledge/app/controllers/application_controller.rb": {
+      "C:/Users/georg/Documents/Coursework/ASE/Project/Iteration-1/owledge/app/controllers/application_controller.rb": {
         "lines": [
           0,
           0
@@ -29,7 +29,7 @@
         "branches": {
         }
       },
-      "/Volumes/code/p1/owledge/app/controllers/notebooks_controller.rb": {
+      "C:/Users/georg/Documents/Coursework/ASE/Project/Iteration-1/owledge/app/controllers/notebooks_controller.rb": {
         "lines": [
           0,
           0,
@@ -45,7 +45,7 @@
         "branches": {
         }
       },
-      "/Volumes/code/p1/owledge/app/helpers/application_helper.rb": {
+      "C:/Users/georg/Documents/Coursework/ASE/Project/Iteration-1/owledge/app/helpers/application_helper.rb": {
         "lines": [
           0,
           0
@@ -53,7 +53,7 @@
         "branches": {
         }
       },
-      "/Volumes/code/p1/owledge/app/helpers/notebooks_helper.rb": {
+      "C:/Users/georg/Documents/Coursework/ASE/Project/Iteration-1/owledge/app/helpers/notebooks_helper.rb": {
         "lines": [
           0,
           0
@@ -61,7 +61,7 @@
         "branches": {
         }
       },
-      "/Volumes/code/p1/owledge/app/jobs/application_job.rb": {
+      "C:/Users/georg/Documents/Coursework/ASE/Project/Iteration-1/owledge/app/jobs/application_job.rb": {
         "lines": [
           0,
           null,
@@ -74,7 +74,7 @@
         "branches": {
         }
       },
-      "/Volumes/code/p1/owledge/app/mailers/application_mailer.rb": {
+      "C:/Users/georg/Documents/Coursework/ASE/Project/Iteration-1/owledge/app/mailers/application_mailer.rb": {
         "lines": [
           0,
           0,
@@ -84,7 +84,7 @@
         "branches": {
         }
       },
-      "/Volumes/code/p1/owledge/app/models/application_record.rb": {
+      "C:/Users/georg/Documents/Coursework/ASE/Project/Iteration-1/owledge/app/models/application_record.rb": {
         "lines": [
           0,
           0,
@@ -93,7 +93,7 @@
         "branches": {
         }
       },
-      "/Volumes/code/p1/owledge/app/models/notebook.rb": {
+      "C:/Users/georg/Documents/Coursework/ASE/Project/Iteration-1/owledge/app/models/notebook.rb": {
         "lines": [
           0,
           0
@@ -101,7 +101,7 @@
         "branches": {
         }
       },
-      "/Volumes/code/p1/owledge/app/models/notebook_to_sub_note.rb": {
+      "C:/Users/georg/Documents/Coursework/ASE/Project/Iteration-1/owledge/app/models/notebook_to_sub_note.rb": {
         "lines": [
           0,
           0
@@ -109,7 +109,7 @@
         "branches": {
         }
       },
-      "/Volumes/code/p1/owledge/app/models/sub_note.rb": {
+      "C:/Users/georg/Documents/Coursework/ASE/Project/Iteration-1/owledge/app/models/sub_note.rb": {
         "lines": [
           0,
           0
@@ -118,6 +118,6 @@
         }
       }
     },
-    "timestamp": 1615675146
+    "timestamp": 1615675413
   }
 }
