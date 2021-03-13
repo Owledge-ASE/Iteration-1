@@ -13,3 +13,43 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+$base-color: #c6538c;
+$border-dark: rgba($base-color, 0.88);
+$color-white: #F5F5F5;
+$center-distance-header: 30px;
+$background-black: #121212;
+$background-black-l1: rgba($background-black, 0.84);
+
+.header{
+     color:$color-white;
+}
+.header-bar{
+    height:10vh;
+    margin-left:0px;
+}
+.main-bar{
+    padding: $center-distance-header;
+}
+
+.login-button{
+    margin-top:  $center-distance-header;
+}
+
+.main-section{
+     margin:0px;
+     height:90vh;
+
+
+}
+.main-inside-section{
+    padding:20px;
+    color:$color-white;
+}
+
+.bg-dark-l0{
+    background-color: $background-black;
+}
+.bg-dark-l1{
+    background-color: $background-black-l1;
+}
