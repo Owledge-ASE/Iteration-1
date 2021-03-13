@@ -24,7 +24,7 @@ Scenario: details page for note with children and no parent
   But I should not see "Directed Acyclic Graph"
   And I should not see "Sorting Algorithms"
 
-Scenario: click on a sub-note
+Scenario: click on a sub-note with no children
   When I go to the notebook page for "Sorting Algorithms"
   And I follow "child_heapsort"
   Then I should see "Heap Sort"
