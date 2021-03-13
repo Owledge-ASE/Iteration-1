@@ -32,7 +32,7 @@ Scenario: click on a sub-note with no children
   Then I should see "Heap Sort"
   And I should see "Heapsort can be thought of as an improved"
   And I should see 2 breadcrumbs
-  And I should see "Sorting Algorithms" in the breadcrumbs
+  And I should see a breadcrumb link to "Sorting Algorithms"
   But "#children" should not exist
 
 Scenario: click on Owledge logo
