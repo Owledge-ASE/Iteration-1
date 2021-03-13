@@ -19,70 +19,66 @@ Background: notes have been added to the database
   | 10                      | For merge  |  Runs recursively | 8 |
 
 Scenario:User should be able to be able to see fields for title and description
-  When The user goes to the root page
-  And The user clicks the "add notebook" button
-  Then the user should see a "Title" textbox
-  Then the user should see a "Description" textbox
-  Then the user should see a "Add Child" button
-  Then the user should see a "Finish" button
+  When I goes to the root page
+  And I clicks the "add notebook" button
+  Then I should see a "Title" textbox
+  Then I should see a "Description" textbox
+  Then I should see a "Add Child" button
+  Then I should see a "Finish" button
 
 Scenario:If user tries to submit without entering anything in notebook title/info fields then an error message will appear (sad path)
-  When The user goes to the root page
-  And The user clicks the "add notebook" button
-  And The user click the "Finish" button
-  Then The user should see an error message "Kindly enter a title and description"
+  When I go to the root page
+  And I click the "add notebook" button
+  And I click the "Finish" button
+  Then I should see an error message "Kindly enter a title and description"
 
 Scenario:If user tries to add a child without entering title and description an error message will appear (sad path)
-  When The user goes to the root page
-  And The user clicks the "add notebook" button
-  And The user click the "Add Child" button
-  Then The user should see an error message "Kindly enter a title and description"
+  When I go to the root page
+  And I clicks the "add notebook" button
+  And I click the "Add Child" button
+  Then I should see an error message "Kindly enter a title and description"
 
-Scenario: The user should be able to create a single note
-  When The user goes to the root page
-  And The user clicks the "add notebook" button
-  And The user fills "Code Testing" as "title"
-  And The user fills "Understanding the different paths and creating test cases to evaluate features" as "description"
-  And The user clicks the "Finish" button
-  Then The user should see be redirected to the "list_notebooks" page
-  Then The user should see "Code Testing" in list of nodes
+Scenario: I should be able to create a single note
+  When I go to the root page
+  And I click the "add notebook" button
+  And I fill in "#title" with "Code Testing" 
+  And I fill in "Understanding the different paths and creating test cases to evaluate features" as "#description"
+  And I click the "Finish" button
+  Then I should see be redirected to the "list_notebooks" page
+  Then I should see "Code Testing" in list of nodes
 
-Scenario: The user should be able to create a node with multiple children
-  When The user goes to the root page
-  And The user clicks the "add notebook" button
-  And The user fills "Bootstrap" as "title"
-  And The user fills "Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit" as "description"
-  And The user clicks the "Add Child" button
-  Then The user should be taken to the "create" page
-  Then The user should see a breadcrumb link to "Bootstrap"
-  And The user fills "Layout" as "title"
-  And The user fills "Allow users tp add in a layout" as "description"
-  And The user clicks the "Add Child" button
-  Then The user should be taken to the "create" page
-  Then The user should see a breadcrumb link to "Bootstrap"
-  Then The user should see a breadcrumb link to "Layout"
-  When The user clicks on the "Layout" breadcrumb
-  Then The user should be taken to the "create" page
-  Then The user sees title as "Layout"
-  When The user clicks the "Add Child" button
-  And The user fills "Breakpoints" as "title"
-  And The user fills "Breakpoints are customizable widths that determine how your responsive layout behaves across device or viewport sizes in Bootstrap." as "description"
-  When The user clicks the "Finish" button
-  Then The user should be taken to the "create" page
-  Then The user sees title as "Layout"
-  When The user clicks the "Finish" button
-  Then The user sees title as "Bootstrap"
-  When The user clicks the "Finish" button
-  Then The user should see be redirected to the "list_notebooks" page
-  Then The user should see "Bootstrap" in list of nodes
+Scenario: I should be able to create a node with multiple children
+  When I goes to the root page
+  And I clicks the "add notebook" button
+  And I fill in "title" with "Bootstrap" 
+  And I fill in "description" with "Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit" 
+  And I clicks the "Add Child" button
+  Then I should be taken to the "create" page
+  Then I should see a breadcrumb link to "Bootstrap"
+  When I fill in "title" with "Layout" 
+  And I fill in "description" with "Allow users tp add in a layout"
+  And I click the "Add Child" button
+  Then I should be taken to the "create" page
+  Then I should see a breadcrumb link to "Bootstrap"
+  Then I should see a breadcrumb link to "Layout"
+  When I click on the "Layout" breadcrumb
+  Then I should be taken to the "create" page
+  Then I sees "#title" as "Layout"
+  When I click the "Add Child" button
+  And I fill in "#title" with "Breakpoints" 
+  And I fill in "#description" with "Breakpoints are customizable widths that determine how your responsive layout behaves across device or viewport sizes in Bootstrap."
+  When I clicks the "Finish" button
+  Then I should be taken to the "create" page
+  Then I sees "#title" as "Layout"
+  When I clicks the "Finish" button
+  Then I sees "#title" as "Bootstrap"
+  When I clicks the "Finish" button
+  Then I should see be redirected to the "list_notebooks" page
+  Then I should see "Bootstrap" in list of nodes
 
-Scenario: If user tries to submit without entering anything in node description field then an error message will appear (sad path)
-
-Scenario: If a user fills out node description properly, then the list of nodes should refresh and the newly created node should appear  
-
-Scenario: If a user clicks “Finish Creation for Notebook” then the user will be directed back to the home page where they should see the notebook on the home page  
-
-Scenario: If the user clicks the Owledge logo, then redirect back to Home page   
+Scenario: If I clicks the Owledge logo, then redirect back to Home page    
+    When I click on the logo
+    Then I should be on the homepage
 
 
 

@@ -19,30 +19,30 @@ Background: notes have been added to the database
   | 10                       | For merge  |  Runs recursively | 8 |
 
 Scenario:Once user navigates to Owledge then they should be on the homepage
-  When the user goes to the "root" page
-  Then the user should be shown the "list_notebook" page
+  When I goes to the "root" page
+  Then I should be shown the "list_notebook" page
 
 Scenario:On the homepage there should be a list of notebooks
-  When The user goes to the "root" page
-  Then The user should see "Graph Theory" in list of nodes
-  Then The user should see "Sorting Algorithms" in list of nodes
-  Then The user should see "Analysis of Algorithms" in list of nodes
-  Then The user should see "Distributed Computing" in list of nodes
-  Then The user should see "Big Data" in list of nodes
+  When I goes to the "root" page
+  Then I should see "Graph Theory" in list of nodes
+  Then I should see "Sorting Algorithms" in list of nodes
+  Then I should see "Analysis of Algorithms" in list of nodes
+  Then I should see "Distributed Computing" in list of nodes
+  Then I should see "Big Data" in list of nodes
 
 Scenario:On the homepage there should be a add button
   When The user goes to the "root" page
-  Then The user should be able to see an "add notebook" button
+  Then I should be able to see an "add notebook" button
 
-Scenario:If the user clicks on the add button then they can navigate to the add page (Create page)
-  When The user goes to the "root" page
-  And The user clicks the "add notebook" button
-  Then The user should be taken to the "create" page
+Scenario:If I clicks on the add button then they can navigate to the add page (Create page)
+  When I goes to the "root" page
+  And I clicks the "add notebook" button
+  Then I should be taken to the "create" page
 
-Scenario:If the user clicks on a notebook then they will be redirected to the details page 
-  When The user goes to the "root" page
-  And The user clicks on notebook of "Sorting Algorithms"
-  Then The user should be taken to the details page of "Sorting Algorithms"
+Scenario:If I clicks on a notebook then they will be redirected to the details page 
+  When I goes to the "root" page
+  And I clicks on notebook of "Sorting Algorithms"
+  Then I should be taken to the details page of "Sorting Algorithms"
 
 
 
