@@ -21,22 +21,15 @@ Background: notes have been added to the database
 Scenario:User should be able to be able to see fields for title and description
   When I go to the root page
   And I press "Add Note"
-  Then I should see a "Title" textbox
-  Then I should see a "Description" textbox
-  Then I should see a "Add Child" button
-  Then I should see a "Finish" button
+  Then I should see the label "Title"
+  Then I should see the label "Description"
+  Then I should see the "Save" button
 
 Scenario:If user tries to submit without entering anything in notebook title/info fields then an error message will appear (sad path)
   When I go to the root page
-  And I click the "Add Note" button
-  And I click the "Finish" button
-  Then I should see an error message "Kindly enter a title and description"
-
-Scenario:If user tries to add a child without entering title and description an error message will appear (sad path)
-  When I go to the root page
+  And I press "Add Note"
   And I press "Save"
-  And I click the "Add Child" button
-  Then I should see an error message "Kindly enter a title and description"
+  Then I should "Kindly enter a title and description" in "#error_message"
 
 Scenario: I should be able to create a single note
   When I go to the homepage
