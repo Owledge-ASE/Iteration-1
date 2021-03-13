@@ -16,20 +16,24 @@ Background: notes have been added to the database
 
 Scenario: details page for note with children and no parent
   When I go to the notebook page for "Sorting Algorithms"
-  Then I should see "In computer science, a sorting algorithm is an algorithm that puts elements"
-  And I should see "Sorting Algorithms"
-  And I should see "Selection Sort"
-  And I should see "Heap Sort"
-  And I should see "Quick Sort"
-  But I should not see "Directed Acyclic Graph"
-  And I should not see "Sorting Algorithms"
+  Then I should see "Sorting Algorithms" in "#title"
+  And I should see "In computer science, a sorting algorithm is an algorithm that puts elements" in "#description"
+  And I should see "Sorting Algorithms" in "#children"
+  And I should see "Selection Sort" in "#children"
+  And I should see "Heap Sort" in "#children"
+  And I should see "Quick Sort" in "#children"
+  But I should not see "Directed Acyclic Graph" in "#children"
+  And I should not see "Sorting Algorithms" in "#children"
+  And I should see 1 breadcrumb
 
 Scenario: click on a sub-note with no children
   When I go to the notebook page for "Sorting Algorithms"
   And I follow "child_heapsort"
   Then I should see "Heap Sort"
   And I should see "Heapsort can be thought of as an improved"
-  But I should not see "Children"
+  And I should see 2 breadcrumbs
+  And I should see "Sorting Algorithms" in the breadcrumbs
+  But "#children" should not exist
 
 Scenario: click on Owledge logo
   When I click on the logo
