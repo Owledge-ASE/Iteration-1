@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  notebook_id: MyString
+  subnote_id: MyString
+  created_timestamp: 2021-03-13 13:52:16
+  update_timestamp: 2021-03-13 13:52:16
+
+two:
+  notebook_id: MyString
+  subnote_id: MyString
+  created_timestamp: 2021-03-13 13:52:16
+  update_timestamp: 2021-03-13 13:52:16

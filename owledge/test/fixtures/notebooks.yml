@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  notebook_id: MyString
+  description: MyText
+  title: MyString
+  created_timestamp: 2021-03-13 13:49:31
+  update_timestamp: 2021-03-13 13:49:31
+
+two:
+  notebook_id: MyString
+  description: MyText
+  title: MyString
+  created_timestamp: 2021-03-13 13:49:31
+  update_timestamp: 2021-03-13 13:49:31
