@@ -19,8 +19,8 @@ Background: notes have been added to the database
   | 10                      | For merge  |  Runs recursively | 8 |
 
 Scenario:User should be able to be able to see fields for title and description
-  When I goes to the root page
-  And I click "add notebook"
+  When I go to the root page
+  And I press "Add Note"
   Then I should see a "Title" textbox
   Then I should see a "Description" textbox
   Then I should see a "Add Child" button
@@ -28,24 +28,27 @@ Scenario:User should be able to be able to see fields for title and description
 
 Scenario:If user tries to submit without entering anything in notebook title/info fields then an error message will appear (sad path)
   When I go to the root page
-  And I click the "add notebook" button
+  And I click the "Add Note" button
   And I click the "Finish" button
   Then I should see an error message "Kindly enter a title and description"
 
 Scenario:If user tries to add a child without entering title and description an error message will appear (sad path)
   When I go to the root page
-  And I click "add notebook"
+  And I press "Save"
   And I click the "Add Child" button
   Then I should see an error message "Kindly enter a title and description"
 
 Scenario: I should be able to create a single note
-  When I go to the root page
-  And I click the "add notebook" button
+  When I go to the homepage
+  And I press "Add Note"
   And I fill in "title" with "Code Testing" 
-  And I fill in "Understanding the different paths and creating test cases to evaluate features" as "#description"
-  And I click the "Finish" button
-  Then I should see be redirected to the "list_notebooks" page
-  Then I should see "Code Testing" in list of nodes
+  And I fill in "description" with "Understanding the different paths and creating test cases to evaluate features"
+  And I press "Save"
+  Then I should be on the details page for "Code Testing"
+
+  When I press "Back to Notes"
+  Then I should be on the homepage
+  And I should see "Code Testing" in list of nodes
 
 Scenario: I should be able to create a node with multiple children
   When I go to the homepage
@@ -69,7 +72,7 @@ Scenario: I should be able to create a node with multiple children
   And I should see "Layout" in "#title"
 
 Scenario: If I clicks the Owledge logo, then redirect back to Home page    
-    When I click on the logo
+    When I follow "owledge_logo"
     Then I should be on the homepage
 
 

@@ -19,54 +19,32 @@ Background: notes have been added to the database
   | 10                       | For merge  |  Runs recursively | 8 |
 
 Scenario:Once user navigates to Owledge then they should be on the homepage
-  When I goes to the "root" page
-  Then I should be shown the "list_notebook" page
+  When I go to the homepage
+  Then I should be on the notebook index page
 
 Scenario:On the homepage there should be a list of notebooks
-  When I goes to the "root" page
+  When I go to the homepage
   Then I should see "Graph Theory" in list of nodes
   Then I should see "Sorting Algorithms" in list of nodes
   Then I should see "Analysis of Algorithms" in list of nodes
   Then I should see "Distributed Computing" in list of nodes
   Then I should see "Big Data" in list of nodes
 
-Scenario:On the homepage there should be a add button
-  When The user goes to the "root" page
-  Then I should be able to see an "add notebook" button
+Scenario:On the homepage there should be an add button
+  When I go to the homepage
+  Then I should see "Add Note"
 
-Scenario:If I clicks on the add button then they can navigate to the add page (Create page)
-  When I goes to the "root" page
-  And I clicks the "add notebook" button
-  Then I should be taken to the "create" page
+Scenario: If I click on the add button then they can navigate to the add page (Create page)
+  When I go to the homepage
+  And I press "Add Note"
+  Then I should be on the create page
 
 Scenario:If I clicks on a notebook then they will be redirected to the details page 
-  When I goes to the "root" page
-  And I clicks on notebook of "Sorting Algorithms"
-  Then I should be taken to the details page of "Sorting Algorithms"
-
-
-Scenario: details page for note with children and no parent
-  When I go to the notebook page for "Sorting Algorithms"
-  Then I should see "Sorting Algorithms" in "#title"
-  And I should see "In computer science, a sorting algorithm is an algorithm that puts elements" in "#description"
-  And I should see "Sorting Algorithms" in "#children"
-  And I should see "Selection Sort" in "#children"
-  And I should see "Heap Sort" in "#children"
-  And I should see "Quick Sort" in "#children"
-  But I should not see "Directed Acyclic Graph" in "#children"
-  And I should not see "Sorting Algorithms" in "#children"
-  And I should see 1 breadcrumb
-
-Scenario: click on a sub-note with no children
-  When I go to the notebook page for "Sorting Algorithms"
-  And I follow "child_heapsort"
-  Then I should see "Heap Sort"
-  And I should see "Heapsort can be thought of as an improved"
-  And I should see 2 breadcrumbs
-  And I should see a breadcrumb link to "Sorting Algorithms"
-  But "#children" should not exist
+  When I go to the homepage
+  And I follow "note_1"
+  Then I should be on the details page of "Sorting Algorithms"
 
 Scenario: click on Owledge logo
-  When I click on the logo
+  When I follow "owledge_logo"
   Then I should be on the homepage
 
