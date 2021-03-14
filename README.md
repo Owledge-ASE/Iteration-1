@@ -11,8 +11,8 @@ Zhengyi Li (zl3029)
 
 
 Open up the owledge folder
-```
 Run
+```
 bundle install 
 rake db:create (needs Postgresql 10 installed and uname and password from config/database.yml to be present)
 rake db:migrate
