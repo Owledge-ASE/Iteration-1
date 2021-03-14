@@ -10,11 +10,18 @@ Andrea McCormick (amm2497)
 Zhengyi Li (zl3029)
 
 ## File Location
+
+Code present at : https://github.com/Owledge-ASE/Iteration-1
+
 Main code is in the /owledge folder
 
 RSpec tests are in /owledge/spec
 
 Cucumber tests and execution code in owledge/features
+
+## Heroku Link
+
+Server present on: https://peaceful-meadow-90102.herokuapp.com/notebooks
 
 ## Preinstall
 
@@ -35,4 +42,3 @@ rails server
 ```
 Then open http://127.0.0.1:3000/
 
-Code also present on: https://peaceful-meadow-90102.herokuapp.com/notebooks
