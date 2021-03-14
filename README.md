@@ -2,9 +2,13 @@
 
 # Team
 Sean Capaloff-Jones (sc4045)
+
 George Cherian (gc2920)
+
 Andrea McCormick (amm2497)
+
 Zhengyi Li (zl3029)
+
 
 Open up the owledge folder
 ```
