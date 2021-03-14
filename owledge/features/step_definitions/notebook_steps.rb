@@ -11,9 +11,29 @@
 
 # George
 Given /the following notes exist/ do | notes_table |
-
+    notes_table.hashes.each do |note|
+      SubNote.create note
+    end
+    
 end
 
+Then /^(?:|I )should see the label "([^"]*)"$/ do |labelname| 
+
+    if page.respond_to? :should
+        page.should have_content(labelname)
+      else
+        assert page.has_content?(labelname)
+      end
+end
+
+Then /^(?:|I )should see the "([^"]*)" button$/ do |buttonname| 
+
+    if page.respond_to? :should
+        page.should have_content(buttonname)
+      else
+        assert page.has_content?(buttonname)
+      end
+end
 
 
 

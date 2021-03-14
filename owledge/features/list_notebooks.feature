@@ -5,7 +5,7 @@ Feature: List Notebooks
 
 Background: notes have been added to the database
 
-  Given the following subnotes exist:
+  Given the following notes exist:
   | subnote_id             | title                   |  description | parent_id |
   | 1                       | Sorting Algorithms      |  In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order. | |
   | 2                       | Graph Theory            |  In mathematics, graph theory is the study of graphs, which are mathematical structures used to model pairwise relations between objects. | |
@@ -24,11 +24,11 @@ Scenario:Once user navigates to Owledge then they should be on the homepage
 
 Scenario:On the homepage there should be a list of notebooks
   When I go to the homepage
-  Then I should see "Graph Theory" in list of nodes
-  Then I should see "Sorting Algorithms" in list of nodes
-  Then I should see "Analysis of Algorithms" in list of nodes
-  Then I should see "Distributed Computing" in list of nodes
-  Then I should see "Big Data" in list of nodes
+  Then I should see "Graph Theory" within list of nodes
+  Then I should see "Sorting Algorithms" within list of nodes
+  Then I should see "Analysis of Algorithms" within list of nodes
+  Then I should see "Distributed Computing" within list of nodes
+  Then I should see "Big Data" within list of nodes
 
 Scenario:On the homepage there should be an add button
   When I go to the homepage
@@ -43,6 +43,7 @@ Scenario:If I clicks on a notebook then they will be redirected to the details p
   When I go to the homepage
   And I follow "note_1"
   Then I should be on the details page of "Sorting Algorithms"
+
 
 Scenario: click on Owledge logo
   When I follow "owledge_logo"

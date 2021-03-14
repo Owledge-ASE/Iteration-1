@@ -5,7 +5,7 @@ Feature: View Details page for Notes
 
 Background: notes have been added to the database
 
-  Given the following subnotes exist:
+  Given the following notes exist:
   | subnote_id             | title                   |  description | parent_id |
   | 1                       | Sorting Algorithms      |  In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order. | |
   | 2                       | Graph Theory            |  In mathematics, graph theory is the study of graphs, which are mathematical structures used to model pairwise relations between objects. | |
@@ -29,7 +29,7 @@ Scenario:If user tries to submit without entering anything in notebook title/inf
   When I go to the root page
   And I press "Add Note"
   And I press "Save"
-  Then I should "Kindly enter a title and description" in "#error_message"
+  Then I should see "Kindly enter a title and description" within "#error_message"
 
 Scenario: I should be able to create a single note
   When I go to the homepage
@@ -41,7 +41,7 @@ Scenario: I should be able to create a single note
 
   When I press "Back to Notes"
   Then I should be on the homepage
-  And I should see "Code Testing" in list of nodes
+  And I should see "Code Testing" within list of nodes
 
 Scenario: I should be able to create a node with multiple children
   When I go to the homepage
@@ -62,7 +62,7 @@ Scenario: I should be able to create a node with multiple children
   Then I should be on the details page for "Layout"
   And I should see 2 breadcrumbs
   And I should see a breadcrumb link to "Bootstrap"
-  And I should see "Layout" in "#title"
+  And I should see "Layout" within "#title"
 
 Scenario: If I clicks the Owledge logo, then redirect back to Home page    
     When I follow "owledge_logo"
