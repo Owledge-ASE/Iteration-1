@@ -11,7 +11,7 @@
 
     <% @notes.each do |note| %>
     <div class="card bg-dark-l2 col-3 main-card" >
-      <a href="/notebooks/show?id=<%= note.subnote_id %>" class="card-link" id="note_<%= note.subnote_id %>">
+      <a href="<%= notebook_path(note.id) %>" class="card-link" id="note_<%= note.id %>">
         <div class="card-body">
           <h5 class="card-title"><%= note.title %></h5>
           <p class="card-text"><%= note.description.nil?  ? "" : note.description[0..300] %></p>
