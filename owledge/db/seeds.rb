@@ -20,5 +20,5 @@ Note.create([{
                   vertices and edges (also called arcs), with each edge directed from one vertex to another, such
                   that following those directions will never form a closed loop.
                }.join(" "),
-               parent_id: graph_theory.id
+               parent_id: graph_theory[0].id
              }])
