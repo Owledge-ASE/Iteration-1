@@ -17,7 +17,7 @@ Main code is in the /owledge folder
 
 RSpec tests are in /owledge/spec
 
-Cucumber tests and execution code in owledge/features
+Cucumber tests and execution code in owledge/features 
 
 ## Heroku Link
 
