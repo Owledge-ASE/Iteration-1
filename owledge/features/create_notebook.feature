@@ -29,7 +29,7 @@ Scenario:If user tries to submit without entering anything in notebook title/inf
   When I go to the root page
   And I press "Add Note"
   And I press "Save"
-  Then I should "Kindly enter a title and description" in "#error_message"
+  Then I should see "Kindly enter a title and description" in "#error_message"
 
 Scenario: I should be able to create a single note
   When I go to the homepage

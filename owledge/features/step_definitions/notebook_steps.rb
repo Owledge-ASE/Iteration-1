@@ -9,8 +9,10 @@
 # Then I should see the label "Description"
 # Then I should see the "Save" button
 
+require 'pry'
+
 # George
-Given /the following notes exist/ do | notes_table |
+Given /the following (sub)?notes exist/ do | notes_table |
 
 end
 
@@ -19,7 +21,23 @@ end
 
 
 # Sean
-Then /I should see ([0-9]+) breadcrumbs/ do | n_breadcrimbs |
-
+Then /I should see ([0-9]+) breadcrumbs?/ do | n_breadcrimbs |
+  binding.pry
+  page.find('#breadcrumb')
 end
 
+Then /I should see a breadcrumb link to "(.+)"$/ do | link |
+  find('#breadcumbs').has_link?(link)
+end
+
+Then /^"(.+)" should not exist$/ do | id |
+  find(id).must_be_nil
+end
+
+Then /^I should see "(.+)" in "(.+)$/ do | needle, haystack |
+  find(haystack).find(text: needle)
+end
+
+Then /^I should not see "(.+)" in "(.+)"$/ do | needle, haystack |
+  find(haystack).find(text: needle).must_be_nil
+end

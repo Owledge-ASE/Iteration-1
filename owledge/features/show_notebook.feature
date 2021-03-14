@@ -15,7 +15,7 @@ Feature: Show Notebook
       | dag                     | Directed Acyclic Graph | graph_theory       | is a directed graph with no directed cycles. That is, it consists of vertices and edges (also called arcs), with each edge directed from one vertex to another, such that following those directions will never form a closed loop.                                                                         |
 
   Scenario: details page for note with children and no parent
-    When I go to the notebook page for "Sorting Algorithms"
+    When I go to the details page for "Sorting Algorithms"
     Then I should see "Sorting Algorithms" in "#title"
     And I should see "In computer science, a sorting algorithm is an algorithm that puts elements" in "#description"
     And I should see "Sorting Algorithms" in "#children"
@@ -27,7 +27,7 @@ Feature: Show Notebook
     And I should see 1 breadcrumb
 
   Scenario: click on a sub-note with no children
-    When I go to the notebook page for "Sorting Algorithms"
+    When I go to the details page for "Sorting Algorithms"
     And I follow "child_heapsort"
     Then I should see "Heap Sort"
     And I should see "Heapsort can be thought of as an improved"
