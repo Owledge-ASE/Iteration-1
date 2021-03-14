@@ -6,13 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-graph_theory = Note.create([{
+graph_theory = Note.create({
                               title: 'Graph Theory',
                               description: %w{
                                 In mathematics, graph theory is the study of graphs, which are mathematical structures
                                 used to model pairwise relations between objects.
                               }.join(" ")
-                            }])
+                            })
 Note.create([{
                title: 'Directed Acyclic Graph',
                description: %w{
