@@ -24,12 +24,14 @@ Then /I should see the "(.+)" button/ do | label |
 
 end
 
+Then /^I should see "(.+)" in list of nodes$/ do | needle |
+
+end
 
 
 # Sean
-Then /I should see ([0-9]+) breadcrumbs?/ do | n_breadcrimbs |
-  binding.pry
-  page.find('#breadcrumb')
+Then /I should see ([0-9]+) breadcrumbs?/ do | n_breadcrumbs |
+  page.find('#breadcrumb').all.count == n_breadcrumbs
 end
 
 Then /I should see a breadcrumb link to "(.+)"$/ do | link |
