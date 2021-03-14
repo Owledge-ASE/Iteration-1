@@ -10,38 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_13_185216) do
+ActiveRecord::Schema.define(version: 2021_03_14_042129) do
 
-  create_table "notebook_to_sub_notes", force: :cascade do |t|
-    t.string "notebook_id"
-    t.string "subnote_id"
-    t.datetime "created_timestamp"
-    t.datetime "update_timestamp"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "notebooks", force: :cascade do |t|
-    t.string "notebook_id"
-    t.text "description"
+  create_table "notes", force: :cascade do |t|
     t.string "title"
-    t.datetime "created_timestamp"
-    t.datetime "update_timestamp"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "sub_notes", force: :cascade do |t|
-    t.string "subnote_id"
     t.text "description"
-    t.string "title"
-    t.datetime "created_timestamp"
-    t.datetime "update_timestamp"
-    t.string "parent_id"
-    t.string "like"
-    t.string "dislikes"
+    t.integer "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["parent_id"], name: "index_notes_on_parent_id"
   end
 
+  add_foreign_key "notes", "notes", column: "parent_id"
 end

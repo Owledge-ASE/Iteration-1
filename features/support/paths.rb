@@ -10,9 +10,9 @@ module NavigationHelpers
 
     when /^the (Owledge )?home\s?page$/ then '/notebooks'
     when /^the notebooks page$/ then '/notebooks'
-    when /^the details page for "(.+)"$/
-      notebook_path(SubNote.find_by_title($1))
-    when /^the create page$/ then '/notebooks/create'
+    when /^the (?:notebook|details) page for "(.+)"$/
+      notebook_path(Note.find_by_title($1))
+    when /^the create page$/ then '/notebooks/new'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
