@@ -6,17 +6,17 @@ Feature: List Notebooks
 Background: notes have been added to the database
 
   Given the following notes exist:
-  | subnote_id | title                    |parent_id |  description
-  | 1          | Sorting Algorithms       |          | In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.                                                                                         |
-  | 2          | Graph Theory             |          | In mathematics, graph theory is the study of graphs, which are mathematical structures used to model pairwise relations between objects.                                                          |
-  | 3          | Analysis of Algorithms   |          | In computer science, the analysis of algorithms is the process of finding the computational complexity of algorithms.                                                                             |
-  | 4          | Distributed Computing    |          | A distributed system is a system whose components are located on different networked computers, which communicate and coordinate their actions by passing messages to one another from any system |
-  | 5          | Big Data                 |          | Big data is a field that treats ways to analyze, systematically extract information from, or otherwise deal with data sets that are too large.                                                    |
-  | 6          | Sorting Algorithms Child | 1        | test                                                                                                                                                                                              |
-  | 7          | Bubble Sort              | 1        | Compares adjacent elements and moves them                                                                                                                                                         |
-  | 8          | Merge Sort               | 1        | Merges sorted arrays                                                                                                                                                                              |
-  | 9          | Recursive merge          | 8        | Runs recursively                                                                                                                                                                                  |
-  | 10         | For merge                | 8        | Runs recursively                                                                                                                                                                                  |
+  | title                    |parent_id | description                                                                                                                                                                                       |
+  | Sorting Algorithms       |          | In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.                                                                                         |
+  | Graph Theory             |          | In mathematics, graph theory is the study of graphs, which are mathematical structures used to model pairwise relations between objects.                                                          |
+  | Analysis of Algorithms   |          | In computer science, the analysis of algorithms is the process of finding the computational complexity of algorithms.                                                                             |
+  | Distributed Computing    |          | A distributed system is a system whose components are located on different networked computers, which communicate and coordinate their actions by passing messages to one another from any system |
+  | Big Data                 |          | Big data is a field that treats ways to analyze, systematically extract information from, or otherwise deal with data sets that are too large.                                                    |
+  | Sorting Algorithms Child | 1        | test                                                                                                                                                                                              |
+  | Bubble Sort              | 1        | Compares adjacent elements and moves them                                                                                                                                                         |
+  | Merge Sort               | 1        | Merges sorted arrays                                                                                                                                                                              |
+  | Recursive merge          | 8        | Runs recursively                                                                                                                                                                                  |
+  | For merge                | 8        | Runs recursively                                                                                                                                                                                  |
 
 Scenario: Once user navigates to Owledge then they should be on the homepage
   When I go to the homepage
