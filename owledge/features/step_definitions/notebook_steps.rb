@@ -16,7 +16,13 @@ Given /the following (sub)?notes exist/ do | notes_table |
 
 end
 
+Then /I should see the label "(.+)"/ do | label |
 
+end
+
+Then /I should see the "(.+)" button/ do | label |
+
+end
 
 
 
