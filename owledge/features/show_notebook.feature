@@ -38,5 +38,5 @@ Feature: Show Notebook
 
   Scenario: click on Owledge logo
     When I go to the details page for "Sorting Algorithms"
-    When I follow "#owledge_logo"
+    When I follow "owledge_logo"
     Then I should be on the homepage
