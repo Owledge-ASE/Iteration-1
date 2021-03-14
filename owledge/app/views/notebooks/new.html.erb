@@ -1,3 +1,26 @@
-<h1>Notebooks#show</h1>
-<p>Find me in app/views/notebooks/show.html.erb</p>
-<h1>Hellooooo<h2>
+<div class="row top-header">
+  <h1 class="col-10" id="title">
+    <% if @ancestors.empty? %>
+      New note
+    <% else %>
+      New sub-note of <%= @ancestors[-1].title %>
+    <% end %>
+  </h1>
+</div>
+
+<div class="card bg-dark-l0 col-12 main-card">
+  <div class="card-body bg-dark-l0">
+  <%= form_with scope: :note, url: notebooks_path, model: @note do |form| %>
+    <%= form.hidden_field :parent_id, value: params[:parent] %>
+    <div class="form-group">
+    <%= form.label :title, 'Title' %>
+    <%= form.text_field :title, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+    <%= form.label :description, 'Description' %>
+    <%= form.text_area :description, class: 'form-control' %>
+    </div>
+    <%= form.submit class: 'btn btn-submit btn-primary' %>
+  <% end %>
+  </div>
+</div>

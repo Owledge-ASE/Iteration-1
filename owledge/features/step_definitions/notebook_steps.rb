@@ -31,18 +31,13 @@ end
 Then /^(?:|I )should see the label "(.+)"$/ do |labelname| 
     if page.respond_to? :should
         page.should have_content(labelname)
-      else
-        assert page.has_content?(labelname)
-      end
+    else
+      assert page.has_content?(labelname)
+    end
 end
 
-Then /^(?:|I )should see the "(.+)" button$/ do |buttonname| 
-
-    if page.respond_to? :should
-        page.should have_content(buttonname)
-      else
-        assert page.has_content?(buttonname)
-      end
+Then /^(?:|I )should see the "(.+)" button$/ do |buttonname|
+  has_css?(%Q{input[value="#{buttonname}"]})
 end
 
 Then /^I should see "(.+)" in list of nodes$/ do | needle |
