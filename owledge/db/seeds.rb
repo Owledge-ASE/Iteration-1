@@ -11,7 +11,7 @@ graph_theory = Note.create([{
                               description: %w{
                                 In mathematics, graph theory is the study of graphs, which are mathematical structures
                                 used to model pairwise relations between objects.
-                              }
+                              }.join(" ")
                             }])
 Note.create([{
                title: 'Directed Acyclic Graph',
@@ -19,6 +19,6 @@ Note.create([{
                   A Directed Acyclic Graph is a directed graph with no directed cycles. That is, it consists of
                   vertices and edges (also called arcs), with each edge directed from one vertex to another, such
                   that following those directions will never form a closed loop.
-               },
+               }.join(" "),
                parent_id: graph_theory
              }])
