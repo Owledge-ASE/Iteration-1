@@ -173,6 +173,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.11.2-x64-mingw32)
       racc (~> 1.4)
+    pg (1.2.3-x64-mingw32)
     popper_js (2.8.6)
     protobuf-cucumber (3.10.8)
       activesupport (>= 3.2)
@@ -275,7 +276,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     sys-uname (1.2.2)
       ffi (~> 1.1)
     thor (1.1.0)
@@ -324,6 +324,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.3)
+  pg
   pry-byebug
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
@@ -333,7 +334,6 @@ DEPENDENCIES
   selenium-webdriver
   simplecov
   spring
-  sqlite3 (~> 1.4)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
