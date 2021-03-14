@@ -51,24 +51,24 @@ end
 
 
 # Sean
-Then /I should see ([0-9]+) breadcrumbs?/ do | n_breadcrumbs |
-  page.find('#breadcrumb').all.count == n_breadcrumbs
+Then /^I should see ([0-9]+) breadcrumb(?:s?)$/ do | n_breadcrumbs |
+  page.all('#breadcrumbs a').size == Integer(n_breadcrumbs) + 1 # include homepage
 end
 
-Then /I should see a breadcrumb link to "(.+)"$/ do | link |
-  find('#breadcumbs').has_link?(link)
+Then /^I should see a breadcrumb link to "(.+)"$/ do | link |
+  page.find('#breadcrumbs').has_link?(link)
 end
 
 Then /^"(.+)" should not exist$/ do | id |
-  find(id).must_be_nil
+  has_css?(id)
 end
 
-Then /^I should see "(.+)" in "(.+)$/ do | needle, haystack |
-  find(haystack).find(text: needle)
+Then /^I should see "([^"]+)" in "([^"]+)"$/ do | needle, haystack |
+  find(haystack).has_text?(needle)
 end
 
-Then /^I should not see "(.+)" in "(.+)"$/ do | needle, haystack |
-  find(haystack).find(text: needle).must_be_nil
+Then /^I should not see "([^"]+)" in "([^"]+)"$/ do | needle, haystack |
+  !step %Q{I should see "#{needle}" in "#{haystack}"}
 end
 
 

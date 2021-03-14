@@ -18,17 +18,16 @@ Feature: Show Notebook
     When I go to the notebook page for "Sorting Algorithms"
     Then I should see "Sorting Algorithms" inside "#title"
     And I should see "In computer science, a sorting algorithm is an algorithm that puts elements" inside "#description"
-    And I should see "Sorting Algorithms" inside "#children"
     And I should see "Selection Sort" inside "#children"
     And I should see "Heap Sort" inside "#children"
     And I should see "Quick Sort" inside "#children"
-    But I should not see "Directed Acyclic Graph" inside "#children"
-    And I should not see "Sorting Algorithms" inside "#children"
+    But I should not see "Directed Acyclic Graph" in "#children"
+    And I should not see "Sorting Algorithms" in "#children"
     And I should see 1 breadcrumb
 
   Scenario: click on a sub-note with no children
     When I go to the details page for "Sorting Algorithms"
-    And I follow "child_heapsort"
+    And I follow "note_4"
     Then I should see "Heap Sort"
     And I should see "Heapsort can be thought of as an improved"
     And I should see 2 breadcrumbs
