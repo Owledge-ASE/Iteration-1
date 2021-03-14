@@ -1,0 +1,2 @@
+class NotebookToSubNote < ApplicationRecord
+end

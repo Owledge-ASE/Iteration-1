@@ -1,0 +1,70 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+$base-color: #c6538c;
+$border-dark: rgba($base-color, 0.88);
+$color-white: #F5F5F5;
+$center-distance-header: 30px;
+$background-black: #121212;
+$background-black-l1: rgba($background-black, 0.95);
+$background-black-l2: rgba($background-black, 0.89);
+
+.header{
+     color:$color-white;
+}
+.header-bar{
+    height:10vh;
+    margin-left:0px;
+}
+
+.header-title{
+    
+    color:$color-white;
+    text-decoration: none;
+}
+.main-bar{
+    padding: $center-distance-header;
+}
+
+.login-button{
+    margin-top:  $center-distance-header;
+}
+
+.main-section{
+     margin:0px;
+     height:90vh;
+     overflow:scroll;
+
+
+}
+.main-inside-section{
+    padding:20px;
+    color:$color-white;
+}
+
+.bg-dark-l0{
+    background-color: $background-black;
+}
+.bg-dark-l1{
+    background-color: $background-black-l1;
+}
+.bg-dark-l2{
+    background-color: $background-black-l2;
+}
+
+.main-card{
+    margin-bottom:20px;
+}
