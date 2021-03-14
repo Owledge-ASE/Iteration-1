@@ -9,6 +9,12 @@ Andrea McCormick (amm2497)
 
 Zhengyi Li (zl3029)
 
+## File Location
+Main code is in the /owledge folder
+
+RSpec tests are in /owledge/spec
+
+Cucumber tests and execution code in owledge/features
 
 ## Preinstall
 
