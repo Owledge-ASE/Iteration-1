@@ -15,9 +15,9 @@ Code present at : https://github.com/Owledge-ASE/Iteration-1
 
 Main code is in the /owledge folder
 
-RSpec tests are in /owledge/spec
+RSpec tests are in https://github.com/Owledge-ASE/Iteration-1/tree/main/owledge/spec
 
-Cucumber tests and execution code in owledge/features 
+Cucumber tests and execution code in https://github.com/Owledge-ASE/Iteration-1/tree/main/owledge/features
 
 ## Heroku Link
 
