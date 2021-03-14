@@ -15,10 +15,9 @@ Zhengyi Li (zl3029)
 
 Install PostgreSql10 from https://www.enterprisedb.com/downloads/postgres-postgresql-downloads and setup uname and password from owledge/config/database.yml
 
-Open up the owledge folder
-
 Run
 ```
+cd owledge
 bundle install 
 rake db:create 
 rake db:migrate
@@ -29,3 +28,5 @@ rails server
 
 ```
 Then open http://127.0.0.1:3000/
+
+Code also present on: https://peaceful-meadow-90102.herokuapp.com/notebooks
