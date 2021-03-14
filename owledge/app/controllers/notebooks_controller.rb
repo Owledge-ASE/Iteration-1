@@ -1,11 +1,16 @@
 class NotebooksController < ApplicationController
   def create
     @note = Note.new(allowed_params)
-    if @note.save
-      redirect_to notebook_path @note
+    @ancestors = @note.ancestors
+    if @note.valid?
+      if @note.save
+        redirect_to notebook_path @note
+        return
+      end
     else
-      render 'new'
+      flash[:error] = 'Kindly enter a title and description'
     end
+    render'new'
   end
   def new
     @ancestors = []
@@ -16,7 +21,12 @@ class NotebooksController < ApplicationController
   end
   def show
     id = params[:id]
-    @note = Note.find(id)
+    begin
+      @note = Note.find(id)
+    rescue ActiveRecord::RecordNotFound => e
+      flash[:error] = "Could not find a note with ID #{id}"
+      redirect_to 'index' and return
+    end
     @ancestors = @note.ancestors
   end
   def index

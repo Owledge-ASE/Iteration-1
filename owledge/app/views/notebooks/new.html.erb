@@ -1,6 +1,6 @@
 <div class="row top-header">
   <h1 class="col-10" id="title">
-    <% if @ancestors.empty? %>
+    <% if @ancestors.nil? or @ancestors.empty? %>
       New note
     <% else %>
       New sub-note of <%= @ancestors[-1].title %>

@@ -5,7 +5,7 @@
     <% @ancestors.each do |note| %>
       <li class="breadcrumb-item"><a href="<%= notebook_path note.id %>"><%= note.title %></a></li>
     <% end %>
-    <% if !@note.nil? %>
+    <% if !@note.nil? and !@note.id.nil? %>
     <li class="breadcrumb-item"><a href="<%= notebook_path @note.id %>"><%= @note.title %></a></li>
     <% elsif current_page?(new_notebook_path) %>
     <li class="breadcrumb-item">New <% if !@ancestors.empty? %>Sub-<% end %>Note</li>

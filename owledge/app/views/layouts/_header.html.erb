@@ -8,3 +8,8 @@
         <%= render 'layouts/login_section' %>
     </div>
 </div>
+<% unless flash[:error].nil? %>
+<div class="alert alert-warning">
+      <%=  flash[:error]  %>
+</div>
+<%  end %>

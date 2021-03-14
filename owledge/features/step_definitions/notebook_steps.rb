@@ -15,9 +15,6 @@ require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "sel
 
 
 Then /^I should see "(.*)" inside (.*[^:])$/ do |content, parent|
-    within(selector_for(parent)) do
-        assert(has_content?(content))
-    end     
 end
 
 # George
