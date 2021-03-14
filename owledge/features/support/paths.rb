@@ -13,6 +13,7 @@ module NavigationHelpers
     when /^the (?:notebook|details) page for "(.+)"$/
       notebook_path(Note.find_by_title($1))
     when /^the create page$/ then '/notebooks/new'
+    when /^the notebook with ID ([0-9]+)$/ then "/notebooks/$1"
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

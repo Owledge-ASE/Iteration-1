@@ -34,6 +34,10 @@ Feature: Show Notebook
     And I should see a breadcrumb link to "Sorting Algorithms"
     But "#children" should not exist
 
+  Scenario: get to a sub-note that does not exist (sad path)
+    When I go to the notebook with ID 1010
+    Then I should be on the homepage
+    And I should see "Could not find a note with ID 1010" inside "#error_message"
 
   Scenario: click on Owledge logo
     When I go to the details page for "Sorting Algorithms"
