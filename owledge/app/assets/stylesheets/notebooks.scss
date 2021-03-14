@@ -1,3 +1,17 @@
 // Place all the styles related to the Notebooks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import "application";
+
+.card-link{
+    color:$color-white;
+    text-decoration: none;
+}
+
+.card-text{
+    height:150px;
+    overflow: hidden;
+}
+.top-header{
+    margin:20px
+}
