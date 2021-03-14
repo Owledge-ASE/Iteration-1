@@ -1,10 +1,23 @@
 class NotebooksController < ApplicationController
-  @ancestors = []
+  def create
+    @note = Note.new(allowed_params)
+    if @note.save
+      redirect_to notebook_path @note
+    else
+      render 'new'
+    end
+  end
   def new
+    @ancestors = []
+    parent = params[:parent]
+    if parent
+      @ancestors = Note.ancestors(parent)
+    end
   end
   def show
     id = params[:id]
     @note = Note.find(id)
+    @ancestors = @note.ancestors
   end
   def index
     @ancestors = []
@@ -12,7 +25,7 @@ class NotebooksController < ApplicationController
   end
 
   private
-  def ancestors(note)
-    [note.parent]
+  def allowed_params
+    params.require(:note).permit(:title, :description, :parent_id)
   end
 end

@@ -3,6 +3,11 @@ class Note < ApplicationRecord
     return self.where('parent_id is null')
   end
 
+  def self.ancestors(parent_id)
+    parent = self.find(parent_id)
+    parent.ancestors + [parent]
+  end
+
   def children
     return Note.where(parent_id: self.id).all
   end
