@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2021_03_14_042129) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "notes", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.integer "parent_id"
+    t.bigint "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["parent_id"], name: "index_notes_on_parent_id"
