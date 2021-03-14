@@ -1,3 +1,7 @@
-<h1>Notebooks#show</h1>
-<p>Find me in app/views/notebooks/show.html.erb</p>
-<h1>Hellooooo<h2>
+<div class="row top-header">
+  <h1 class="col-10">Notebooks</h1>
+
+  <a href="<%= notebook_path({parent: @note}) %>" class="card-link col-2">
+    <button type="button" class="btn btn-secondary" id="add-note">Add Note</button>
+  </a>
+</div>
