@@ -4,7 +4,7 @@ class NotebooksController < ApplicationController
   end
   def show
     id = params[:id]
-    @notes = Note.find(id)
+    @note = Note.find(id)
   end
   def index
     @notes = Note.allParents
