@@ -1,6 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe Note, type: :model do
+  @note_list_only_parents = [{
+    title: 'Sorting Algorithms',
+    description: %w{
+      In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
+    }.join(" ")
+  },{
+    title: 'Graph Theory',
+    description: %w{
+      In mathematics, graph theory is the study of graphs, which are mathematical structures
+      used to model pairwise relations between objects.
+    }.join(" ")
+  }]
   describe 'check if Only parents function is working as expected' do
     context 'No records so count is 0' do
       before :each do
@@ -14,37 +26,7 @@ RSpec.describe Note, type: :model do
     context 'Only parents so count of function is equal to count of all' do
       before :each do
         Note.delete_all
-        Note.create([{
-                              title: 'Graph Theory',
-                              description: %w{
-                                In mathematics, graph theory is the study of graphs, which are mathematical structures
-                                used to model pairwise relations between objects.
-                              }.join(" ")
-                            }])
-        Note.create([{
-                              title: 'Sorting Algorithms',
-                              description: %w{
-                                In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
-                              }.join(" ")
-                            }])
-        Note.create([{
-                              title: 'Sorting Algorithms 3',
-                              description: %w{
-                                In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
-                              }.join(" ")
-                            }])
-        Note.create([{
-                              title: 'Sorting Algorithms 4',
-                              description: %w{
-                                In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
-                              }.join(" ")
-                            }])
-        Note.create([{
-                              title: 'Sorting Algorithms 5',
-                              description: %w{
-                                In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
-                              }.join(" ")
-                            }])
+        Note.create(@note_list_only_parents)
       end
       it 'Checks the list of parents' do
         @notes = Note.allParents
@@ -55,40 +37,7 @@ RSpec.describe Note, type: :model do
     context 'parents and children so counts shouldnt match' do
       before :each do
         Note.delete_all
-        @note = Note.create([{
-                              title: 'Graph Theory',
-                              description: %w{
-                                In mathematics, graph theory is the study of graphs, which are mathematical structures
-                                used to model pairwise relations between objects.
-                              }.join(" ")
-                            }])
-        @note2 = Note.create([{
-                              title: 'Sorting Algorithms',
-                              description: %w{
-                                In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
-                              }.join(" ")
-                            }])
-        Note.create([{
-                              title: 'Sorting Algorithms 3',
-                              description: %w{
-                                In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
-                              }.join(" "),
-                              parent_id:@note[0].id
-                            }])
-        Note.create([{
-                              title: 'Sorting Algorithms 4',
-                              description: %w{
-                                In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
-                              }.join(" "),
-                              parent_id:@note[0].id
-                            }])
-        Note.create([{
-                              title: 'Sorting Algorithms 5',
-                              description: %w{
-                                In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
-                              }.join(" "),
-                              parent_id:@note[0].id
-                            }])
+        Rails.application.load_seed 
       end
       it 'Checks the list of parents count is not equal to list count' do
         @notes = Note.allParents
@@ -117,47 +66,8 @@ RSpec.describe Note, type: :model do
     context 'IF records exist in the table then check ancestors' do
       before :each do
         Note.delete_all
-        @note = Note.create([{
-                              title: 'Graph Theory',
-                              description: %w{
-                                In mathematics, graph theory is the study of graphs, which are mathematical structures
-                                used to model pairwise relations between objects.
-                              }.join(" ")
-                            }])
-        @note2 = Note.create([{
-                              title: 'Sorting Algorithms',
-                              description: %w{
-                                In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
-                              }.join(" ")
-                            }])
-        Note.create([{
-                              title: 'Sorting Algorithms 3',
-                              description: %w{
-                                In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
-                              }.join(" "),
-                              parent_id:@note[0].id
-                            }])
-        Note.create([{
-                              title: 'Sorting Algorithms 4',
-                              description: %w{
-                                In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
-                              }.join(" "),
-                              parent_id:@note[0].id
-                            }])
-        @child_note = Note.create([{
-                              title: 'Sorting Algorithms 5',
-                              description: %w{
-                                In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
-                              }.join(" "),
-                              parent_id:@note[0].id
-                            }])
-        Note.create([{
-                              title: 'Sorting Algorithms 6',
-                              description: %w{
-                                In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
-                              }.join(" "),
-                              parent_id:@child_note[0].id
-                            }])
+        Rails.application.load_seed 
+
       end
       it 'Check non existent record' do
         expect {
@@ -165,15 +75,15 @@ RSpec.describe Note, type: :model do
         }.to raise_error(ActiveRecord::RecordNotFound)
       end
       it 'Check ancestors of a parent' do
-          @notes = Note.ancestors (1)
+          @notes = Note.ancestors (Note.find_by_title("Sorting Algorithms").id)
           expect(@notes.count).to eq(1)
       end
       it 'Check ancestors of a child' do
-          @notes = Note.ancestors (5)
+          @notes = Note.ancestors (Note.find_by_title("Sorting Algorithms 3").id)
           expect(@notes.count).to eq(2)
       end
       it 'Check ancestors of a second level child' do
-          @notes = Note.ancestors (6)
+          @notes = Note.ancestors (Note.find_by_title("Sorting Algorithms 6").id)
           expect(@notes.count).to eq(3)
       end
     end
@@ -184,63 +94,33 @@ RSpec.describe Note, type: :model do
     context 'IF records exist in the table then check the children for them' do
       before :each do
         Note.delete_all
-        @note = Note.create([{
-                              title: 'Graph Theory',
-                              description: %w{
-                                In mathematics, graph theory is the study of graphs, which are mathematical structures
-                                used to model pairwise relations between objects.
-                              }.join(" ")
-                            }])
-        @note2 = Note.create([{
-                              title: 'Sorting Algorithms',
-                              description: %w{
-                                In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
-                              }.join(" ")
-                            }])
-        Note.create([{
-                              title: 'Sorting Algorithms 3',
-                              description: %w{
-                                In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
-                              }.join(" "),
-                              parent_id:@note[0].id
-                            }])
-        Note.create([{
-                              title: 'Sorting Algorithms 4',
-                              description: %w{
-                                In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
-                              }.join(" "),
-                              parent_id:@note[0].id
-                            }])
-        @child_note = Note.create([{
-                              title: 'Sorting Algorithms 5',
-                              description: %w{
-                                In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
-                              }.join(" "),
-                              parent_id:@note[0].id
-                            }])
-        Note.create([{
-                              title: 'Sorting Algorithms 6',
-                              description: %w{
-                                In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
-                              }.join(" "),
-                              parent_id:@child_note[0].id
-                            }])
+        Rails.application.load_seed 
       end
       it 'Check children of parent notebook' do
-        @note = Note.find(1)
+        @note = Note.find(Note.find_by_title("Sorting Algorithms").id)
         @note_children = @note.children
         expect(@note_children.count).to eq(3)
 
       end
       it 'Check children of a parent' do
-        @note = Note.find(2)
+        @note = Note.find(Note.find_by_title("Graph Theory").id)
+        @note_children = @note.children
+        expect(@note_children.count).to eq(1)
+      end
+      it 'Check children of another child' do
+        @note = Note.find(Note.find_by_title("Sorting Algorithms 5").id)
+        @note_children = @note.children
+        expect(@note_children.count).to eq(1)
+      end
+      it 'Check children of child without children' do
+        @note = Note.find(Note.find_by_title("Sorting Algorithms 3").id)
         @note_children = @note.children
         expect(@note_children.count).to eq(0)
       end
-      it 'Check children of another child' do
-        @note = Note.find(5)
+      it 'Check children of second level child without children' do
+        @note = Note.find(Note.find_by_title("Sorting Algorithms 6").id)
         @note_children = @note.children
-        expect(@note_children.count).to eq(1)
+        expect(@note_children.count).to eq(0)
       end
     end
   end
