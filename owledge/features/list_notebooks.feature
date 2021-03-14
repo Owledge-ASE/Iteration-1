@@ -36,13 +36,13 @@ Scenario: On the homepage there should be an add button
 
 Scenario: If I click on the add button then they can navigate to the add page (Create page)
   When I go to the homepage
-  And I press "add-note"
+  And I follow "add-note"
   Then I should be on the create page
 
 Scenario: If I clicks on a notebook then they will be redirected to the details page
   When I go to the homepage
   And I follow "note_1"
-  Then I should be on the details page of "Sorting Algorithms"
+  Then I should be on the details page for "Sorting Algorithms"
 
 
 Scenario: click on Owledge logo

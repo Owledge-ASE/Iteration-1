@@ -17,8 +17,8 @@
   </div>
 </div>
 <% if @note.children.length > 0 %>
-<div class="col-10" id="children">
-  <h3>Children</h3>
+<h3>Children</h3>
+<div class="col-10 row" id="children">
   <% @note.children.each do |note| %>
     <div class="card bg-dark-l2 col-3 main-card" >
       <a href="<%= notebook_path(note.id) %>" class="card-link" id="note_<%= note.id %>">
