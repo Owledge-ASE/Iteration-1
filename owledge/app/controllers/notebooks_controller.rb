@@ -20,6 +20,7 @@ class NotebooksController < ApplicationController
     end
   end
   def show
+    flash[:error] = nil
     id = params[:id]
     begin
       @note = Note.find(id)
@@ -30,6 +31,7 @@ class NotebooksController < ApplicationController
     @ancestors = @note.ancestors
   end
   def index
+    flash[:error] = nil
     @ancestors = []
     @notes = Note.allParents
   end

@@ -10,7 +10,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body >
     <div>
       <%= render 'layouts/header' %>
     </div>
@@ -20,5 +20,6 @@
       <%= yield %>
       </div>
     </div>
+    <div class=" <% if current_page?(notebooks_path) %> footer-large <%else%>  footer <%end%>  bg-dark-l1"></div>
   </body>
 </html>

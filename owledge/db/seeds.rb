@@ -12,7 +12,13 @@ graph_theory = Note.create({
                                 In mathematics, graph theory is the study of graphs, which are mathematical structures
                                 used to model pairwise relations between objects.
                               }.join(" ")
-                            }])
+                            })
+sorting = Note.create({
+                            title: 'Sorting Algorithms',
+                            description: %w{
+                              In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
+                            }.join(" ")
+                      }) 
 Note.create([{
                title: 'Directed Acyclic Graph',
                description: %w{
@@ -22,3 +28,32 @@ Note.create([{
                }.join(" "),
                parent_id: graph_theory.id
              }])
+
+             
+Note.create([{
+          title: 'Sorting Algorithms 3',
+          description: %w{
+            In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
+          }.join(" "),
+          parent_id: sorting.id
+        },{
+          title: 'Sorting Algorithms 4',
+          description: %w{
+            In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
+          }.join(" "),
+          parent_id: sorting.id
+        }])
+child_note = Note.create({
+          title: 'Sorting Algorithms 5',
+          description: %w{
+            In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
+          }.join(" "),
+          parent_id: sorting.id
+        })
+Note.create([{
+                              title: 'Sorting Algorithms 6',
+                              description: %w{
+                                In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
+                              }.join(" "),
+                              parent_id:child_note.id
+                }])

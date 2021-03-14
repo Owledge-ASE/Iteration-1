@@ -43,3 +43,8 @@ Feature: Show Notebook
     When I go to the details page for "Sorting Algorithms"
     When I follow "owledge_logo"
     Then I should be on the homepage
+
+  
+Scenario: On the details should be an add button
+  When I go to the details page for "Sorting Algorithms"
+  Then I should see "Add Note"
