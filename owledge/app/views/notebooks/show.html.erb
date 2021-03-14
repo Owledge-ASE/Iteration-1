@@ -1,13 +1,35 @@
 <div class="row top-header">
-  <h1 class="col-10"><%= @note.title %></h1>
+  <h1 class="col-10" id="title"><%= @note.title %></h1>
 
   <a href="<%= new_notebook_path({parent: @note}) %>" class="card-link col-2">
     <button type="button" class="btn btn-secondary" id="add-note">Add Note</button>
   </a>
 </div>
 
-<div class="card bg-dark-l2 col-12 main-card">
-  <%= @note.description %>
+<div class="card bg-dark-l1 col-12 main-card">
+  <div class="card-body">
+    <div class="card-title">
+      <h3>Description</h3>
+    </div>
+    <div class="card-text" id="description">
+      <%= @note.description %>
+    </div>
+  </div>
 </div>
-
-
+<% if @note.children.length > 0 %>
+<div class="col-10" id="children">
+  <h3>Children</h3>
+  <% @note.children.each do |note| %>
+    <div class="card bg-dark-l2 col-3 main-card" >
+      <a href="<%= notebook_path(note.id) %>" class="card-link" id="note_<%= note.id %>">
+        <div class="card-body">
+          <h5 class="card-title"><%= note.title %></h5>
+          <p class="card-text"><%= note.description.nil?  ? "" : note.description[0..300] %></p>
+        </div>
+      </a>
+    </div>
+    <div class="col-1" >
+    </div>
+  <% end %>
+</div>
+<% end %>
