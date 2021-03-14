@@ -29,7 +29,7 @@ Scenario:If user tries to submit without entering anything in notebook title/inf
   When I go to the root page
   And I press "Add Note"
   And I press "Save"
-  Then I should see "Kindly enter a title and description" within "#error_message"
+  Then I should see "Kindly enter a title and description" inside "#error_message"
 
 Scenario: I should be able to create a single note
   When I go to the homepage
@@ -41,7 +41,7 @@ Scenario: I should be able to create a single note
 
   When I press "Back to Notes"
   Then I should be on the homepage
-  And I should see "Code Testing" within list of nodes
+  And I should see "Code Testing" inside list of nodes
 
 Scenario: I should be able to create a node with multiple children
   When I go to the homepage
@@ -62,7 +62,7 @@ Scenario: I should be able to create a node with multiple children
   Then I should be on the details page for "Layout"
   And I should see 2 breadcrumbs
   And I should see a breadcrumb link to "Bootstrap"
-  And I should see "Layout" within "#title"
+  And I should see "Layout" inside "#title"
 
 Scenario: If I clicks the Owledge logo, then redirect back to Home page   
     When I go to the create page

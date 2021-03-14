@@ -10,6 +10,15 @@
 # Then I should see the "Save" button
 
 require 'pry'
+require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
+
+
+
+Then /^I should see "(.*)" inside (.*[^:])$/ do |content, parent|
+    within(selector_for(parent)) do
+        assert(has_content?(content))
+    end     
+end
 
 # George
 Given /the following notes exist/ do | notes_table |
@@ -61,3 +70,5 @@ end
 Then /^I should not see "(.+)" in "(.+)"$/ do | needle, haystack |
   find(haystack).find(text: needle).must_be_nil
 end
+
+

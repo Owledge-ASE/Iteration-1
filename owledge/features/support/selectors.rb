@@ -16,8 +16,6 @@ module HtmlSelectorsHelpers
       when "the page"
         "html > body"
       when "list of nodes"
-        print("===================hi===========")
-        print(locator)
         ".card-container"
   
       # Add more mappings here.

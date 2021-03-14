@@ -16,14 +16,14 @@ Feature: Show Notebook
 
   Scenario: details page for note with children and no parent
     When I go to the notebook page for "Sorting Algorithms"
-    Then I should see "Sorting Algorithms" within "#title"
-    And I should see "In computer science, a sorting algorithm is an algorithm that puts elements" within "#description"
-    And I should see "Sorting Algorithms" within "#children"
-    And I should see "Selection Sort" within "#children"
-    And I should see "Heap Sort" within "#children"
-    And I should see "Quick Sort" within "#children"
-    But I should not see "Directed Acyclic Graph" within "#children"
-    And I should not see "Sorting Algorithms" within "#children"
+    Then I should see "Sorting Algorithms" inside "#title"
+    And I should see "In computer science, a sorting algorithm is an algorithm that puts elements" inside "#description"
+    And I should see "Sorting Algorithms" inside "#children"
+    And I should see "Selection Sort" inside "#children"
+    And I should see "Heap Sort" inside "#children"
+    And I should see "Quick Sort" inside "#children"
+    But I should not see "Directed Acyclic Graph" inside "#children"
+    And I should not see "Sorting Algorithms" inside "#children"
     And I should see 1 breadcrumb
 
   Scenario: click on a sub-note with no children

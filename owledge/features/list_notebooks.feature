@@ -24,11 +24,11 @@ Scenario:Once user navigates to Owledge then they should be on the homepage
 
 Scenario:On the homepage there should be a list of notebooks
   When I go to the homepage
-  Then I should see "Graph Theory" within ".card-container"
-  Then I should see "Sorting Algorithms" within list of nodes
-  Then I should see "Analysis of Algorithms" within list of nodes
-  Then I should see "Distributed Computing" within list of nodes
-  Then I should see "Big Data" within list of nodes
+  Then I should see "Graph Theory" inside list of nodes
+  Then I should see "Sorting Algorithms" inside list of nodes
+  Then I should see "Analysis of Algorithms" inside list of nodes
+  Then I should see "Distributed Computing" inside list of nodes
+  Then I should see "Big Data" inside list of nodes
 
 Scenario:On the homepage there should be an add button
   When I go to the homepage
