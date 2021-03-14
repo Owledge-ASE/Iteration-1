@@ -27,7 +27,7 @@ Feature: Show Notebook
     And I should see 1 breadcrumb
 
   Scenario: click on a sub-note with no children
-    When I go to the notebook page for "Sorting Algorithms"
+    When I go to the details page for "Sorting Algorithms"
     And I follow "child_heapsort"
     Then I should see "Heap Sort"
     And I should see "Heapsort can be thought of as an improved"
@@ -37,5 +37,6 @@ Feature: Show Notebook
 
 
   Scenario: click on Owledge logo
-    When I follow "owledge_logo"
+    When I go to the details page for "Sorting Algorithms"
+    When I follow "#owledge_logo"
     Then I should be on the homepage

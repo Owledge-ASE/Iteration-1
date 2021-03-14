@@ -64,7 +64,8 @@ Scenario: I should be able to create a node with multiple children
   And I should see a breadcrumb link to "Bootstrap"
   And I should see "Layout" within "#title"
 
-Scenario: If I clicks the Owledge logo, then redirect back to Home page    
+Scenario: If I clicks the Owledge logo, then redirect back to Home page   
+    When I go to the create page
     When I follow "owledge_logo"
     Then I should be on the homepage
 

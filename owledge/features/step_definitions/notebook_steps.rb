@@ -9,6 +9,8 @@
 # Then I should see the label "Description"
 # Then I should see the "Save" button
 
+require 'pry'
+
 # George
 Given /the following notes exist/ do | notes_table |
     notes_table.hashes.each do |note|
@@ -17,8 +19,7 @@ Given /the following notes exist/ do | notes_table |
     
 end
 
-Then /^(?:|I )should see the label "([^"]*)"$/ do |labelname| 
-
+Then /^(?:|I )should see the label "(.+)"$/ do |labelname| 
     if page.respond_to? :should
         page.should have_content(labelname)
       else
@@ -26,7 +27,7 @@ Then /^(?:|I )should see the label "([^"]*)"$/ do |labelname|
       end
 end
 
-Then /^(?:|I )should see the "([^"]*)" button$/ do |buttonname| 
+Then /^(?:|I )should see the "(.+)" button$/ do |buttonname| 
 
     if page.respond_to? :should
         page.should have_content(buttonname)
@@ -35,11 +36,28 @@ Then /^(?:|I )should see the "([^"]*)" button$/ do |buttonname|
       end
 end
 
-
-
-
-# Sean
-Then /I should see ([0-9]+) breadcrumbs/ do | n_breadcrimbs |
+Then /^I should see "(.+)" in list of nodes$/ do | needle |
 
 end
 
+
+# Sean
+Then /I should see ([0-9]+) breadcrumbs?/ do | n_breadcrumbs |
+  page.find('#breadcrumb').all.count == n_breadcrumbs
+end
+
+Then /I should see a breadcrumb link to "(.+)"$/ do | link |
+  find('#breadcumbs').has_link?(link)
+end
+
+Then /^"(.+)" should not exist$/ do | id |
+  find(id).must_be_nil
+end
+
+Then /^I should see "(.+)" in "(.+)$/ do | needle, haystack |
+  find(haystack).find(text: needle)
+end
+
+Then /^I should not see "(.+)" in "(.+)"$/ do | needle, haystack |
+  find(haystack).find(text: needle).must_be_nil
+end

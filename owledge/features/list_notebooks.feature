@@ -46,6 +46,7 @@ Scenario:If I clicks on a notebook then they will be redirected to the details p
 
 
 Scenario: click on Owledge logo
-  When I follow "owledge_logo"
+  When I go to the homepage
+  When I follow "#owledge_logo"
   Then I should be on the homepage
 
