@@ -36,8 +36,7 @@ Note.create([{
             In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
           }.join(" "),
           parent_id: sorting.id
-        }])
-Note.create([{
+        },{
           title: 'Sorting Algorithms 4',
           description: %w{
             In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
