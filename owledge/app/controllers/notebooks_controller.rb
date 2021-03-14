@@ -1,3 +1,8 @@
+
+
+
+
+
 class NotebooksController < ApplicationController
   def new
 
@@ -6,5 +11,6 @@ class NotebooksController < ApplicationController
     
   end
   def index
+    @notes = SubNote.allParents
   end
 end

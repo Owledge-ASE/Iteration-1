@@ -36,7 +36,7 @@ Scenario: On the homepage there should be an add button
 
 Scenario: If I click on the add button then they can navigate to the add page (Create page)
   When I go to the homepage
-  And I press "Add Note"
+  And I press "add-note"
   Then I should be on the create page
 
 Scenario: If I clicks on a notebook then they will be redirected to the details page
