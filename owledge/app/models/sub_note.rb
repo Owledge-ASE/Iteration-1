@@ -1,2 +1,0 @@
-class SubNote < ApplicationRecord
-end

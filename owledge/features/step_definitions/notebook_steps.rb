@@ -23,7 +23,7 @@ end
 # George
 Given /the following notes exist/ do | notes_table |
     notes_table.hashes.each do |note|
-      SubNote.create note
+      Note.create note
     end
     
 end
