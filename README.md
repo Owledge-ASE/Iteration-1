@@ -1,6 +1,6 @@
-## Owledge
+# Owledge
 
-# Team
+## Team
 Sean Capaloff-Jones (sc4045)
 
 George Cherian (gc2920)
@@ -12,7 +12,7 @@ Zhengyi Li (zl3029)
 
 Open up the owledge folder
 
-# Preinstall
+## Preinstall
 Install PostgreSql10 from https://www.enterprisedb.com/downloads/postgres-postgresql-downloads and setup uname and password from owledge/config/database.yml
 
 Run
