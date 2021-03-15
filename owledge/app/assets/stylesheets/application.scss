@@ -57,6 +57,10 @@ $background-black-l2: rgba($background-black, 0.89);
     height:5vh;
 
 }
+.footer-large{
+    height:10vh;
+
+}
 .bg-dark-l0{
     background-color: $background-black;
 }
@@ -73,5 +77,6 @@ $background-black-l2: rgba($background-black, 0.89);
 
 .crumb-holder{
     padding:20px;
-    height:5vh;
+    height:5vh;    
+    color: $color-white;
 }
