@@ -26,9 +26,9 @@ Server present on: https://peaceful-meadow-90102.herokuapp.com/notebooks
 ## Preinstall
 
 
-Install PostgreSql10 from https://www.enterprisedb.com/downloads/postgres-postgresql-downloads 
-setup password in owledge/config/database.yml: replace the #your password to your postgres password
-NOTE: the username should leave postgres unless you have add new user to postgresql
+Install PostgreSql10 from https://www.enterprisedb.com/downloads/postgres-postgresql-downloads \rn
+setup password in owledge/config/database.yml: replace the #your password to your postgres password \rn
+NOTE: the username should leave postgres unless you have add new user to postgresql \rn
 
 
 Run
