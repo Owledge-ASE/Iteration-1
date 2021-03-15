@@ -38,5 +38,5 @@ rspec
 rails server
 
 ```
-Then open http://127.0.0.1:3000/
+Then open http://127.0.0.1:3000/ 
 
