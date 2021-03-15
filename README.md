@@ -34,7 +34,7 @@ rake db:create
 rake db:migrate
 rake db:seed
 cucumber
-rspec
+bundle exec rspec
 rails server
 
 ```
