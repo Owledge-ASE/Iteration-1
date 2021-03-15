@@ -26,7 +26,10 @@ Server present on: https://peaceful-meadow-90102.herokuapp.com/notebooks
 ## Preinstall
 
 
-Install PostgreSql10 from https://www.enterprisedb.com/downloads/postgres-postgresql-downloads and setup uname and password from owledge/config/database.yml
+Install PostgreSql10 from https://www.enterprisedb.com/downloads/postgres-postgresql-downloads 
+setup password in owledge/config/database.yml: replace the #your password to your postgres password
+NOTE: the username should leave postgres unless you have add new user to postgresql
+
 
 Run
 ```
@@ -42,3 +45,13 @@ rails server
 ```
 Then open http://127.0.0.1:3000/
 
+
+## NOTE:
+When run bundle install in mac, if you get 
+Gem::Ext::BuildError: ERROR: Failed to build gem native extension.
+please do 
+```
+brew update 
+brew install postgresql
+
+```
