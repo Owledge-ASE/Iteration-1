@@ -64,6 +64,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     autoprefixer-rails (10.2.4.0)
       execjs
+    bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.7.2)
       msgpack (~> 1.0)
@@ -117,8 +118,6 @@ GEM
       mime-types (~> 3.2)
       nokogiri (~> 1.8)
       rails (>= 5.0, < 7)
-    cucumber-rails-training-wheels (1.0.0)
-      cucumber-rails (>= 1.1.1)
     cucumber-tag-expressions (2.0.4)
     cucumber-wire (4.0.1)
       cucumber-core (~> 8.0, >= 8.0.1)
@@ -314,12 +313,12 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
   bootstrap (~> 5.0.0.beta2)
   byebug
   capybara (>= 3.26)
   cucumber-rails
-  cucumber-rails-training-wheels
   database_cleaner
   jbuilder (~> 2.7)
   jquery-rails
