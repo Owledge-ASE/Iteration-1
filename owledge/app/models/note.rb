@@ -11,6 +11,7 @@ class Note < ApplicationRecord
     parent.ancestors + [parent]
   end
 
+  
   def self.search(content)
     return Note.where('title LIKE ?', "%#{content}%")
   end
