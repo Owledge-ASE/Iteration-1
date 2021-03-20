@@ -1,4 +1,4 @@
-<% if !current_page?(notebooks_path) %>
+<% unless current_page?(notebooks_path) or @ancestors.nil? %>
   <nav aria-label="breadcrumb" id="breadcrumbs" class="bg-dark-l1 crumb-holder">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="<%= notebooks_path %>">Home</a></li>
@@ -8,7 +8,7 @@
     <% if !@note.nil? and !@note.id.nil? %>
     <li class="breadcrumb-item"><a href="<%= notebook_path @note.id %>"><%= @note.title %></a></li>
     <% elsif current_page?(new_notebook_path) %>
-    <li class="breadcrumb-item">New <% if !@ancestors.empty? %>Sub-<% end %>Note</li>
+    <li class="breadcrumb-item">New <% unless @ancestors.empty? %>Sub-<% end %>Note</li>
     <% end %>
   </ol>
 </nav>

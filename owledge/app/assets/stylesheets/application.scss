@@ -80,3 +80,11 @@ $background-black-l2: rgba($background-black, 0.89);
     height:5vh;    
     color: $color-white;
 }
+
+form {
+  input[type=text], input[type=email], input[type=password] {
+    &:not(.no-form-control) {
+      @extend .form-control;
+    }
+  }
+}

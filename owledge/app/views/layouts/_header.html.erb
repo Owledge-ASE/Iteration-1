@@ -1,15 +1,20 @@
-<div class="col-12 bg-dark-l0 row header-bar" >
-    <div class="col-11 main-bar">
-        <div class="header">
-            <a href="/notebooks" class="header-title owledge_logo" id="owledge_logo"><h1>Owledge</h1></a>
-        </div>
+<div class="d-flex bd-highlight mb-3 p-2">
+  <div class="mr-auto" style="margin-right: auto;">
+    <div class="header">
+        <a href="/" class="header-title owledge_logo" id="owledge_logo"><h1>Owledge</h1></a>
     </div>
-    <div class="col-1">
-        <%= render 'layouts/login_section' %>
-    </div>
+  </div>
+  <%= render 'layouts/login_section' %>
 </div>
-<% unless flash[:error].nil? %>
+<% if flash[:error].present? %>
 <div class="alert alert-warning" style="margin:0px">
-      <%=  flash[:error]  %>
+  <%=  flash[:error]  %>
 </div>
-<%  end %>
+<% end %>
+<%  %>
+<% if notice.present? %>
+<div class="alert alert-info"><%= notice %></div>
+<% end %>
+<% if alert.present? %>
+<div class="alert alert-danger"><%= alert %></div>
+<% end %>
