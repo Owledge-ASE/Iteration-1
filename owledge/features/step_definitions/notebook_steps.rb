@@ -63,4 +63,6 @@ Then /^I should not see "([^"]+)" in "([^"]+)"$/ do | needle, haystack |
   !step %Q{I should see "#{needle}" in "#{haystack}"}
 end
 
-
+Then /^debug$/ do
+  binding.pry
+end

@@ -21,16 +21,16 @@ Scenario: User is on edit page and sees pre-filled values.
   When I am on my profile edit page
   Then the "first_name" field should contain "Andrea"
   And the "last_name" field should contain "McCormick"
-  And the "affiliation" dropdown should have "Student" selected
+  And the "affiliation" field should contain "Student"
   And the "organization" field should contain "Columbia University"
 
 Scenario: User should be able to edit names.
   When I am on my profile edit page
-  And I fill in "first_name" with "Anne"
-  And I fill in "last_name" with "Smith"
-  And I fill in "affiliation" with "Faculty"
-  And I fill in "organization" with "Fake U"
-  And I fill in "email" with "annesmith@fakeu.edu"
+  And I fill in "user[first_name]" with "Anne"
+  And I fill in "user[last_name]" with "Smith"
+  And I fill in "user[affiliation]" with "Faculty"
+  And I fill in "user[organization]" with "Fake U"
+  And I fill in "user[email]" with "annesmith@fakeu.edu"
   And I press "Save"
   Then I should be on my profile
   And I should see "Anne" in "#first_name"
@@ -41,7 +41,7 @@ Scenario: User should be able to edit names.
 
 Scenario: User should see an error if profile is blank.
   When I am on my profile edit page
-  And I fill in "email" with ""
+  And I fill in "user[email]" with ""
   And I press "Save"
   Then I should be on my profile edit page
   And I should see "Email is a required field" inside "#error_message"

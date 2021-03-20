@@ -4,17 +4,19 @@
         <a href="/" class="header-title owledge_logo" id="owledge_logo"><h1>Owledge</h1></a>
     </div>
   </div>
-  <%= render 'layouts/login_section' %>
+  <div id="login_section" class="simple-wrapper">
+    <%= render 'layouts/login_section' %>
+  </div>
 </div>
 <% if flash[:error].present? %>
-<div class="alert alert-warning" style="margin:0px">
+<div class="alert alert-warning" id="error_message" style="margin:0px">
   <%=  flash[:error]  %>
 </div>
 <% end %>
 <%  %>
 <% if notice.present? %>
-<div class="alert alert-info"><%= notice %></div>
+<div class="alert alert-info" id="success_message"><%= notice %></div>
 <% end %>
 <% if alert.present? %>
-<div class="alert alert-danger"><%= alert %></div>
+<div class="alert alert-danger" id="danger_message"><%= alert %></div>
 <% end %>
