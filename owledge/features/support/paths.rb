@@ -15,6 +15,12 @@ module NavigationHelpers
     when /^the create page$/ then '/notebooks/new'
     when /^the notebook with ID ([0-9]+)$/ then "/notebooks/$1"
 
+    #Andrea
+    #when /^the profile page for "([^"]+)"/ then
+    #user = User.where(:email => $1).first
+    #page.current_path.should == find_user_registration_path(user)
+      #edit_user_registration_path(:id => $1)
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

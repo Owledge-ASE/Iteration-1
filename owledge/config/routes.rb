@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get 'register', to: 'devise/registrations#new', as: :new_user_registration
     post 'register', to: 'devise/registrations#create', as: :user_registration
     get 'profile', to: 'devise/registrations#edit', as: :edit_user_registration
+    #get 'profile/:id', to: 'devise/registrations#edit', as: :find_user_registration
     delete 'register', to: 'devise/registrations#destroy', as: :destroy_user
   end
 
