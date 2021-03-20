@@ -22,6 +22,13 @@ module NavigationHelpers
       user_profile_path(User.find_by_email($1))
     when /^edit my profile$/
       edit_user_registration_path current_user
+
+    #Andrea
+    #when /^the profile page for "([^"]+)"/ then
+    #user = User.where(:email => $1).first
+    #page.current_path.should == find_user_registration_path(user)
+      #edit_user_registration_path(:id => $1)
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

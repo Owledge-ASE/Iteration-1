@@ -66,3 +66,24 @@ end
 Then /^debug$/ do
   binding.pry
 end
+
+# Andrea
+Given /the following users exist:/ do | users_table |
+  users_table.hashes.each do |user|
+    User.create user
+  end
+
+end
+
+#Andrea
+#When /^I am logged in as "([^"]+)"/ do | user_email |
+#  @user = User.new(:email => email)
+#  @user.save!
+# basic_authorize(:email => email)
+#end
+
+When /^I am logged in as "([^"]+)"/ do | email |
+  encoded_login = ["#{email}"].pack("m*")
+  page.driver.header 'Authorization', "Basic #{encoded_login}"
+end
+
