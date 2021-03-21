@@ -21,17 +21,17 @@ Scenario: User registers, should be logged in, and password works.
   And I fill in "user[password]" with "password"
   And I fill in "user[password_confirmation]" with "password"
   And I press "Sign up"
+  And I should not see "Register" in "#login_section"
 
   Then I should be on the homepage
   And I should see "Welcome to Owledge!" in "#success_message"
 
   When I go to edit my profile
-  Then I should see "Anne" in "#user_first_name"
-  And I should see "Smith" in "#user_last_name"
-  And I should see "annesmith@fakeu.edu" in "#user_email"
-  And I should see "Faculty" in "#user_affiliation"
-  And I should see "Fake U" in "#user_organization"
-  And I should not see "Register" in "#login_section"
+  Then the "user[first_name]" field should contain "Anne"
+  And the "user[last_name]" field should contain "Smith"
+  And the "user[email]" field should contain "annesmith@fakeu.edu"
+  And the "user[affiliation]" field should contain "Faculty"
+  And the "user[organization]" field should contain "Fake U"
 
 Scenario: User tries to register, gives wrong password.
   When I am on the registration page

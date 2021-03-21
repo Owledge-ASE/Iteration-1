@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     post 'register', to: 'devise/registrations#create', as: :user_registration
     get 'profile/edit', to: 'devise/registrations#edit', as: :edit_user_registration
     delete 'register', to: 'devise/registrations#destroy', as: :destroy_user
-    put 'register', to: 'devise/registrations#update', as: :update_user
+    put 'profile/edit', to: 'devise/registrations#update', as: :update_user
   end
 
   resources :notebooks

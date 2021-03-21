@@ -27,8 +27,8 @@ Feature: Show Notebook
 
   Scenario: click on a sub-note with no children
     When I go to the details page for "Sorting Algorithms"
-    And I follow "note_4"
-    Then I should see "Heap Sort"
+    And I follow "Heap Sort"
+    Then I should see "Heap Sort" in "#title"
     And I should see "Heapsort can be thought of as an improved"
     And I should see 2 breadcrumbs
     And I should see a breadcrumb link to "Sorting Algorithms"

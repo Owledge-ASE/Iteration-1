@@ -1,17 +1,12 @@
 <div class="row top-header">
       <h1 class="col-10">Notebooks</h1>
 
-      <a href="<%= edit_user_registration_path %>" class="card-link col-2 btn btn-secondary" id="profile">
-        <button type="button" class="btn btn-secondary" >Profile</button>
-      </a>
       <a href="<%= new_notebook_path %>" class="card-link col-2 btn btn-secondary" id="add-note">
         <button type="button" class="btn btn-secondary" >Add Note</button>
       </a>
 </div>
 
-<div class="row card-container">
-
-
+<div class="row card-container" id="notes">
     <% @notes.each do |note| %>
     <div class="card bg-dark-l2 col-3 main-card" >
       <a href="<%= notebook_path(note.id) %>" class="card-link" id="note_<%= note.id %>">

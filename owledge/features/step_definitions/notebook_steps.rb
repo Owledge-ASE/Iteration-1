@@ -14,9 +14,6 @@ require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "sel
 
 
 
-Then /^I should see "(.*)" inside (.*[^:])$/ do |content, parent|
-end
-
 # George
 Given /the following notes exist/ do | notes_table |
     notes_table.hashes.each do |note|
@@ -32,38 +29,39 @@ Then /^(?:|I )should see the label "(.+)"$/ do |labelname|
     end
 end
 
-Then /^(?:|I )should see the "(.+)" button$/ do |buttonname|
-  has_css?(%Q{input[value="#{buttonname}"]})
+Then /^(?:|I )should( not)? see the "(.+)" button$/ do |opposite, buttonname|
+  if opposite.nil?
+    expect(page).to have_css(%{input[value="#{buttonname}"]})
+  else
+    expect(page).not_to have_css(%{input[value="#{buttonname}"]})
+  end
 end
 
-Then /^(?:|I )should not see the "([^"]+)" button$/ do |buttonname|
-  !step %{I should see the "#{buttonname}" button}
-end
 
-Then /^I should see "(.+)" in list of nodes$/ do | needle |
-
+Then /^I should see "(.+)" in(?:side)? list of nodes$/ do | needle |
+  step %{I should see "#{needle}" inside "#notes"}
 end
 
 
 # Sean
 Then /^I should see ([0-9]+) breadcrumb(?:s?)$/ do | n_breadcrumbs |
-  page.all('#breadcrumbs a').size == Integer(n_breadcrumbs) + 1 # include homepage
+  expect(page).to have_css('#breadcrumbs a', count: Integer(n_breadcrumbs) + 1) # include homepage
 end
 
 Then /^I should see a breadcrumb link to "(.+)"$/ do | link |
-  page.find('#breadcrumbs').has_link?(link)
+  expect(page).to have_css('#breadcrumbs a', text: link)
 end
 
 Then /^"(.+)" should not exist$/ do | id |
-  has_css?(id)
+  expect(page).not_to have_css(id)
 end
 
-Then /^I should see "([^"]+)" in "([^"]+)"$/ do | needle, haystack |
-  find(haystack).has_text?(needle)
-end
-
-Then /^I should not see "([^"]+)" in "([^"]+)"$/ do | needle, haystack |
-  !step %Q{I should see "#{needle}" in "#{haystack}"}
+Then /^I should( not)? see "([^"]+)" in(?:side)? "([^"]+)"$/ do | opp, needle, haystack |
+  if opp.nil?
+    expect(find(haystack)).to have_text(needle)
+  else
+    expect(find(haystack)).not_to have_text(needle)
+  end
 end
 
 Then /^debug$/ do

@@ -24,12 +24,7 @@ end
 
 Then /^I should be logged in(?: as ([^"]+))?$/ do |email|
   if email.nil?
-    user_signed_in?
+    assert user_signed_in?
   end
-  user_signed_in? && current_user.email == email
-end
-
-Then /^(?:|I )should be on the profile page for "([^@]+@[^"]+)" $/ do |email|
-  id = User.find_by_email(email)
-  current_user_profile_path(id)
+  expect(user_signed_in? && current_user.email).to eq(email)
 end

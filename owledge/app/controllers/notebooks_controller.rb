@@ -26,12 +26,12 @@ class NotebooksController < ApplicationController
       @note = Note.find(id)
     rescue ActiveRecord::RecordNotFound => e
       flash[:error] = "Could not find a note with ID #{id}"
-      redirect_to 'index' and return
+      redirect_to '/' and return
     end
     @ancestors = @note.ancestors
   end
+
   def index
-    flash[:error] = nil
     @ancestors = []
     @notes = Note.allParents
   end

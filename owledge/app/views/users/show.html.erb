@@ -2,15 +2,18 @@
   <a href="<%= current_user_profile_path(@user.id) %>" class="card-link col-2">
   <h1 class="col-10" id="name-header"><%= @user.first_name %> <%= @user.last_name %></h1>
 
-  <a href="<%= edit_user_registration_path %>" class="card-link col-2" class="btn btn-secondary" id="edit_profile">
-    Edit Profile
-  </a>
 </div>
+<a href="<%= edit_user_registration_path %>" class="btn btn-secondary" id="edit_profile">
+  Edit Profile
+</a>
 
 <div class="card bg-dark-l1 col-12 main-card">
   <div class="card-body">
     <div class="card-title">
-      <h3>Credentials <%= @user.email %></h3>
+      <h3>Profile</h3>
+    </div>
+    <div class="card-text" id="email">
+      <%= @user.email %>
     </div>
     <div class="card-text" id="first_name">
       <%= @user.first_name %>

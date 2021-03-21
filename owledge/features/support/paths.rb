@@ -5,9 +5,6 @@ module NavigationHelpers
   #
   # step definition in web_steps.rb
   #
-  def current_user_profile_path(i)
-    # code here
-  end
 
   def path_to(page_name)
     case page_name
@@ -17,7 +14,7 @@ module NavigationHelpers
     when /^the (?:notebook|details) page for "(.+)"$/
       notebook_path(Note.find_by_title($1))
     when /^the create page$/ then '/notebooks/new'
-    when /^the notebook with ID ([0-9]+)$/ then "/notebooks/$1"
+    when /^the notebook with ID ([0-9]+)$/ then notebook_path $1
     when /^the registration page$/ then "/register"
     when /^the profile page$/ then "/profile"
     #when /^my profile$/ then "/profile"
@@ -26,8 +23,7 @@ module NavigationHelpers
     when /^my profile page$/
       current_user_profile_path
     when /^the profile page for "([^@]+@[^"]+)"$/
-      id = User.find_by_email($1)
-      current_user_profile_path(id)
+      user_profile_path(User.find_by_email($1))
       #user = User.find_by_email($1)
       # id = User.where(:email => $1)
     when /^edit my profile$/
