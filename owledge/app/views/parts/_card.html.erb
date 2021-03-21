@@ -1,0 +1,12 @@
+<div class="card bg-dark-l2 col-3 main-card" >
+  <a href="<%= notebook_path(note.id) %>" class="card-link" id="note_<%= note.id %>">
+    <%# something like: <%= render partial: "parts/breadcrumbs", locals: { note: note } %>
+    <div class="card-body">
+      <h5 class="card-title"><%= note.title %></h5>
+      <p class="card-text"><%= note.description.nil?  ? "" : note.description[0..300] %></p>
+    </div>
+    <%= render partial: "parts/reaction", locals: { note: note } %>
+  </a>
+</div>
+<div class="col-1" >
+</div>
