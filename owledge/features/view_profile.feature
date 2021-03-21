@@ -26,7 +26,7 @@ Feature: View Profile for Users
 	Then I should be on the profile page of "example1@gmail.com"
 
 	Scenario: I should see a list of user fields on my profile page
-	When I am on the profile page
+	When I am on the profile page for "example1@gmail.com"
 	Then I should see "Andrea" inside "#first_name"
 	Then I should see "McCormick" inside "#last_name"
 	Then I should see "example1@gmail.com" inside "#email"

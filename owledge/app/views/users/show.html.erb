@@ -1,7 +1,7 @@
 <div class="row top-header">
   <h1 class="col-10" id="name-header"><%= @user.first_name %> <%= @user.last_name %></h1>
 
-  <a href="<%= match_user_profile_path(@user.id) %>" class="card-link col-2">
+  <a href="<%= current_user_profile_path(@user.id) %>" class="card-link col-2">
     <button type="button" class="btn btn-secondary" id="add-note">Edit Profile</button>
   </a>
 </div>
