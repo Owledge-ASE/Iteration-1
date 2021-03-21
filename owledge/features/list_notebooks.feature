@@ -52,7 +52,7 @@ Scenario: click on Owledge logo
 
 Scenario: search field and button
   When I go to the homepage
-  Then I should see the "search-button" button
+  Then I should see the "Search" button
 
 Scenario: If I search for "Graph" keywords, I should only see "Graph Theory"
   When I go to the homepage
