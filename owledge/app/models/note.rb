@@ -1,6 +1,7 @@
 class Note < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
+  has_many :tags, :through => :notebook_tags
 
   def self.allParents
     return self.where('parent_id is null')

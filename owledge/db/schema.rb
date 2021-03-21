@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_20_031957) do
+ActiveRecord::Schema.define(version: 2021_03_21_223841) do
+
+  create_table "notebook_tags", force: :cascade do |t|
+    t.integer "notebook_id"
+    t.integer "tag_id"
+    t.index ["notebook_id"], name: "index_notebook_tags_on_notebook_id"
+    t.index ["tag_id"], name: "index_notebook_tags_on_tag_id"
+  end
 
   create_table "notes", force: :cascade do |t|
     t.string "title"
@@ -21,6 +28,12 @@ ActiveRecord::Schema.define(version: 2021_03_20_031957) do
     t.integer "publisher_id"
     t.index ["parent_id"], name: "index_notes_on_parent_id"
     t.index ["publisher_id"], name: "index_notes_on_publisher_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "user_comments", force: :cascade do |t|
@@ -62,6 +75,8 @@ ActiveRecord::Schema.define(version: 2021_03_20_031957) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "notebook_tags", "notes", column: "notebook_id"
+  add_foreign_key "notebook_tags", "tags"
   add_foreign_key "notes", "notes", column: "parent_id"
   add_foreign_key "notes", "users", column: "publisher_id"
   add_foreign_key "user_comments", "notes"
