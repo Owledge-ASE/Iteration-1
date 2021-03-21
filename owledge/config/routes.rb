@@ -8,13 +8,21 @@ Rails.application.routes.draw do
     post 'register', to: 'devise/registrations#create', as: :user_registration
     get 'profile/edit', to: 'devise/registrations#edit', as: :edit_user_registration
     delete 'register', to: 'devise/registrations#destroy', as: :destroy_user
+    put 'register', to: 'devise/registrations#update', as: :update_user
   end
 
   resources :notebooks
 
   root to: redirect('/notebooks')
+<<<<<<< HEAD
   get 'profile', to: 'users#show', as: :user_profile
   get 'profile/:id', to: 'users#show', as: :current_user_profile
+=======
+
+  get 'profile', to: 'users#show', as: :user_profile
+  get 'profile/:id', to: 'users#show', as: :current_user_profile
+
+>>>>>>> origin/users-reg-profile2
   get 'login', to: 'devise/sessions#new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
