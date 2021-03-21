@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   resources :notebooks
 
+  get 'search', to: 'notebooks#search', as: :search_notebooks
+
   root to: redirect('/notebooks')
 
   get 'profile', to: 'users#show', as: :current_user_profile

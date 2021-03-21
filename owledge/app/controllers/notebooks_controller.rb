@@ -30,6 +30,9 @@ class NotebooksController < ApplicationController
     end
     @ancestors = @note.ancestors
   end
+  def search
+    
+  end
 
   def index
     @ancestors = []
