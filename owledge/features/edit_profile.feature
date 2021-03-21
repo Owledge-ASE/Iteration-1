@@ -4,17 +4,17 @@ Feature: View Details page for Notes
   I want to edit my profile
 
 Background: User is logged in
-  Given The following users exist:
-    |id	| email 				| first_name     | last_name | affiliation | organization		  |
-    |1	| example1@gmail.com  	| Andrea       	 | McCormick | Student     | Columbia University  |
-    |5	| example5@gmail.com  	| Riley          | Casey     | Student     | Columbia University  |
+  Given the following users exist:
+    |id	| email 				| first_name     | last_name | affiliation | organization		  | password |
+    |1	| example1@gmail.com  	| Andrea       	 | McCormick | Student     | Columbia University  | abcdef   |
+    |5	| example5@gmail.com  	| Riley          | Casey     | Student     | Columbia University  | goodpass |
 
   When I am on the homepage
   And I am logged in as "example1@gmail.com"
 
 Scenario: User should be able to reach edit page from profile.
-  When I am on my profile
-  And I press "Edit Profile"
+  When I am on my profile page
+  And I follow "edit_profile"
   Then I should be on my profile edit page
 
 Scenario: User is on edit page and sees pre-filled values.

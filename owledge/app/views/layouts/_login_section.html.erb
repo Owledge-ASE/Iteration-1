@@ -1,6 +1,8 @@
 <div class="p-1">
   <% if user_signed_in? %>
-    <a class="btn btn-secondary" href="<%= edit_user_registration_path %>" aria-label="Edit Profile">Edit Profile</a>
+    <a class="btn btn-secondary" href="<%= current_user_profile_path %>" aria-label="View Profile">
+      View Profile
+    </a>
   <% else %>
     <a class="btn btn-secondary" href="<%= new_user_registration_path %>" aria-label="Register">Register</a>
   <% end %>

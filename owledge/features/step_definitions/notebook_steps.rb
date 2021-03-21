@@ -22,7 +22,6 @@ Given /the following notes exist/ do | notes_table |
     notes_table.hashes.each do |note|
       Note.create note
     end
-    
 end
 
 Then /^(?:|I )should see the label "(.+)"$/ do |labelname| 
@@ -35,6 +34,10 @@ end
 
 Then /^(?:|I )should see the "(.+)" button$/ do |buttonname|
   has_css?(%Q{input[value="#{buttonname}"]})
+end
+
+Then /^(?:|I )should not see the "([^"]+)" button$/ do |buttonname|
+  !step %{I should see the "#{buttonname}" button}
 end
 
 Then /^I should see "(.+)" in list of nodes$/ do | needle |

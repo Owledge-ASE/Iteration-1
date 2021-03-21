@@ -15,8 +15,8 @@ Rails.application.routes.draw do
 
   root to: redirect('/notebooks')
 
-  get 'profile', to: 'users#show', as: :user_profile
-  get 'profile/:id', to: 'users#show', as: :current_user_profile
+  get 'profile', to: 'users#show', as: :current_user_profile
+  get 'profile/:id', to: 'users#show', as: :user_profile
 
   get 'login', to: 'devise/sessions#new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

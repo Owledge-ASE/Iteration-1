@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   def show
-    id = params[:id]
-    if current_user.nil? and id.nil?
+    if current_user.nil? and !params.key?(:id)
       redirect_to 'index' and return
     elsif id.nil?
       @user = current_user
       return
     end
+    id = params[:id]
 
     flash[:error] = nil
     begin
