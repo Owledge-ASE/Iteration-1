@@ -23,25 +23,28 @@ Feature: View Profile for Users
 	Scenario: I should be able to see my profile from the home page
 	When I am on the homepage
 	And I follow "profile"
-	Then I should be on the profile page for "example1@gmail.com"
+	Then I should be on the profile page of "example1@gmail.com"
 
 	Scenario: I should see a list of user fields on my profile page
-	When I am on the profile page for "example1@gmail.com"
-	Then I should see "Andrea" in "#first_name"
-	Then I should see "McCormick" in "#last_name"
-	Then I should see "example1@gmail.com" in "#email"
-	Then I should see "Student" in "#affiliation"
-	Then I should see "Columbia University" in "#organization"
+	When I am on the profile page
+	Then I should see "Andrea" inside "#first_name"
+	Then I should see "McCormick" inside "#last_name"
+	Then I should see "example1@gmail.com" inside "#email"
+	Then I should see "Student" inside "#affiliation"
+	Then I should see "Columbia University" inside "#organization"
 
 	Scenario: I should be able to view the profile page of another user
-	When I am on the notebook page for a given notebook
+	When I go to the notebook page for "Sorting Algorithms"
 	And I press "View Profile"
 	Then I should be on the profile page of the user who published the given note
 
 	Scenario: I should see a list of user fields on the profile page of another user
-	When I am on the profile page of "example5@gmail.com"
-	Then I should see "John" in "#first_name"
-	Then I should see "Smith" in "#last_name"
-	Then I should see "example2@gmail.com" in "#email"
-	Then I should see "Student" in "#affiliation"
-	Then I should see "Columbia University" in "#organization"
+	When I am on the profile page
+	Then I should see "John" inside "#first_name"
+	Then I should see "Smith" inside "#last_name"
+	Then I should see "example2@gmail.com" inside "#email"
+	Then I should see "Student" inside "#affiliation"
+	Then I should see "Columbia University" inside "#organization"
+
+
+	#When I am on the profile page for "example5@gmail.com"

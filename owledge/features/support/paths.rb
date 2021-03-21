@@ -15,11 +15,14 @@ module NavigationHelpers
     when /^the create page$/ then '/notebooks/new'
     when /^the notebook with ID ([0-9]+)$/ then "/notebooks/$1"
     when /^the registration page$/ then "/register"
-    when /^my profile$/ then "/profile"
+    when /^the profile page$/ then "/profile"
+    #when /^my profile$/ then "/profile"
     when /^the login page$/ then "/login"
     when /^edit my profile$/ then "/profile/edit"
-    when /^the profile page of ([^@]+@[^"])$/
-      user_profile_path(User.find_by_email($1))
+    when /^the profile page for ([^@]+@[^"])$/
+      match_user_profile_path(User.find_by_email($1))
+      #user = User.find_by_email($1)
+
     when /^edit my profile$/
       edit_user_registration_path current_user
 

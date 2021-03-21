@@ -6,8 +6,9 @@ Rails.application.routes.draw do
     get 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session
     get 'register', to: 'devise/registrations#new', as: :new_user_registration
     post 'register', to: 'devise/registrations#create', as: :user_registration
+    get 'profile', to: 'devise/registrations#edit', as: :user_profile
     get 'profile/edit', to: 'devise/registrations#edit', as: :edit_user_registration
-    get 'profile/:id', to: 'devise/registrations#edit', as: :find_user_registration
+    get 'profile/edit/:id', to: 'devise/registrations#edit', as: :match_user_profile
     delete 'register', to: 'devise/registrations#destroy', as: :destroy_user
   end
 
