@@ -51,7 +51,30 @@ RSpec.describe Note, type: :model do
     end
   end
 
-  
+  describe 'check if search function is working' do
+    context 'Check search function return the expected node with titles contain keywords' do
+      before :each do
+        Note.delete_all
+        Rails.application.load_seed  
+      end
+      it "search graph, will only get two node" do
+        @notes = Note.search("Graph")
+        expect(@notes.count).to eq(2)
+      end
+      it "search sort, will only get 5 node" do
+        @notes = Note.search("sort")
+        content = "sort"
+        @search = Note.where('title LIKE ?', "%#{content}%")
+        expect(@notes.count).to eq(@search.count) 
+      end
+      it "search sort, will not equal to number of all node" do
+        @allNotes = Note.all
+        @notes = Note.search("sort")
+        expect(@notes.count).not_to eq(@allNotes.count)
+      end
+      end
+    end
+
   describe 'check if the ancestors function is working' do
     context 'No records so ancestors should return an error' do
       before :each do

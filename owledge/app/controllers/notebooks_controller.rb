@@ -33,7 +33,13 @@ class NotebooksController < ApplicationController
 
   def index
     @ancestors = []
-    @notes = Note.allParents
+    searchContent = params[:search_by_contain]
+    logger.debug(searchContent)
+    if searchContent.nil? || searchContent.empty?
+      @notes = Note.allParents
+    else
+      @notes = Note.search(searchContent)
+    end
   end
 
   private

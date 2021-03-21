@@ -50,3 +50,28 @@ Scenario: click on Owledge logo
   When I follow "owledge_logo"
   Then I should be on the homepage
 
+Scenario: search field and button
+  When I go to the homepage
+  Then I should see the "search-button" button
+
+Scenario: If I search for "Graph" keywords, I should only see "Graph Theory"
+  When I go to the homepage
+  And I fill in "search-bar" with "Graph"
+  And I press "search-button"
+  Then I should see "Graph Theory" inside list of nodes
+  Then I should not see "Big Data"
+  Then I should not see "Sorting Algorithms"
+  Then I should not see "Analysis of Algorithms"
+  Then I should not see "Distributed Computing"
+
+Scenario: If I search for "Sort" keywords, I should see the list with sort only
+  When I go to the homepage
+  And I fill in "search-bar" with "Sort"
+  And I press "search-button"
+  Then I should see "Bubble Sort" inside list of nodes
+  Then I should see "Merge Sort" inside list of nodes
+  Then I should see "Sorting Algorithms" inside list of nodes
+  Then I should not see "Big Data"
+  Then I should not see "Analysis of Algorithms"
+  Then I should not see "Distributed Computing"
+  Then I should not see "Graph Theory"
