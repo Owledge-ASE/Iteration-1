@@ -1,5 +1,5 @@
 <% unless current_page?(notebooks_path) or @ancestors.nil? %>
-  <nav aria-label="breadcrumb" id="breadcrumbs" class="bg-dark-l1 crumb-holder">
+  <nav aria-label="breadcrumb" id="breadcrumbs" class="crumb-holder">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="<%= notebooks_path %>">Home</a></li>
     <% @ancestors.each do |note| %>

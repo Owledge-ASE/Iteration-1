@@ -10,14 +10,16 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="bg-dark-l0">
-      <%= render 'layouts/header' %>
+  <body>
+    <div class="header">
+    <%= render 'layouts/header' %>
     <%= render 'layouts/breadcrumbs' %>
-    <div class="bg-dark-l1 main-section">
-      <div class="main-inside-section ">
+    </div>
+    <div class="main-section">
+      <div class="main-inside-section">
       <%= yield %>
       </div>
     </div>
-    <div class=" <% if current_page?(notebooks_path) %> footer-large <%else%>  footer <%end%>  bg-dark-l1"></div>
+    <div class=" <% if current_page?(notebooks_path) %> footer-large <%else%>  footer <%end%>"></div>
   </body>
 </html>

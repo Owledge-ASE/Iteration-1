@@ -14,13 +14,14 @@
  *= require_self
  */
 @import "bootstrap";
-$base-color: #c6538c;
-$border-dark: rgba($base-color, 0.88);
 $color-white: #F5F5F5;
 $center-distance-header: 30px;
 $background-black: #121212;
-$background-black-l1: rgba($background-black, 0.95);
-$background-black-l2: rgba($background-black, 0.89);
+$base-color: lighten($background-black, 12%);
+$border-dark: rgba($base-color, 0.88);
+$background-black-l1: rgba($background-black, 0.60);
+$background-black-l2: rgba($background-black, 0.80);
+$accent-color: lighten(adjust-color($base-color, $red: 15, $blue: 150, $green: 50), 4%);
 
 .header{
      color:$color-white;
@@ -81,6 +82,27 @@ $background-black-l2: rgba($background-black, 0.89);
     color: $color-white;
 }
 
+body {
+  background-color: $base-color;
+}
+.header {
+  background-color: lighten($base-color, 10%);
+}
+.main-inside-section {
+  background-color: darken($base-color, 5%);
+}
 .simple-wrapper {
   display: inline-flex;
+}
+.crumb-holder {
+  background-color: darken($base-color, 10%);
+  border-bottom: darken($base-color, 15%);
+  padding-bottom: 3rem;
+  a {
+    color: $accent-color;
+    text-decoration: none;
+  }
+}
+.list-group-item {
+  background-color: rgba($base-color, 30%);
 }
