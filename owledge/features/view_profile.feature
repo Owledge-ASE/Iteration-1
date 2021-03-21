@@ -23,10 +23,10 @@ Feature: View Profile for Users
 	Scenario: I should be able to see my profile from the home page
 	When I am on the homepage
 	And I follow "profile"
-	Then I should be on the profile page of "example1@gmail.com"
+	Then I should be on the profile page for "example1@gmail.com"
 
 	Scenario: I should see a list of user fields on my profile page
-	When I am on the profile page
+	When I am on the profile page for "example1@gmail.com"
 	Then I should see "Andrea" inside "#first_name"
 	Then I should see "McCormick" inside "#last_name"
 	Then I should see "example1@gmail.com" inside "#email"
@@ -39,7 +39,7 @@ Feature: View Profile for Users
 	Then I should be on the profile page of the user who published the given note
 
 	Scenario: I should see a list of user fields on the profile page of another user
-	When I am on the profile page
+	When I am on the profile page for "example1@gmail.com"
 	Then I should see "John" inside "#first_name"
 	Then I should see "Smith" inside "#last_name"
 	Then I should see "example2@gmail.com" inside "#email"
