@@ -30,3 +30,8 @@ Then /^I should be logged in(?: as ([^"]+))?$/ do |email|
   end
   user_signed_in? && current_user.email == email
 end
+
+Then /^(?:|I )should be on the profile page for "([^@]+@[^"]+)" $/ do |email|
+  id = User.find_by_email(email)
+  current_user_profile_path(id)
+end
