@@ -20,7 +20,7 @@ module NavigationHelpers
     when /^the login page$/ then "/login"
     when /^edit my profile$/ then "/profile/edit"
     when /^the profile page for ([^@]+@[^"])$/
-      match_user_profile_path(User.find_by_email($1))
+      current_user_profile_path(User.find_by_email($1))
       #user = User.find_by_email($1)
 
     when /^edit my profile$/

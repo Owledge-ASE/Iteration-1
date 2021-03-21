@@ -1,7 +1,7 @@
 <div class="row top-header">
   <h1 class="col-10" id="name-header"><%= @user.first_name %> <%= @user.last_name %></h1>
 
-  <a href="<%= match_user_profile_path(@user.id) %>" class="card-link col-2">
+  <a href="<%= current_user_profile_path(@user.id) %>" class="card-link col-2">
     <button type="button" class="btn btn-secondary" id="add-note">Edit Profile</button>
   </a>
 </div>
@@ -9,7 +9,7 @@
 <div class="card bg-dark-l1 col-12 main-card">
   <div class="card-body">
     <div class="card-title">
-      <h3>Credentials</h3>
+      <h3>Credentials [<%= @user.email %>]</h3>
     </div>
     <div class="card-text" id="first_name">
       <%= @user.first_name %>
