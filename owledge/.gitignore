@@ -42,3 +42,4 @@ yarn-debug.log*
 /coverage/*
 my_database_*
 .env
+*.orig
