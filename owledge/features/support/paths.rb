@@ -28,6 +28,8 @@ module NavigationHelpers
       # id = User.where(:email => $1)
     when /^edit my profile$/
       edit_user_registration_path current_user
+    when /^the edit comment page for comment ([0-9]+)$/
+      edit_notebook_comments_path(UserComment.find($1).note_id, $1)
 
     #Andrea
     #when /^the profile page for "([^"]+)"/ then

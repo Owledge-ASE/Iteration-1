@@ -15,3 +15,21 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+class Comment extends HTMLElement {
+    // A getter/setter for an open property.
+    get author() {
+        return this.hasAttribute('author');
+    }
+
+    set author(val) {
+        // Reflect the value of the open property as an HTML attribute.
+        if (val) {
+            this.setAttribute('author', '');
+        } else {
+            this.removeAttribute('author');
+        }
+        this.toggleDrawer();
+    }
+}
+customElements.define('user-comment', Comment);

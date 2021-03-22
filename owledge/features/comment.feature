@@ -8,7 +8,7 @@ Feature: Comment on a note
     And the following users exist:
       |id	| email 				| first_name     | last_name | affiliation | organization		  | password |
       |1	| example1@gmail.com  	| Andrea       	 | McCormick | Student     | Columbia University  | abcdef   |
-      |5	| example5@gmail.com  	| Riley          | Casey     | Student     | Columbia University  | goodpass |
+      |2	| example5@gmail.com  	| Riley          | Casey     | Student     | Columbia University  | goodpass |
 
     Given the following notes exist:
       |id | title                  | parent_id  | publisher_id | description                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
@@ -20,24 +20,24 @@ Feature: Comment on a note
       |6  | Directed Acyclic Graph | 2          | 1            | A Directed Acyclic Graph is a directed graph with no directed cycles. That is, it consists of vertices and edges (also called arcs), with each edge directed from one vertex to another, such that following those directions will never form a closed loop.                                                                                                                                                                                                                                  |
 
     And the following comments exist:
-      |id   | user_id               | note_id        | comment
-      |1    | 1                     | 1              | Thanks, this helped me a lot!
-      |2    | 5                     | 6              | What if a graph has cycles but it's directed?
-      |3    | 1                     | 6              | @#{5} You can still use some DAG concepts if you use SCC.
-      |4    | 5                     | 6              | @#{1} Oh, I see, thanks!
+      |id   | user_id               | note_id        | comment                                                    |
+      |1    | 1                     | 1              | Thanks, this helped me a lot!                              |
+      |2    | 2                     | 6              | What if a graph has cycles but it's directed?              |
+      |3    | 1                     | 6              | @#{5} You can still use some DAG concepts if you use SCC.  |
+      |4    | 2                     | 6              | @#{1} Oh, I see, thanks!                                   |
 
     And I am logged in as "example1@gmail.com"
 
   Scenario: I should see comments
     When I am on the notebook page for "Directed Acyclic Graph"
-    Then I should see a comment "What if a graph has cycles but it's directed?" by "example2@gmail.com"
+    Then I should see a comment "What if a graph has cycles but it's directed?" by "example5@gmail.com"
     And I should see a comment "You can still use some DAG concepts if you use SCC" by "example1@gmail.com"
 
   Scenario: I should be able to edit my comments
     When I am on the notebook page for "Sorting Algorithms"
     Then I should see a comment "Thanks, this helped me a lot!"
-
-    When I follow "notes/1/comment/1/edit"
+    And I should see "Edit" in "#comment_1_edit"
+    When I follow the link "#comment_1_edit"
     Then I should be on the edit comment page for comment 1
 
     When I fill in "comment_comment" with "Sorting algorithms changed my life!"
@@ -47,8 +47,7 @@ Feature: Comment on a note
 
   Scenario: I should be able to delete my comments
     When I am on the edit comment page for comment 1
-    And I press "Delete"
-    And I am sure
+    And I press "Delete" and accept the warning
     Then I should be on the notebook page for "Sorting Algorithms"
     And I should see "Comment deleted!" in "#success_message"
 

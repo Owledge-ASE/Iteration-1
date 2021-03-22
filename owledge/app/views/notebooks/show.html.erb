@@ -20,23 +20,24 @@
     </div>
     <% if @note.children.length > 0 %>
     <h3>Children</h3>
-    <div class="col-10 row" id="children">
+    <div class="row notes" id="children">
       <% @note.children.each do |note| %>
       <%= render partial:"parts/card", locals: {note: note} %>
       <% end %>
     </div>
+    <% end %>
   </div>
   <div class="col-md-3">
     <div class="card bg-dark-l0">
-      <div class="card-body">
+      <div class="card-body" id="comments">
         <div class="card-title"><h3>Comments</h3></div>
-        <ul class="list-group ">
+        <ul class="list-group">
           <% @note.user_comments.each do |user_comment| %>
             <%= render partial:"parts/comment", locals: { comment: user_comment } %>
           <% end %>
         </ul>
+        <a href="<%= new_notebook_comments_path @note %>" class="btn btn-primary btn-md mt-4">Add Comment</a>
       </div>
     </div>
   </div>
 </div>
-<% end %>

@@ -28,3 +28,7 @@ Then /^I should be logged in(?: as ([^"]+))?$/ do |email|
   end
   expect(user_signed_in? && current_user.email).to eq(email)
 end
+
+When /^I follow the link "([^"]+)"$/ do |arg|
+  find(%{#{arg}}).click
+end

@@ -6,12 +6,12 @@
       </a>
 </div>
 <div class="search bar">
-  <%= form_tag "/notebooks", method: "GET" do %>
+  <%= form_tag "/notebooks", method: :get do %>
     <%= text_field_tag :search_by_contain, params[:search_by_contain], id:"search-bar" %>
     <%= submit_tag "Search", id:"search-button" %>
   <% end %>
 </div>
-<div class="row card-container" id="notes">
+<div class="row card-container notes" id="notes">
     <% @notes.each do |note| %>
     <%= render partial: 'parts/card', locals: { note: note } %>
     <% end %>
