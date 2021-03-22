@@ -147,4 +147,57 @@ RSpec.describe Note, type: :model do
       end
     end
   end
+  
+  describe 'check if the sort function is working' do
+    context 'Check sort based on specific columns' do
+      before :each do
+        Note.delete_all
+        Rails.application.load_seed 
+      end
+      it 'Sort on all parents count is same' do
+        @notes = Note.allParents
+        @note_sorted = @notes.sort_by_column("title-desc")
+        expect(@note_sorted.count).to eq(@notes.count)
+
+      end
+      it 'IF no column passed then throw an error' do
+        @notes = Note.allParents
+        expect {
+          @note_sorted = @notes.sort_by_column()
+        }.to raise_error(ArgumentError)
+      end
+      it 'IF invalid column passed then throw an error' do
+        @notes = Note.allParents
+        @note_sorted = @notes.sort_by_column("abc-desc")
+      end
+      it 'Sort on all parents check title desc order' do
+        @notes = Note.allParents
+        @note_sorted = @notes.sort_by_column("title-desc")
+        @flag = 0
+        for @note in @note_sorted
+          if @flag == 0
+            @flag = 1
+            @prev_note = @note
+            next
+          end
+          expect(@prev_note.title).to be >= (@note.title)
+          @prev_note = @note
+        end
+      end
+      it 'Sort on all parents check title asc order' do
+        @notes = Note.allParents
+        @note_sorted = @notes.sort_by_column("title-asc")
+        @flag = 0
+        for @note in @note_sorted
+          if @flag == 0
+            @flag = 1
+            @prev_note = @note
+            next
+          end
+          expect(@prev_note.title).to be <= (@note.title)
+          @prev_note = @note
+        end
+      end
+    end
+  end
 end
