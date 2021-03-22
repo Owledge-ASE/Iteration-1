@@ -13,6 +13,8 @@
 ActiveRecord::Schema.define(version: 2021_03_21_223841) do
 
   create_table "notebook_tags", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.integer "notebook_id"
     t.integer "tag_id"
     t.index ["notebook_id"], name: "index_notebook_tags_on_notebook_id"

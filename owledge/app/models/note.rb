@@ -2,12 +2,16 @@ class Note < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   has_many :tags, :through => :notebook_tags
+  has_many :user_comments
 
   def self.allParents
     return self.where('parent_id is null')
   end
 
-  def self.ancestors(parent_id)
+  def self.ancestors(parent_id = nil)
+    if parent_id == nil? or parent_id.blank?
+      return [self]
+    end
     parent = self.find(parent_id)
     parent.ancestors + [parent]
   end

@@ -11,9 +11,11 @@ Rails.application.routes.draw do
     put 'profile/edit', to: 'devise/registrations#update', as: :update_user
   end
 
-  resources :notebooks
+  resources :notebooks do
+    get 'search', to: 'notebooks#search', as: :search_notebooks
+    resource :comments, as: 'comments', only: [:edit, :create, :destroy, :new]
+  end
 
-  get 'search', to: 'notebooks#search', as: :search_notebooks
 
   root to: redirect('/notebooks')
 

@@ -57,3 +57,28 @@ Note.create([{
                               }.join(" "),
                               parent_id:child_note.id
                 }])
+
+users = User.create([{
+  id: 1,
+  first_name: "Andrew",
+  last_name: "Peterson",
+  email: "apeterson@fakeu.edu",
+  password: "greatpassword",
+  affiliation: "Student",
+  organization: "Fake University"
+}, {
+ id: 2,
+ first_name: "Hannah",
+ last_name: "Ritter",
+ email: "hritter@fakeu.edu",
+ password: "thisisasafepasswordbecauseitislong",
+ affiliation: "Student",
+ organization: "Fake University",
+
+}])
+
+UserComment.create([{
+  user_id: users[0].id,
+  note_id: graph_theory.id,
+  comment: "This is great info!"
+}])

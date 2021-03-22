@@ -6,30 +6,37 @@
   </a>
 </div>
 
-<div class="card bg-dark-l1 col-12 main-card">
-  <div class="card-body">
-    <div class="card-title">
-      <h3>Description</h3>
+<div class="row">
+  <div class="col-md-9">
+    <div class="card bg-dark-l1 col-12 main-card">
+      <div class="card-body">
+        <div class="card-title">
+          <h3>Description</h3>
+        </div>
+        <div class="card-text" id="description">
+          <%= @note.description %>
+        </div>
+      </div>
     </div>
-    <div class="card-text" id="description">
-      <%= @note.description %>
+    <% if @note.children.length > 0 %>
+    <h3>Children</h3>
+    <div class="col-10 row" id="children">
+      <% @note.children.each do |note| %>
+      <%= render partial:"parts/card", locals: {note: note} %>
+      <% end %>
     </div>
   </div>
-</div>
-<% if @note.children.length > 0 %>
-<h3>Children</h3>
-<div class="col-10 row" id="children">
-  <% @note.children.each do |note| %>
-    <div class="card bg-dark-l2 col-3 main-card" >
-      <a href="<%= notebook_path(note.id) %>" class="card-link" id="note_<%= note.id %>">
-        <div class="card-body">
-          <h5 class="card-title"><%= note.title %></h5>
-          <p class="card-text"><%= note.description.nil?  ? "" : note.description[0..300] %></p>
-        </div>
-      </a>
+  <div class="col-md-3">
+    <div class="card bg-dark-l0">
+      <div class="card-body">
+        <div class="card-title"><h3>Comments</h3></div>
+        <ul class="list-group ">
+          <% @note.user_comments.each do |user_comment| %>
+            <%= render partial:"parts/comment", locals: { comment: user_comment } %>
+          <% end %>
+        </ul>
+      </div>
     </div>
-    <div class="col-1" >
-    </div>
-  <% end %>
+  </div>
 </div>
 <% end %>
