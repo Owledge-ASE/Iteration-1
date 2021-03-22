@@ -30,7 +30,52 @@ Scenario: The user should see a description on sorting
   Then I should see "Please click on a column to sort" in "#sort-description"
 
   
-Scenario: The user should not see the sort button on the sort page
+
+Scenario:  The user should not see the sort button on the sort page 
   When I go to the homepage
   And I follow "sort_button"
   Then I should not see "Sort" in "#search-container"
+  
+Scenario: The user should see default sorting by title
+  When I go to the homepage
+  And I follow "sort_button"
+  Then I should see "Graph Theory" before "Sorting Algorithms" in the note grid
+  And I should see "Analysis of Algorithms" before "Graph Theory" in the note grid
+  And I should see "Big Data" before "Distributed Computing" in the note grid
+
+  
+Scenario: The user should be able to reverse sorting by title
+  When I go to the homepage
+  And I follow "sort_button"
+  And I follow "title-sort"
+  Then I should not see "Graph Theory" before "Sorting Algorithms" in the note grid
+  And I should not see "Analysis of Algorithms" before "Graph Theory" in the note grid
+  And I should not see "Big Data" before "Distributed Computing" in the note grid
+
+
+  
+Scenario: The user should be able to sort by date
+  When I go to the homepage
+  And I follow "sort_button"
+  And I follow "created-sort"
+  Then I should see "Sorting Algorithms" before "Graph Theory" in the note grid
+  And I should see "Graph Theory" before "Analysis of Algorithms" in the note grid
+  And I should see "Distributed Computing" before "Big Data" in the note grid
+
+Scenario: The user should be able to reverse sort by date
+  When I go to the homepage
+  And I follow "sort_button"
+  And I follow "created-sort"
+  And I follow "created-sort"
+  Then I should not see "Sorting Algorithms" before "Graph Theory" in the note grid
+  And I should not see "Graph Theory" before "Analysis of Algorithms" in the note grid
+  And I should not see "Distributed Computing" before "Big Data" in the note grid
+
+Scenario: The user should be able to search and sort
+  When I go to the homepage
+  And I follow "sort_button"
+  And I follow "created-sort"
+  And I fill in "search-bar" with "Sort"
+  And I press "search-button"
+  Then I should see "Sorting Algorithms" before "Sorting Algorithms Child" in the note grid
+  And I should see "Sorting Algorithms Child" before "Bubble Sort" in the note grid
