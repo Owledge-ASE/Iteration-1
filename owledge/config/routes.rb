@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
 
   root to: redirect('/notebooks')
+  get 'notebook-sort', to: 'notebooks#sort', as: :notebooks_sort
 
   get 'profile', to: 'users#show', as: :current_user_profile
   get 'profile/:id', to: 'users#show', as: :user_profile

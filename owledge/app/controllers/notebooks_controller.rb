@@ -33,6 +33,17 @@ class NotebooksController < ApplicationController
   def search
     
   end
+  def sort
+    @ancestors = []
+    sort_by_col = params[:sort_by_col]
+    logger.debug(searchContent)
+    if searchContent.nil? || searchContent.empty?
+      @notes = Note.allParents
+    else
+      @notes = Note.search(searchContent)
+    end
+    
+  end
 
   def index
     @ancestors = []
