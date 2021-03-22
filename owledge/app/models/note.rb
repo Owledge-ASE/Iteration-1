@@ -21,6 +21,13 @@ class Note < ApplicationRecord
     return Note.where('title LIKE ?', "%#{content}%")
   end
 
+  def self.sort_by_column(sort_by_col)
+    if(sort_by_col == "")
+      return self
+    end
+    @sort_string = sort_by_col.gsub("-", " ")
+    return self.order(@sort_string)
+  end
   def children
     return Note.where(parent_id: self.id).all
   end

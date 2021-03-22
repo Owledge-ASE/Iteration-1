@@ -36,13 +36,16 @@ class NotebooksController < ApplicationController
   def sort
     @ancestors = []
     sort_by_col = params[:sort_by_col]
+    searchContent = params[:search_by_contain]
     logger.debug(searchContent)
     if searchContent.nil? || searchContent.empty?
       @notes = Note.allParents
     else
       @notes = Note.search(searchContent)
     end
-    
+    if !(sort_by_col.nil? || sort_by_col.empty?)
+      @notes = @notes.sort_by_column(sort_by_col)
+    end
   end
 
   def index

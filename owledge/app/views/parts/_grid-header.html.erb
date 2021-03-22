@@ -1,0 +1,37 @@
+
+    <div class=" column-row column-headers">
+     
+      <a href="<%= notebooks_sort_path(:sort_by_col=>NotebooksHelper.checkSortDirection("title",params[:sort_by_col]),:search_by_contain=>params[:search_by_contain]) %>" id="title-sort" class="column-box column-size-1">
+        <div >Title</div>
+        <% if params[:sort_by_col].include?("title") %>
+          <% if params[:sort_by_col].split("-")[1].include?("asc") %>
+            <i class="fa fa-sort-down" aria-hidden="true"></i>
+          <% end %>
+          <% if params[:sort_by_col].split("-")[1].include?("desc") %>
+            <i class="fa fa-sort-up" aria-hidden="true"></i>
+          <% end %>
+        <% end %>
+      </a> 
+      <a href="<%= notebooks_sort_path(:sort_by_col=>NotebooksHelper.checkSortDirection("description",params[:sort_by_col]),:search_by_contain=>params[:search_by_contain]) %>" id="description-sort" class="column-box column-size-3">
+        <div>Description</div>
+        <% if params[:sort_by_col].include?("description") %>
+          <% if params[:sort_by_col].split("-")[1].include?("asc") %>
+            <i class="fa fa-sort-down" aria-hidden="true"></i>
+          <% end %>
+          <% if params[:sort_by_col].split("-")[1].include?("desc") %>
+            <i class="fa fa-sort-up" aria-hidden="true"></i>
+          <% end %>
+        <% end %>
+      </a> 
+      <a href="<%= notebooks_sort_path(:sort_by_col=>NotebooksHelper.checkSortDirection("created_at",params[:sort_by_col]),:search_by_contain=>params[:search_by_contain]) %>" id="created-sort" class="column-box column-size-1">
+        <div >Created at</div>
+        <% if params[:sort_by_col].include?("created_at") %>
+          <% if params[:sort_by_col].split("-")[1].include?("asc") %>
+            <i class="fa fa-sort-down" aria-hidden="true"></i>
+          <% end %>
+          <% if params[:sort_by_col].split("-")[1].include?("desc") %>
+            <i class="fa fa-sort-up" aria-hidden="true"></i>
+          <% end %>
+        <% end %>
+      </a> 
+    </div>

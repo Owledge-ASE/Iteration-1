@@ -10,7 +10,7 @@
     <div class="col-10 row">
       <%= text_field_tag :search_by_contain, params[:search_by_contain], id:"search-bar" ,class:"col-7"%>
       <%= submit_tag "Search", id:"search-button" ,class:"col-2 bar-button btn btn-secondary"%>
-      <%= link_to "Sort", notebooks_sort_path(:sort_by_col=>"name_asc",:search_by_contain=>params[:search_by_contain]), method: :get,class:"col-2 bar-button btn btn-secondary",id:"sort_button" %>
+      <%= link_to "Sort", notebooks_sort_path(:sort_by_col=>"title-asc",:search_by_contain=>params[:search_by_contain]), method: :get,class:"col-2 bar-button btn btn-secondary",id:"sort_button" %>
     </div>
   <% end %>
 </div>
