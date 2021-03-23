@@ -9,13 +9,14 @@ class NotebooksController < ApplicationController
       end
     else
       flash[:error] = 'Kindly enter a title and description'
+      @ancestors = []
+      redirect_to new_notebook_path(:parent=> allowed_params[:parent_id])
     end
-    redirect_to new_notebook_path(:parent=> allowed_params[:parent_id])
   end
   def new
     @ancestors = []
     parent = params[:parent]
-    if parent
+    unless parent.nil? or parent.empty?
       @ancestors = Note.ancestors(parent)
     end
   end

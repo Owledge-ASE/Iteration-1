@@ -94,7 +94,7 @@ $accent-color: lighten(adjust-color($base-color, $red: 15, $blue: 150, $green: 5
 body {
   background-color: $base-color;
 }
-.header {
+.header-section {
   background-color: lighten($base-color, 10%);
 }
 .main-inside-section {
