@@ -6,17 +6,10 @@
       </a>
 </div>
 <div class="search bar row">
-  <%= form_tag notebooks_sort_path, method: :get do %>
-    <div class="col-10 row" id="search-container">
-      <%= text_field_tag :search_by_contain, params[:search_by_contain], id:"search-bar" ,class:"col-7"%>
-      <%= hidden_field "","sort_by_col", id:"sort-by-col-bar" , :value =>params[:sort_by_col]%>
-      <%= submit_tag "Search", id:"search-button" ,class:"col-2 bar-button btn btn-secondary"%>
-    </div>
 
     <div id="sort-description">
       Please click on a column to sort
     </div>
-  <% end %>
 </div>
 <div class="grid-notes" id="note-grid">
   

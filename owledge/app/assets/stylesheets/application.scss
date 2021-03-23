@@ -27,10 +27,14 @@ $accent-color: lighten(adjust-color($base-color, $red: 15, $blue: 150, $green: 5
 
 .header{
      color:$color-white;
+     display:flex;
 }
 .header-bar{
     height:10vh;
     margin-left:0px;
+}
+.main-header-section{
+  width: 80vw;
 }
 
 .header-title{
@@ -47,8 +51,8 @@ $accent-color: lighten(adjust-color($base-color, $red: 15, $blue: 150, $green: 5
 }
 
 .main-section{
-     margin:0px;
-     height:80vh;
+    margin:0px;
+    height:80vh;
     overflow-y:auto;
 
 }
@@ -77,7 +81,10 @@ $accent-color: lighten(adjust-color($base-color, $red: 15, $blue: 150, $green: 5
 .main-card{
     margin-bottom:20px;
 }
-
+.search-section{
+  padding:10px;
+  padding-left:30px;
+}
 .crumb-holder{
     padding:20px;
     height:5vh;    
