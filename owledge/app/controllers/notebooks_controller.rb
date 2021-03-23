@@ -10,7 +10,7 @@ class NotebooksController < ApplicationController
     else
       flash[:error] = 'Kindly enter a title and description'
     end
-    render'new'
+    redirect_to new_notebook_path(:parent=> allowed_params[:parent_id])
   end
   def new
     @ancestors = []
