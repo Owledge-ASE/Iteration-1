@@ -1,4 +1,4 @@
-<% unless current_page?(notebooks_path) or @ancestors.nil? %>
+<% unless current_page?(notebooks_path) or current_page?(notebooks_search_url) or current_page?(notebooks_sort_path) or @ancestors.nil? %>
   <nav aria-label="breadcrumb" id="breadcrumbs" class="crumb-holder">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="<%= notebooks_path %>">Home</a></li>
