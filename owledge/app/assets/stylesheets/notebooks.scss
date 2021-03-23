@@ -13,7 +13,7 @@
     overflow: hidden;
 }
 .top-header{
-    margin:20px
+    margin:0 20px;
 }
 
 .notes {
@@ -28,4 +28,28 @@
     padding: 0 0.25em;
   }
 
+}
+
+.show-notes {
+  flex: 1;
+  display: flex;
+  .main-panel, .contents-panel {
+    overflow-y: scroll;
+  }
+  .main-panel {
+    flex: 3;
+  }
+  .comments-panel {
+    flex: 1;
+    min-height: min-content;
+    overflow-y: scroll;
+    .list-group {
+      overflow-y: scroll;
+      flex: 1;
+    }
+  }
+  .comments-body {
+    height: 40vh;
+    min-height: 80%;
+  }
 }

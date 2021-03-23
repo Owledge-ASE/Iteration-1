@@ -11,6 +11,7 @@
 </head>
 
 <body>
+<div class="application">
 <div class="header">
   <%= render 'layouts/header' %>
   <%= render 'layouts/breadcrumbs' %>
@@ -21,5 +22,6 @@
   </div>
 </div>
 <div class=" <% if current_page?(notebooks_path) %> footer-large <%else%>  footer <%end%>"></div>
+</div>
 </body>
 </html>

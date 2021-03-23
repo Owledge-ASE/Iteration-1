@@ -1,0 +1,6 @@
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<%= form_for @comment, url: edit_notebook_comments_path @note.id, html: { method: :put } do |f| %>
+
+  <% f.label :comment, "Comment" %>
+  <% f.text_area :comment %>
+<% end %>

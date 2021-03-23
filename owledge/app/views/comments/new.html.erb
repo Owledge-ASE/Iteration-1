@@ -1,0 +1,10 @@
+<%= form_with scope: :comment, url: notebook_comments_path(params[:notebook_id]), model: @comment do |f| %>
+  <%= f.hidden_field :user_id, value: @user.id %>
+  <%= f.hidden_field :note_id, value: params[:notebook_id] %>
+  <div class="form-group">
+    <%= f.label :comment, "Comment" %>
+    <%= f.text_area :comment, :class => "form-control" %>
+  </div>
+
+  <%= f.submit 'Create Comment', class: 'btn btn-submit btn-primary' %>
+<% end %>

@@ -30,7 +30,8 @@ module NavigationHelpers
       edit_user_registration_path current_user
     when /^the edit comment page for comment ([0-9]+)$/
       edit_notebook_comments_path(UserComment.find($1).note_id, $1)
-
+    when /^the new comment page for "([^"]+)"$/
+      new_notebook_comments_path(Note.find($1).id)
     #Andrea
     #when /^the profile page for "([^"]+)"/ then
     #user = User.where(:email => $1).first

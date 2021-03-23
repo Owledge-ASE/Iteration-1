@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :notebooks do
     get 'search', to: 'notebooks#search', as: :search_notebooks
-    resource :comments, as: 'comments', only: [:edit, :create, :destroy, :new]
+    resource :comments, as: 'comments'
   end
 
 

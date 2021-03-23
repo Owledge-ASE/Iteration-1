@@ -9,9 +9,20 @@
   </div>
 </div>
 <% if flash[:error].present? %>
-<div class="alert alert-warning" id="error_message" style="margin:0px">
-  <%=  flash[:error]  %>
+<div class="alert alert-warning" id="error_message" class="m-0">
+  <%= flash[:error]  %>
+  <% if flash.key?(:error_details) and flash[:error_details].length > 0 %>
+  <ul>
+    <% flash[:error_details].each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+  <% end %>
 </div>
+<% elsif flash.key?(:success) %>
+  <div class="alert alert-info" id="success_message" class="m-0">
+    <%= flash[:success] %>
+  </div>
 <% end %>
 <%  %>
 <% if notice.present? %>
