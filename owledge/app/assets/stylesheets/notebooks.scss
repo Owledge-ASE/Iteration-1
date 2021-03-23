@@ -47,6 +47,10 @@
       overflow-y: scroll;
       flex: 1;
     }
+    .comment-container {
+      height: 100%;
+      padding-bottom: 2em;
+    }
   }
   .comments-body {
     height: 40vh;

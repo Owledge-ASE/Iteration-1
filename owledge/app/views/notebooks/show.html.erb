@@ -1,13 +1,13 @@
-<div class="row top-header mt-0 pt-0">
-  <h1 class="col-10 mt-0" id="title"><%= @note.title %></h1>
-
-  <a href="<%= new_notebook_path({parent: @note}) %>" class="card-link col-2">
-    <button type="button" class="btn btn-secondary" id="add-note">Add Note</button>
-  </a>
-</div>
 
 <div class="row show-notes">
   <div class="col-xl-9 main-panel">
+    <div class="row top-header mt-0 pt-0">
+      <h1 class="col-10 mt-0" id="title"><%= @note.title %></h1>
+
+      <a href="<%= new_notebook_path({parent: @note}) %>" class="card-link col-2">
+        <button type="button" class="btn btn-secondary" id="add-note">Add Note</button>
+      </a>
+    </div>
     <div class="card bg-dark-l1 col-12 main-card">
       <div class="card-body">
         <div class="card-title">
@@ -28,7 +28,7 @@
     <% end %>
   </div>
   <div class="col-xl-3 comments-panel">
-    <div class="card bg-dark-l0">
+    <div class="card bg-dark-l3 comment-container">
       <div class="card-body comments" id="comments">
         <div class="card-title"><h3>Comments</h3></div>
         <ul class="list-group comments-body">
