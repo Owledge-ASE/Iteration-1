@@ -11,6 +11,8 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import MarkdownIt from 'markdown-it'
+
 
 Rails.start()
 Turbolinks.start()
@@ -33,3 +35,30 @@ class Comment extends HTMLElement {
     }
 }
 customElements.define('user-comment', Comment);
+class Dom {
+    constructor(md = new MarkdownIt()) {
+        this.md = md;
+    }
+
+    run() {
+        this.markdown();
+    }
+    static run() {
+        new Dom().run();
+    }
+
+    markdown() {
+        function sanitizeHtml(element) {
+            return element.innerHTML || "";
+        }
+        console.log(document.querySelectorAll('span'));
+        document.querySelectorAll('.markdown').forEach(element => {
+            console.log(element.innerHTML);
+            element.innerHTML = this.md.render(sanitizeHtml(element));
+            console.log(element.innerHTML);
+
+        });
+    }
+}
+
+window.addEventListener('DOMContentLoaded', Dom.run);

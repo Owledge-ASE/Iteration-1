@@ -12,10 +12,9 @@ Rails.application.routes.draw do
   end
 
   resources :notebooks do
+    resources :comments
     get 'search', to: 'notebooks#search', as: :search_notebooks
-    resource :comments, as: 'comments'
   end
-
 
   root to: redirect('/notebooks')
 

@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
+
   def new
     @user = current_user
     if flash.key?(:comment)
@@ -11,15 +12,25 @@ class CommentsController < ApplicationController
 
   def edit
     @user = current_user
-    if flash.key?(:comment)
-      @comment = flash[:comment]
-      @note = @comment.note
-    end
     note_id = params[:notebook_id]
-    comment_id = params[:comment_id]
+    comment_id = params[:id]
 
     @note = Note.find(note_id)
     @comment = UserComment.find(comment_id)
+  end
+
+  def update
+    @comment = UserComment.update(params[:id], allowed_params)
+
+    if @comment.valid?
+      if @comment.save!
+        flash[:success] = 'Comment updated!'
+        redirect_to notebook_path @comment.note_id and return
+      end
+    end
+    flash[:error] = "Could not save comment."
+    flash[:error_details] = generate_error_messages @comment
+    render action: "edit"
   end
 
   def generate_error_messages(comment)
