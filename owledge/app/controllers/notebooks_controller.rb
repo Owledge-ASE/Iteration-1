@@ -9,8 +9,9 @@ class NotebooksController < ApplicationController
       end
     else
       flash[:error] = 'Kindly enter a title and description'
-      @ancestors = []
-      redirect_to new_notebook_path(:parent=> allowed_params[:parent_id])
+      params[:parent] = allowed_params[:parent_id]
+      render 'new'
+      #redirect_to new_notebook_path(:parent=> allowed_params[:parent_id])
     end
   end
   def new
@@ -32,6 +33,7 @@ class NotebooksController < ApplicationController
     @ancestors = @note.ancestors
   end
   def search
+    flash[:error] = nil
     @ancestors = []
     searchContent = params[:search_by_contain]
     if searchContent.nil? || searchContent.empty?
@@ -42,6 +44,7 @@ class NotebooksController < ApplicationController
     
   end
   def sort
+    flash[:error] = nil
     @ancestors = []
     sort_by_col = params[:sort_by_col]
     @notes = Note.allParents
@@ -51,6 +54,7 @@ class NotebooksController < ApplicationController
   end
 
   def index
+    flash[:error] = nil
     @ancestors = []
     @notes = Note.allParents
   end
