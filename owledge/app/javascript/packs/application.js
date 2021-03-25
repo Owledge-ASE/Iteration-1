@@ -42,6 +42,7 @@ class Dom {
 
     run() {
         this.markdown();
+        this.comments();
     }
     static run() {
         new Dom().run();
@@ -58,6 +59,9 @@ class Dom {
             console.log(element.innerHTML);
 
         });
+    }
+
+    comments() {
     }
 }
 

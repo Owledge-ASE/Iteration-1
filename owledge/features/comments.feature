@@ -23,15 +23,15 @@ Feature: Comment on a note
       |id   | user_id               | note_id        | comment                                                    |
       |1    | 1                     | 1              | Thanks, this helped me a lot!                              |
       |2    | 2                     | 6              | What if a graph has cycles but it's directed?              |
-      |3    | 1                     | 6              | @#{5} You can still use some DAG concepts if you use SCC.  |
-      |4    | 2                     | 6              | @#{1} Oh, I see, thanks!                                   |
+      |3    | 1                     | 6              | You can still use some DAG concepts if you use SCC.  |
+      |4    | 2                     | 6              | Oh, I see, thanks!                                   |
 
     And I am logged in as "example1@gmail.com"
 
   Scenario: I should see comments
     When I am on the notebook page for "Directed Acyclic Graph"
     Then I should see a comment "What if a graph has cycles but it's directed?" by "example5@gmail.com"
-    And I should see a comment "You can still use some DAG concepts if you use SCC" by "example1@gmail.com"
+    And I should see a comment "You can still use some DAG concepts if you use SCC." by "example1@gmail.com"
 
   Scenario: I should be able to edit my comments
     When I am on the notebook page for "Sorting Algorithms"
@@ -41,37 +41,36 @@ Feature: Comment on a note
     Then I should be on the edit comment page for comment 1
 
     When I fill in "comment_comment" with "Sorting algorithms changed my life!"
-    And I press "Save Comment"
+    And I press "Update Comment"
     Then I should be on the notebook page for "Sorting Algorithms"
-    And I should see "Comment updated!" in "#sucess_message"
+    And I should see "Comment updated!" in "#success_message"
 
   Scenario: I should be able to delete my comments
     When I am on the edit comment page for comment 1
-    And I press "Delete" and accept the warning
+    And I follow "Delete"
     Then I should be on the notebook page for "Sorting Algorithms"
-    And I should see "Comment deleted!" in "#success_message"
+    And I should see "Comment deleted" in "#success_message"
 
   Scenario: I should not be able to edit another person's comment.
     When I go to the edit comment page for comment 2
-    Then I should be on the notebook page for "Sorting Algorithms"
-    And I should see "You cannot perform this action" in "#error_message"
+    Then I should be on the notebook page for "Directed Acyclic Graph"
+    And I should see "You cannot perform this action." in "#error_message"
 
   Scenario: I should be able to get to the new comments page from a note page.
     When I am on the notebook page for "Directed Acyclic Graph"
     And I follow "Add Comment"
-    Then I should be on the new comment page for "Sorting Algorithms"
+    Then I should be on the new comment page for "Directed Acyclic Graph"
 
   Scenario: I should be able to add a new comment
     When I am on the new comment page for "Sorting Algorithms"
     And I fill in "comment_comment" with "What is an Algorithm?"
-    And I press "Save Comment"
+    And I press "Create Comment"
     Then I should be on the notebook page for "Sorting Algorithms"
     And I should see "Comment added!" in "#success_message"
 
   Scenario: I should not be able to add a blank comment
     When I am on the new comment page for "Sorting Algorithms"
-    And I press "Save Comment"
-    Then I should be on the new comment page for "Sorting Algorithms"
+    And I press "Create Comment"
     And I should see "Could not save comment." in "#error_message"
-    And I should see "Comment can't be blank." in "#error_message li"
-    And I should see "Comment is too short (minimum is 10 characters)." in "#error_message li"
+    And I should see "Comment can't be blank" in "#error_message li"
+    And I should see "Comment is too short (minimum is 10 characters)" in "#error_message li"

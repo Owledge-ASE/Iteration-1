@@ -17,11 +17,15 @@ class CommentsController < ApplicationController
 
     @note = Note.find(note_id)
     @comment = UserComment.find(comment_id)
+
+    if @comment.user_id != @user.id
+      flash[:error] = "You cannot perform this action."
+      redirect_to notebook_comment_path note_id
+    end
   end
 
   def update
     @comment = UserComment.update(params[:id], allowed_params)
-
     if @comment.valid?
       if @comment.save!
         flash[:success] = 'Comment updated!'
@@ -30,6 +34,8 @@ class CommentsController < ApplicationController
     end
     flash[:error] = "Could not save comment."
     flash[:error_details] = generate_error_messages @comment
+
+    @user = current_user
     render action: "edit"
   end
 
@@ -63,9 +69,19 @@ class CommentsController < ApplicationController
     redirect_to notebook_path params[:notebook_id]
   end
 
+  def destroy
+    UserComment.delete(allowed_deletion_params)
+    flash[:success] = "Comment deleted."
+    redirect_to notebook_path params[:notebook_id]
+  end
+
   private
   def allowed_params
     params.require(:comment).permit(:user_id, :note_id, :comment)
+  end
+
+  def allowed_deletion_params
+    params.require(:id)
   end
 
 end

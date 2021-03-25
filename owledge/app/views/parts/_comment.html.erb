@@ -1,6 +1,6 @@
 <li class="list-group-item" id="email">
   <user-comment author="<%= comment.user.email %>">
-    <div class="markdown">
+    <div class="markdown comment">
     <%= comment.comment %>
     </div>
     <%= render partial: "parts/user_card", locals: { user: comment.user } %>
