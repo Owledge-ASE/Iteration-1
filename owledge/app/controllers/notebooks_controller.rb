@@ -10,6 +10,12 @@ class NotebooksController < ApplicationController
     else
       flash[:error] = 'Kindly enter a title and description'
       params[:parent] = allowed_params[:parent_id]
+      if allowed_params[:parent_id].nil? or allowed_params[:parent_id].empty?
+        params[:show_breadcrumb_header] = "New Note"
+      else 
+        params[:show_breadcrumb_header] = "New Sub-Note"
+      end
+
       render 'new'
       #redirect_to new_notebook_path(:parent=> allowed_params[:parent_id])
     end

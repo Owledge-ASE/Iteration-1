@@ -7,6 +7,8 @@
     <% end %>
     <% if !@note.nil? and !@note.id.nil? %>
     <li class="breadcrumb-item"><a href="<%= notebook_path @note.id %>"><%= @note.title %></a></li>
+    <% elsif ! params[:show_breadcrumb_header].nil? and ! params[:show_breadcrumb_header].nil? %>
+    <li class="breadcrumb-item"><%=  params[:show_breadcrumb_header] %> </li>
     <% elsif current_page?(new_notebook_path) %>
     <li class="breadcrumb-item">New <% unless @ancestors.empty? %>Sub-<% end %>Note</li>
     <% end %>
