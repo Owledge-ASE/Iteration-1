@@ -15,8 +15,10 @@ Scenario:User should be able to be able to see fields for title and description
   Then I should see the "Save Note" button
 
 Scenario:If user tries to submit without entering anything in notebook title/info fields then an error message will appear (sad path)
-  When I am on the create page
-  And I press "Save Note"
+  When I am on the homepage
+  And I follow "Add Note"
+  Then I should be on the create page
+  When I press "Save Note"
   Then I should see "Kindly enter a title and description" inside "#error_message"
 
 Scenario: I should be able to create a single note
@@ -47,6 +49,31 @@ Scenario: I should be able to create a node with multiple children
   And I should see 2 breadcrumbs
   And I should see a breadcrumb link to "Bootstrap"
   And I should see "Layout" inside "#title"
+
+  
+Scenario: If i enter invalid info on a sub note creation screen it should stay on the same screen
+  When I am on the create page
+  When I fill in "note_title" with "Bootstrap"
+  And I fill in "note_description" with "Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit"
+  And I press "Save Note"
+  Then I should be on the details page for "Bootstrap"
+  When I follow "Add Note"
+  Then I should be on the create page
+  And I should see a breadcrumb link to "Bootstrap"
+  When I fill in "note_title" with "Layout"
+  And I fill in "note_description" with "Allow users to add in a layout"
+  And I press "Save Note"
+  Then I should be on the details page for "Layout"
+  And I should see 2 breadcrumbs
+  And I should see a breadcrumb link to "Bootstrap"
+  And I should see "Layout" inside "#title"
+  When I follow "Add Note"
+  Then I should be on the create page
+  When I press "Save Note"
+  Then I should see "Kindly enter a title and description" inside "#error_message"
+  And I should see 2 breadcrumbs
+  And I should see a breadcrumb link to "Bootstrap"
+  And I should see a breadcrumb link to "Layout"
 
 Scenario: If I clicks the Owledge logo, then redirect back to Home page   
     When I am on the create page

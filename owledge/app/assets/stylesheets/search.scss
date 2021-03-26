@@ -1,0 +1,33 @@
+// Place all the styles related to the Notebook Search controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "application";
+
+.column-headers{
+  color:$color-white;
+}
+.column-row{
+  display:flex;
+}
+
+.column-box{
+  border:1px solid $color-white;
+  padding: 10px;
+  overflow: hidden;
+  color: white;
+  text-decoration: none;
+  display:flex;
+  i{
+    
+    padding:6px;
+  }
+}
+.column-size-1{
+  flex: 1;
+}
+.column-size-2{
+  flex: 2;
+}
+.column-size-3{
+  flex: 3;
+}

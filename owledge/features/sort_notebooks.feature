@@ -18,34 +18,53 @@ Background: notes have been added to the database
  |9  | Recursive merge          | 8        | Runs recursively                                                                                                                                                                                  |
  |10 | For merge                | 8        | Runs recursively                                                                                                                                                                                  |
 
-Scenario: Once user navigates to Owledge then they should be on the homepage
+Scenario: Once user clicks on the sort button they should be on the Sorting page
   When I go to the homepage
-  Then I should be on the notebooks page
-
-Scenario: On the homepage there should be a list of notebooks
-  When I go to the homepage
-  Then I should see "Graph Theory" inside list of nodes
-  Then I should see "Sorting Algorithms" inside list of nodes
-  Then I should see "Analysis of Algorithms" inside list of nodes
-  Then I should see "Distributed Computing" inside list of nodes
-  Then I should see "Big Data" inside list of nodes
-
-Scenario: On the homepage there should be an add button
-  When I go to the homepage
-  Then I should see "Add Note"
-
-Scenario: If I click on the add button then they can navigate to the add page (Create page)
-  When I go to the homepage
-  And I follow "add-note"
-  Then I should be on the create page
-
-Scenario: If I clicks on a notebook then they will be redirected to the details page
-  When I go to the homepage
-  And I follow "note_1"
-  Then I should be on the details page for "Sorting Algorithms"
+  And I follow "sort_button"
+  Then I should be on the notebooks sort page
 
 
-Scenario: click on Owledge logo
+Scenario: The user should see a description on sorting
   When I go to the homepage
-  When I follow "owledge_logo"
-  Then I should be on the homepage
+  And I follow "sort_button"
+  Then I should see "Please click on a column to sort" in "#sort-description"
+
+Scenario:  The user should not see the sort button on the sort page 
+  When I go to the homepage
+  And I follow "sort_button"
+  Then I should not see "Sort" in "#sort-description"
+  
+Scenario: The user should see default sorting by title
+  When I go to the homepage
+  And I follow "sort_button"
+  Then I should see "Graph Theory" before "Sorting Algorithms" in the note grid
+  And I should see "Analysis of Algorithms" before "Graph Theory" in the note grid
+  And I should see "Big Data" before "Distributed Computing" in the note grid
+
+  
+Scenario: The user should be able to reverse sorting by title
+  When I go to the homepage
+  And I follow "sort_button"
+  And I follow "title-sort"
+  Then I should not see "Graph Theory" before "Sorting Algorithms" in the note grid
+  And I should not see "Analysis of Algorithms" before "Graph Theory" in the note grid
+  And I should not see "Big Data" before "Distributed Computing" in the note grid
+
+
+  
+Scenario: The user should be able to sort by date
+  When I go to the homepage
+  And I follow "sort_button"
+  And I follow "created-sort"
+  Then I should see "Sorting Algorithms" before "Graph Theory" in the note grid
+  And I should see "Graph Theory" before "Analysis of Algorithms" in the note grid
+  And I should see "Distributed Computing" before "Big Data" in the note grid
+
+Scenario: The user should be able to reverse sort by date
+  When I go to the homepage
+  And I follow "sort_button"
+  And I follow "created-sort"
+  And I follow "created-sort"
+  Then I should not see "Sorting Algorithms" before "Graph Theory" in the note grid
+  And I should not see "Graph Theory" before "Analysis of Algorithms" in the note grid
+  And I should not see "Distributed Computing" before "Big Data" in the note grid

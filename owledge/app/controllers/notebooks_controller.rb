@@ -9,13 +9,21 @@ class NotebooksController < ApplicationController
       end
     else
       flash[:error] = 'Kindly enter a title and description'
+      params[:parent] = allowed_params[:parent_id]
+      if allowed_params[:parent_id].nil? or allowed_params[:parent_id].empty?
+        params[:show_breadcrumb_header] = "New Note"
+      else 
+        params[:show_breadcrumb_header] = "New Sub-Note"
+      end
+
+      render 'new'
+      #redirect_to new_notebook_path(:parent=> allowed_params[:parent_id])
     end
-    render'new'
   end
   def new
     @ancestors = []
     parent = params[:parent]
-    if parent
+    unless parent.nil? or parent.empty?
       @ancestors = Note.ancestors(parent)
     end
   end
@@ -31,18 +39,30 @@ class NotebooksController < ApplicationController
     @ancestors = @note.ancestors
   end
   def search
-    
-  end
-
-  def index
+    flash[:error] = nil
     @ancestors = []
     searchContent = params[:search_by_contain]
-    logger.debug(searchContent)
     if searchContent.nil? || searchContent.empty?
       @notes = Note.allParents
     else
       @notes = Note.search(searchContent)
     end
+    
+  end
+  def sort
+    flash[:error] = nil
+    @ancestors = []
+    sort_by_col = params[:sort_by_col]
+    @notes = Note.allParents
+    if !(sort_by_col.nil? || sort_by_col.empty?)
+      @notes = @notes.sort_by_column(sort_by_col)
+    end
+  end
+
+  def index
+    flash[:error] = nil
+    @ancestors = []
+    @notes = Note.allParents
   end
 
   private

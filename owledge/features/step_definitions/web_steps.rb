@@ -252,3 +252,8 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+
+# When I fill in search with "Graph" and hit enter
+Then /^I should see search bar$/ do 
+  expect(page).to have_css('#search-bar') 
+end

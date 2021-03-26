@@ -1,6 +1,8 @@
 <div class="note-card">
   <div class="card bg-dark-l2 main-card">
-      <%# something like: <%= render partial: "parts/breadcrumbs", locals: { note: note } %>
+    <% if current_page?(notebooks_search_url) %>
+      <%= render partial: "parts/card-breadcrumbs", locals: { note: note } %>
+    <% end %>
     <a href="<%= notebook_path(note.id) %>" class="card-link" id="note_<%= note.id %>">
       <div class="card-body">
         <h5 class="card-title">

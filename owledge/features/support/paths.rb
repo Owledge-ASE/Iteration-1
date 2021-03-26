@@ -11,6 +11,7 @@ module NavigationHelpers
 
     when /^the (Owledge )?home\s?page$/ then '/notebooks'
     when /^the notebooks page$/ then '/notebooks'
+    when /^the notebooks sort page$/ then '/notebook-sort'
     when /^the (?:notebook|details) page for "(.+)"$/
       notebook_path(Note.find_by_title($1))
     when /^the create page$/ then '/notebooks/new'

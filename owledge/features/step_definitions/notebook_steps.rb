@@ -37,6 +37,27 @@ Then /^(?:|I )should( not)? see the "(.+)" button$/ do |opposite, buttonname|
   end
 end
 
+Then /^I should( not)? see "(.+)" before "(.+)" in "(.+)"$/ do | opposite,first,second,container |
+  step %{I should see "#{first}" inside "#{container}"}
+  step %{I should see "#{second}" inside "#{container}"}
+  if opposite.nil?
+    page.body.index(first).should < page.body.index(second)
+  else
+    page.body.index(first).should >= page.body.index(second)
+  end
+
+end
+
+Then /^I should( not)? see "(.+)" before "(.+)" in the note grid$/ do | opposite,first,second |
+  step %{I should see "#{first}" inside "#note-grid"}
+  step %{I should see "#{second}" inside "#note-grid"}
+  if opposite.nil?
+    page.body.index(first).should < page.body.index(second)
+  else
+    page.body.index(first).should >= page.body.index(second)
+  end
+
+end
 
 Then /^I should see "(.+)" in(?:side)? list of nodes$/ do | needle |
   step %{I should see "#{needle}" inside "#notes"}

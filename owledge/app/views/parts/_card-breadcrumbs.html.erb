@@ -1,0 +1,15 @@
+<% unless note.ancestors.nil? %>
+  <nav aria-label="breadcrumb" id="breadcrumbs" class="crumb-holder">
+  <ol class="breadcrumb">
+
+    <% note.ancestors.each do |parent_note| %>
+      <li class="breadcrumb-item"><a href="<%= notebook_path parent_note.id %>"><%= parent_note.title %></a></li>
+    <% end %>
+
+    <% if !note.nil? and !note.id.nil? %>
+    <li class="breadcrumb-item"><a href="<%= notebook_path note.id %>"><%= note.title %></a></li>
+    <% end %>
+
+  </ol>
+</nav>
+<% end %>

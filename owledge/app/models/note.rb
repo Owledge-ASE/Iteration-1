@@ -18,9 +18,24 @@ class Note < ApplicationRecord
 
   
   def self.search(content)
-    return Note.where('title LIKE ?', "%#{content}%")
+    
+    result = Note.union(
+      Note.where('title LIKE ?', "%#{content}%"),Note.joins("
+      INNER JOIN 
+      notebook_tags 
+      ON notes.id = notebook_tags.notebook_id
+      INNER JOIN 
+      tags 
+      ON tags.id = notebook_tags.tag_id
+      AND tag  LIKE ('%#{content}%')")
+    )
+    return result
   end
 
+  def self.sort_by_column(sort_by_col)
+    @sort_string = sort_by_col.gsub("-", " ")
+    return self.order(@sort_string)
+  end
   def children
     return Note.where(parent_id: self.id).all
   end

@@ -1,1 +1,13 @@
-Search Page Skeleton
+<div class="row top-header">
+      <h1 class="col-10">Search for <%= params[:search_by_contain] %></h1>
+
+      <a href="<%= new_notebook_path %>" class="card-link col-2 btn btn-secondary" id="add-note">
+        <button type="button" class="btn btn-secondary" >Add Note</button>
+      </a>
+</div>
+<div class="row card-container notes" id="notes">
+    <% @notes.each do |note| %>
+    <%= render partial: 'parts/card', locals: { note: note } %>
+    <% end %>
+</div>
+</div>

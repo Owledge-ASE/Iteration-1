@@ -12,12 +12,13 @@ Rails.application.routes.draw do
   end
 
   resources :notebooks do
-    get 'search', to: 'notebooks#search', as: :search_notebooks
     resource :comments, as: 'comments', only: [:edit, :create, :destroy, :new]
   end
 
 
   root to: redirect('/notebooks')
+  get 'notebook-sort', to: 'notebooks#sort', as: :notebooks_sort
+  get 'notebook-search', to: 'notebooks#search', as: :notebooks_search
 
   get 'profile', to: 'users#show', as: :current_user_profile
   get 'profile/:id', to: 'users#show', as: :user_profile

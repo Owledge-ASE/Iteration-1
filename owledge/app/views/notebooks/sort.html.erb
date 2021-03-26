@@ -6,11 +6,16 @@
       </a>
 </div>
 <div class="search bar row">
-    <%= link_to "Sort", notebooks_sort_path(:sort_by_col=>"title-asc",:search_by_contain=>params[:search_by_contain]), method: :get,class:"col-2 bar-button btn btn-secondary",id:"sort_button" %>
+
+    <div id="sort-description">
+      Please click on a column to sort
+    </div>
 </div>
-<div class="row card-container notes" id="notes">
+<div class="grid-notes" id="note-grid">
+  
+      <%= render partial: 'parts/grid-header' %>
     <% @notes.each do |note| %>
-    <%= render partial: 'parts/card', locals: { note: note } %>
+      <%= render partial: 'parts/grid', locals: { note: note } %>
     <% end %>
 </div>
 </div>
