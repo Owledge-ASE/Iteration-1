@@ -1,0 +1,22 @@
+<div class="row top-header">
+  <h1 class="col-10" id="title">
+    <%= @note.title %>
+  </h1>
+</div>
+
+<div class="card bg-dark-l0 col-12 main-card">
+  <div class="card-body bg-dark-l0">
+  <%= form_with scope: :note, url: notebook_path(@note),:method => :put , model: @note do |form| %>
+    <%= form.hidden_field :parent_id, value: params[:parent] %>
+    <div class="form-group">
+    <%= form.label :title, 'Title' %>
+    <%= form.text_field :title, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+    <%= form.label :description, 'Description' %>
+    <%= form.text_area :description, class: 'form-control' %>
+    </div>
+    <%= form.submit class: 'btn btn-submit btn-primary' %>
+  <% end %>
+  </div>
+</div>

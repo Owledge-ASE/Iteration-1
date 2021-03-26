@@ -20,6 +20,13 @@ class NotebooksController < ApplicationController
       #redirect_to new_notebook_path(:parent=> allowed_params[:parent_id])
     end
   end
+  def update
+    id = params[:id]
+    @note = Note.find(id)
+    @note.update(allowed_params)
+    flash[:notice] = "#{@note.title} was successfully updated."
+    redirect_to notebook_path(@note)
+  end
   def new
     @ancestors = []
     parent = params[:parent]
@@ -65,6 +72,9 @@ class NotebooksController < ApplicationController
     flash[:error] = nil
     @ancestors = []
     @notes = Note.allParents
+  end
+  def edit
+    @note = Note.find(params[:id])
   end
 
   private

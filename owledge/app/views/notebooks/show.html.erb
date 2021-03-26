@@ -4,9 +4,13 @@
     <div class="row top-header mt-0 pt-0">
       <h1 class="col-10 mt-0" id="title"><%= @note.title %></h1>
 
+      <a href="<%= edit_notebook_path(@note) %>" class="card-link col-2">
+        <button type="button" class="btn btn-secondary" id="edit-note">Edit Note</button>
+      </a>
       <a href="<%= new_notebook_path({parent: @note}) %>" class="card-link col-2">
         <button type="button" class="btn btn-secondary" id="add-note">Add Note</button>
       </a>
+      
     </div>
     <div class="card bg-dark-l1 col-12 main-card">
       <div class="card-body">
