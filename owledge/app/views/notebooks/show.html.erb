@@ -53,10 +53,12 @@
 
 <div class="col-md-3">
   <div class="card bg-dark-l0">
-    <div class="card-body" id="comments">
+    <span class="card-body" id="reactions">
       <div class="card-title"><h3>Reactions</h3></div>
-      <span id="CountedClicks">0</span><br>
-      <button style="background-color:grey" onclick="AddClick()">Count Your Hit</button>
+      <!--<span id="CountedClicks">0</span>-->
+      <p><%= @reaction.count() %> <%= (@reaction.count()) == 1 ? 'Like' : 'Likes'%></p>
+      <%=button_to 'Like', notebook_reaction_path(@note), method: :post %>
+      <!--<button style="background-color:grey" onclick="AddClick()">Count Your Hit</button>-->
       <!--ul class="list-group">
          @note.user_reactions.each do |user_reaction| %>
            render partial:"parts/comment", locals: { comment: user_comment } %>

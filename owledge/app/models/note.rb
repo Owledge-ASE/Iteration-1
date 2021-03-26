@@ -3,6 +3,7 @@ class Note < ApplicationRecord
   validates :description, presence: true
   has_many :tags, :through => :notebook_tags
   has_many :user_comments
+  has_many :user_reactions, dependent: :destroy
 
   def self.allParents
     return self.where('parent_id is null')
