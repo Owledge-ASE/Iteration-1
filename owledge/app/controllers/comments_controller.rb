@@ -10,6 +10,17 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    user_comment = UserComment.find(params[:id])
+    if current_user.id != user_comment.user_id
+      flash[:error] = "You cannot perform this action."
+      redirect_to notebook_path user_comment.note_id and return
+    end
+    UserComment.delete(allowed_deletion_params)
+    flash[:success] = "Comment deleted."
+    redirect_to notebook_path params[:notebook_id]
+  end
+
   def edit
     @user = current_user
     note_id = params[:notebook_id]
@@ -66,12 +77,6 @@ class CommentsController < ApplicationController
   end
 
   def show
-    redirect_to notebook_path params[:notebook_id]
-  end
-
-  def destroy
-    UserComment.delete(allowed_deletion_params)
-    flash[:success] = "Comment deleted."
     redirect_to notebook_path params[:notebook_id]
   end
 

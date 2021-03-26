@@ -56,6 +56,11 @@ Feature: Comment on a note
     Then I should be on the notebook page for "Directed Acyclic Graph"
     And I should see "You cannot perform this action." in "#error_message"
 
+  Scenario: I should not be able to delete another person's comments.
+    When I try to delete comment 2
+    Then I should be on the notebook page for "Directed Acyclic Graph"
+    And I should see "You cannot perform this action." in "#error_message"
+
   Scenario: I should be able to get to the new comments page from a note page.
     When I am on the notebook page for "Directed Acyclic Graph"
     And I follow "Add Comment"

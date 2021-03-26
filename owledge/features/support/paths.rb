@@ -32,6 +32,7 @@ module NavigationHelpers
       edit_notebook_comment_path(UserComment.find($1).note_id, $1)
     when /^the new comment page for "([^"]+)"$/
       new_notebook_comment_path(Note.find_by_title($1).id)
+
     #Andrea
     #when /^the profile page for "([^"]+)"/ then
     #user = User.where(:email => $1).first
