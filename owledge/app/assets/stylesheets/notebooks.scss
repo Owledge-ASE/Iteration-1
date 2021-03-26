@@ -13,7 +13,7 @@
     overflow: hidden;
 }
 .top-header{
-    margin:20px
+    margin:0 20px;
 }
 
 .notes {
@@ -21,11 +21,45 @@
   flex-direction: row;
   justify-content: left;
   .note-card {
-    flex-shrink: 0;
-    max-width: 20vw;
-    width: 33%;
+    flex: 1;
+    max-width:50%;
     min-width: 15em;
     padding: 0 0.25em;
+  }
+  @media (max-width: 32em) {
+    .note-card {
+      max-width: 100%;
+    }
+  }
+}
+
+
+.show-notes {
+  flex: 1;
+  display: flex;
+  .main-panel, .contents-panel {
+    min-width: 80vh;
+    overflow-y: scroll;
+    flex: 3;
+  }
+  .comments-panel {
+    flex: 1;
+    min-width: 30em;
+    min-height: min-content;
+    overflow-y: scroll;
+    .list-group {
+      overflow-y: scroll;
+      flex: 1;
+    }
+    .comment-container {
+      height: 100%;
+      padding-bottom: 2em;
+    }
+
+  }
+  .comments-body {
+    height: 40vh;
+    min-height: 80%;
   }
 
 }

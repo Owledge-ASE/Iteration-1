@@ -32,3 +32,7 @@ end
 When /^I follow the link "([^"]+)"$/ do |arg|
   find(%{#{arg}}).click
 end
+
+When /^I try to delete comment ([0-9]+)$/ do |comment|
+  page.driver.submit :delete, notebook_comment_path(UserComment.find(comment).note_id, comment), {}
+end

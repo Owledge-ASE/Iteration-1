@@ -79,9 +79,9 @@ end
 
 Then /^I should( not)? see "([^"]+)" in(?:side)? "([^"]+)"$/ do | opp, needle, haystack |
   if opp.nil?
-    expect(find(haystack)).to have_text(needle)
+    expect(page).to have_css(haystack, text: needle)
   else
-    expect(find(haystack)).not_to have_text(needle)
+    expect(page).not_to have_css(haystack, text: needle)
   end
 end
 

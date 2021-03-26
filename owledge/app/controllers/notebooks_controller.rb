@@ -28,7 +28,6 @@ class NotebooksController < ApplicationController
     end
   end
   def show
-    flash[:error] = nil
     id = params[:id]
     begin
       @note = Note.find(id)
@@ -39,7 +38,9 @@ class NotebooksController < ApplicationController
     @ancestors = @note.ancestors
   end
   def search
-    flash[:error] = nil
+  end
+
+  def index
     @ancestors = []
     searchContent = params[:search_by_contain]
     if searchContent.nil? || searchContent.empty?
@@ -49,6 +50,7 @@ class NotebooksController < ApplicationController
     end
     
   end
+
   def sort
     flash[:error] = nil
     @ancestors = []

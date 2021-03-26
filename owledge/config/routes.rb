@@ -12,9 +12,9 @@ Rails.application.routes.draw do
   end
 
   resources :notebooks do
-    resource :comments, as: 'comments', only: [:edit, :create, :destroy, :new]
+    resources :comments
+    get 'search', to: 'notebooks#search', as: :search_notebooks
   end
-
 
   root to: redirect('/notebooks')
   get 'notebook-sort', to: 'notebooks#sort', as: :notebooks_sort

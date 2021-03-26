@@ -1,13 +1,13 @@
-<div class="row top-header">
-  <h1 class="col-10" id="title"><%= @note.title %></h1>
 
-  <a href="<%= new_notebook_path({parent: @note}) %>" class="card-link col-2">
-    <button type="button" class="btn btn-secondary" id="add-note">Add Note</button>
-  </a>
-</div>
+<div class="row show-notes">
+  <div class="main-panel">
+    <div class="row top-header mt-0 pt-0">
+      <h1 class="col-10 mt-0" id="title"><%= @note.title %></h1>
 
-<div class="row">
-  <div class="col-md-9">
+      <a href="<%= new_notebook_path({parent: @note}) %>" class="card-link col-2">
+        <button type="button" class="btn btn-secondary" id="add-note">Add Note</button>
+      </a>
+    </div>
     <div class="card bg-dark-l1 col-12 main-card">
       <div class="card-body">
         <div class="card-title">
@@ -27,16 +27,18 @@
     </div>
     <% end %>
   </div>
-  <div class="col-md-3">
-    <div class="card bg-dark-l0">
-      <div class="card-body" id="comments">
+  <div class="comments-panel">
+    <div class="card bg-dark-l3 comment-container">
+      <div class="card-body comments" id="comments">
         <div class="card-title"><h3>Comments</h3></div>
-        <ul class="list-group">
+        <ul class="list-group comments-body">
           <% @note.user_comments.each do |user_comment| %>
             <%= render partial:"parts/comment", locals: { comment: user_comment } %>
           <% end %>
         </ul>
-        <a href="<%= new_notebook_comments_path @note %>" class="btn btn-primary btn-md mt-4">Add Comment</a>
+        <div class="card-footer">
+          <a href="<%= new_notebook_comment_path @note %>" class="btn btn-primary btn-md mt-4">Add Comment</a>
+        </div>
       </div>
     </div>
   </div>

@@ -6,14 +6,8 @@ end
 
 When /^(?:I )?should see a comment "([^"]+)"(?: by "([^"]+)")?$/ do |comment, author|
   if author.nil?
-    expect(page).to have_css('#comments', text: comment)
+    expect(page).to have_css('#comments .comment', text: comment)
   else
-    expect(page).to have_css(%{#comments user-comment[author="#{author}"]}, exact_text: comment)
-  end
-end
-
-When /^I press "([^"]+)" and accept the warning$/ do |button|
-  accept_alert do
-    step %{I press "#{button}"}
+    expect(page).to have_css(%{#comments user-comment[author="#{author}"] .comment}, exact_text: comment)
   end
 end
