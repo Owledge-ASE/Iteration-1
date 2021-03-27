@@ -1,1 +1,10 @@
 like
+<h1>"<%=@note.user_reactions.count %>"</h1>
+<li class="list-group-item" id="email">
+  <user-reaction author="<%= @reaction.user_id %>">
+    <div class="markdown comment">
+      <%= @reaction %>
+    </div>
+    <%= render partial: "parts/user_card", locals: { user: @reaction.user_id } %>
+  </user-reaction>
+</li>

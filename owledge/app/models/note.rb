@@ -40,4 +40,8 @@ class Note < ApplicationRecord
     end
     self.parent.ancestors + [self.parent]
   end
+
+  def self.likes
+    UserReaction.where(note_id: self.id).count
+  end
 end

@@ -10,4 +10,8 @@ class User < ApplicationRecord
   def display_name
     first_name + " " + last_name
   end
+
+  def likes_note(note_id)
+    UserReaction.where(user_id: self.id, note_id: note_id).like
+  end
 end

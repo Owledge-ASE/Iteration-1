@@ -10,21 +10,31 @@ class ReactionsController < ApplicationController
     end
   end
 
-  def create
-    #@user = current_user
-    #current_user.id = params[:like][:user_id]
-    @reaction = UserReaction.new(allowed_params)
+  #def create
+  # @reaction = UserReaction.new(allowed_params)
 
-    if @reaction.valid?
-      if @reaction.save
-        flash[:success] = "Reaction counted!"
-        redirect_to notebook_path @reaction.note_id and return
-      end
-    end
-    flash[:error] = "Could not save reaction."
-    @user = current_user
-    render action: "new"
+  # if @reaction.valid?
+  #  if @reaction.save
+  #    flash[:success] = "Reaction counted!"
+  #   redirect_to notebook_path @reaction.note_id and return
+  # end
+  # end
+  # flash[:error] = "Could not save reaction."
+  # @user = current_user
+  #render action: "new"
     #render action: "new"
+  #end
+
+  def create
+    #note = Note.find_by(params[:note_id])
+    @reaction = UserReaction.where(user_id: current_user, note_id: params[:note_id])
+    if @reaction = UserReaction.find_by(note_id: params[:node_id], user_id: current_user.id)
+      @reaction.destroy
+    else
+      @reaction = UserReaction.new(note_id: params[:node_id], user_id: current_user.id)
+      @reaction.save
+    end
+    redirect_to notebook_path
   end
 
   def destroy
@@ -33,13 +43,6 @@ class ReactionsController < ApplicationController
     if @reaction
       @reaction.destroy
     end
-  end
-
-  def count
-    #@user = current_user
-    note_id = params[:notebook_id]
-    #reaction_id = params[:id]
-    count = UserReaction.where(note_id: note_id).count
   end
 
   def index

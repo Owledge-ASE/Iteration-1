@@ -1,13 +1,3 @@
-<head>
-  <script>
-      var Clicks = 0 ;
-      function AddClick(){
-          Clicks = Clicks + 1;
-          document.getElementById('CountedClicks').innerHTML = Clicks + ' Hits';
-      }
-  </script>
-</head>
-
 <div class="row top-header">
   <h1 class="col-10" id="title"><%= @note.title %></h1>
 
@@ -37,6 +27,7 @@
     </div>
     <% end %>
   </div>
+
   <div class="col-md-3">
     <div class="card bg-dark-l0">
       <div class="card-body" id="comments">
@@ -49,22 +40,15 @@
       </div>
     </div>
   </div>
-</div>
 
-<div class="col-md-3">
-  <div class="card bg-dark-l0">
-    <span class="card-body" id="reactions">
-      <div class="card-title"><h3>Reactions</h3></div>
-      <!--<span id="CountedClicks">0</span>-->
-      <p><%= @reaction.count() %> <%= (@reaction.count()) == 1 ? 'Like' : 'Likes'%></p>
-      <%=button_to 'Like', notebook_reaction_path(@note), method: :post %>
-      <!--<button style="background-color:grey" onclick="AddClick()">Count Your Hit</button>-->
-      <!--ul class="list-group">
-         @note.user_reactions.each do |user_reaction| %>
-           render partial:"parts/comment", locals: { comment: user_comment } %>
-        end %> -->
-      <!--a href="= new_notebook_comments_path @note %>" class="btn btn-primary btn-md mt-4">Add Comment</a>-->
+  <div class="col-md-3">
+    <div class="card bg-dark-l0">
+      <div class="card-body" id="reactions">
+        <div class="card-title"><h3>Reactions</h3></div>
+        <a id="like_button" href="<%= likes_notebook_path({@note.id})%>" class="btn btn-xs">
+        <i class="bi bi-suit-heart<%= current_user.likes_note(@note) ? "-filled" : ""%>"></i>
+        <span id="num_likes"><%= @note.likes%></span></a>
+      </div>
     </div>
   </div>
-</div>
 </div>

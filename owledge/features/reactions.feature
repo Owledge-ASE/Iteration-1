@@ -1,7 +1,7 @@
 Feature: React to a note
 
   As a note viewer
-  I want to be able to view and add reactions, if I'm logged in.
+  I want to be able to view reactions and add reactions, if I'm logged in.
 
   Background: User is logged in
     Given the following users exist:
@@ -20,8 +20,8 @@ Feature: React to a note
 
     And the following reactions exist:
       |id   | user_id               | note_id        | like           |
-      |1    | 1                     | 1              | true           |
-      |2    | 2                     | 6              | false          |
+      |1    | 1                     | 5              | true           |
+      |2    | 2                     | 5              | ture           |
       |3    | 1                     | 6              | true           |
       |4    | 2                     | 6              | false          |
 
@@ -29,9 +29,11 @@ Feature: React to a note
 
   Scenario: I should see the number of reactions
     When I am on the notebook page for "Selection Sort"
-    Then I should see "5" inside "#user_reactions" count for this note
-    And I should see the "Like" button
-
+    Then I should see "2" inside "#num_likes"
+    And I should see the like button
+    And I do not like this
+    #expect css with suit heart
+    #do like = sweet heart filled
   Scenario: I should be able to add my reaction
     When I am on the notebook page for "Sorting Algorithms"
     Then I should see "12" inside "#user_reactions" count for this note
@@ -42,11 +44,10 @@ Feature: React to a note
   Scenario: I should be able to undo my reaction
     When I am on the notebook page for "Quick Sort"
     And I should see "15" inside "#user_reactions" count for this note
-    And I follow "Like"
+    And I follow "#like_button"
     Then I should see "16" inside "#user_reactions" count for this note
-    When I follow "Like" again
+    When I follow "#like_button"
     And I should see "15" inside "#user_reactions" count for this note
-    And I should see "Reaction deleted!" in "#success_message"
 
   Scenario: I should be able to see which notes I have reacted to
     When I go to my profile page

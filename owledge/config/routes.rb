@@ -12,12 +12,10 @@ Rails.application.routes.draw do
   end
 
   resources :notebooks do
+    resources :comments
     resources :reactions
-    #get 'search', to: 'notebooks#search', as: :search_notebook_reaction
-
-    #get 'search', to: 'notebooks#search', as: :search_notebooks
-    # resource :comments, as: 'comments', only: [:edit, :create, :destroy, :new] #Original comment route
-    #resource :reaction, as: 'reactions', only: [:edit, :creat, :destroy, :new] #Andrea (?)
+    get 'search', to: 'notebooks#search', as: :search_notebooks
+    get 'likes', to: 'notebooks#likes', as: :likes_notebook
   end
 
 

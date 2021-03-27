@@ -16,4 +16,8 @@ class UsersController < ApplicationController
       redirect_to 'index' and return
     end
   end
+
+  def likes_note(note_id)
+
+  end
 end

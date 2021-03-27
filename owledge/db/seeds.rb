@@ -75,6 +75,14 @@ users = User.create([{
  affiliation: "Student",
  organization: "Fake University",
 
+},{
+ id: 3,
+ first_name: "Riley",
+ last_name: "Smith",
+ email: "rsmith@fakeu.edu",
+ password: "thisisasafepasswordbecauseitislong",
+ affiliation: "Student",
+ organization: "Fake University",
 }])
 
 UserComment.create([{
@@ -82,3 +90,19 @@ UserComment.create([{
   note_id: graph_theory.id,
   comment: "This is great info!"
 }])
+
+UserReaction.create([{
+  like: true,
+  user_id: users[0].id,
+  note_id: graph_theory.id
+  },
+                     {
+  like: true,
+  user_id: users[1].id,
+  note_id: graph_theory.id
+  },
+                     {
+  like: true,
+  user_id: users[2].id,
+  note_id: graph_theory.id
+  }])

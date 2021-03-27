@@ -12,6 +12,7 @@ class NotebooksController < ApplicationController
     end
     render'new'
   end
+
   def new
     @ancestors = []
     parent = params[:parent]
@@ -19,6 +20,7 @@ class NotebooksController < ApplicationController
       @ancestors = Note.ancestors(parent)
     end
   end
+
   def show
     flash[:error] = nil
     id = params[:id]
@@ -32,6 +34,10 @@ class NotebooksController < ApplicationController
   end
   def search
     
+  end
+
+  def likes
+
   end
 
   def index

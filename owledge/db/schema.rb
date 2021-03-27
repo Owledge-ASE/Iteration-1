@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_03_21_223841) do
   end
 
   create_table "user_reactions", force: :cascade do |t|
-    t.integer "like"
+    t.boolean "like"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
