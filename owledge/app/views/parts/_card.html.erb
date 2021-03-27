@@ -17,10 +17,6 @@
     
   </div>
   <div class="tag-wrapper">
-      <% NotebooksHelper.getTagsForNotebook(note).each do |tagRow| %>
-        <div class="tag-display">
-        <%= tagRow.tag %>
-        </div>
-      <% end %>
+      <%= render partial: "parts/tag_display", locals: { note: note } %>
   </div>
 </div>
