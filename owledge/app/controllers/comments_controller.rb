@@ -3,11 +3,6 @@ class CommentsController < ApplicationController
 
   def new
     @user = current_user
-    if flash.key?(:comment)
-      @comment = flash[:comment]
-    else
-      @comment = UserComment.new
-    end
   end
 
   def destroy

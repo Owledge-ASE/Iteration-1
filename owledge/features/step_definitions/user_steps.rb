@@ -1,4 +1,5 @@
 World(Devise::TestHelpers)
+require 'pry'
 
 Given /the following users exist:/ do | users_table |
   users_table.hashes.each do |user|
@@ -35,4 +36,8 @@ end
 
 When /^I try to delete comment ([0-9]+)$/ do |comment|
   page.driver.submit :delete, notebook_comment_path(UserComment.find(comment).note_id, comment), {}
+end
+
+When(/^debug$/) do
+  binding.pry
 end

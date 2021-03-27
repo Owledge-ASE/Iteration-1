@@ -31,12 +31,6 @@ Feature: View Profile for Users
 	Then I should see "Student" inside "#affiliation"
 	Then I should see "Columbia University" inside "#organization"
 
-	# (TODO) Maybe add this test to the "list_notebooks.feature", b/c it is for notebooks?
-	Scenario: I should be able to view the profile page of another user
-	When I go to the notebook page for "Sorting Algorithms"
-	And I follow "Joseph Doe"
-	Then I should be on the profile page for "example4@gmail.com"
-
 	Scenario: I should see a list of user fields on the profile page of another user
 	When I am on the profile page for "example2@gmail.com"
 	Then I should see "John" inside "#first_name"
@@ -47,3 +41,14 @@ Feature: View Profile for Users
 
 
 	#When I am on the profile page for "example5@gmail.com"
+	Scenario: get to a sub-note that does not exist (sad path)
+		When I go to the profile page with ID 1010
+		Then I should be on the homepage
+		And I should see "Could not find a profile with ID 1010" inside "#error_message"
+
+	Scenario: I try to access my profile page but I am not logged in (sad path)
+		When I am on the homepage
+		And I follow "Log out"
+		And I go to my profile page
+		Then I should be on the login page
+		And I should see "Login required to view your profile." in "#error_message"

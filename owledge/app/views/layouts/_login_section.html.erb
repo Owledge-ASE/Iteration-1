@@ -9,7 +9,7 @@
 </div>
 <div class="p-1">
   <% if user_signed_in? %>
-    <a class="btn btn-secondary" href="<%= destroy_user_session_path %>" aria-label="Log out">Log out</a>
+    <a class="btn btn-secondary" href="<%= destroy_user_session_path %>" aria-label="Log out" id="logout">Log out</a>
   <% else %>
     <a class="btn btn-secondary" href="<%= login_path %>" aria-label="Login">Login</a>
   <% end %>

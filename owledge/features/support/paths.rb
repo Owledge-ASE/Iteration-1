@@ -27,6 +27,8 @@ module NavigationHelpers
       user_profile_path(User.find_by_email($1))
       #user = User.find_by_email($1)
       # id = User.where(:email => $1)
+    when /^the profile page with ID ([0-9]+)$/
+      user_profile_path($1)
     when /^edit my profile$/
       edit_user_registration_path current_user
     when /^the edit comment page for comment ([0-9]+)$/

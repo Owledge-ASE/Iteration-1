@@ -29,11 +29,6 @@
     min-width: 15em;
     padding: 0 0.25em;
   }
-  @media (max-width: 32em) {
-    .note-card {
-      max-width: 100%;
-    }
-  }
 }
 
 
@@ -41,13 +36,13 @@
   flex: 1;
   display: flex;
   .main-panel, .contents-panel {
-    min-width: 80vw;
+    min-width: 65vw;
     overflow-y: auto;
     flex: 3;
   }
   .comments-panel {
     flex: 1;
-    min-width: 30em;
+    min-width: 22em;
     min-height: min-content;
     overflow-y: auto;
     .list-group {
