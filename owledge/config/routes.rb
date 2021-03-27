@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :comments
     resources :reactions
     get 'search', to: 'notebooks#search', as: :search_notebooks
-    get 'likes', to: 'notebooks#likes', as: :likes_notebook
+    get 'likes', to: 'notebooks#likes', as: :likes
   end
 
 

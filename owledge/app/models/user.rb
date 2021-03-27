@@ -12,6 +12,6 @@ class User < ApplicationRecord
   end
 
   def likes_note(note_id)
-    UserReaction.where(user_id: self.id, note_id: note_id).like
+    UserReaction.where(user_id: self.id, note_id: note_id)
   end
 end

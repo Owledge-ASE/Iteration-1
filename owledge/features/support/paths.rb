@@ -30,6 +30,8 @@ module NavigationHelpers
       edit_user_registration_path current_user
     when /^the edit comment page for comment ([0-9]+)$/
       edit_notebook_comments_path(UserComment.find($1).note_id, $1)
+      #when /^see "(.+)" inside "(.+)" for "(.+)"$/
+      # likes_path(Note.find($3).note_id)
 
     #Andrea
     #when /^the profile page for "([^"]+)"/ then

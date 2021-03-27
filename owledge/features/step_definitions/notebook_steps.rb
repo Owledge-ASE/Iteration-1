@@ -56,11 +56,15 @@ Then /^"(.+)" should not exist$/ do | id |
   expect(page).not_to have_css(id)
 end
 
-Then /^I should( not)? see "([^"]+)" in(?:side)? "([^"]+)"$/ do | opp, needle, haystack |
+Then /^I should( not)? see "([^"]+)" in(?:side)? "([^"]+)"$/ do | opp, num, select|
   if opp.nil?
-    expect(find(haystack)).to have_text(needle)
+    within("span[@id='#{select}']"){expect(page).to_not have_content(num)}
+    #expect(page).not_to have_selector(:id, 'id', text:"num_likes")
+    #expect(find(haystack)).to have_text(needle)
   else
-    expect(find(haystack)).not_to have_text(needle)
+    within("span[@id='#{select}']"){expect(page).to_not have_content(num)}
+    #expect(page).to have_selector(:id, 'id', text:"num_likes")
+    #expect(find(haystack)).not_to have_text(needle)
   end
 end
 

@@ -22,32 +22,33 @@ Feature: React to a note
       |id   | user_id               | note_id        | like           |
       |1    | 1                     | 5              | true           |
       |2    | 2                     | 5              | ture           |
-      |3    | 1                     | 6              | true           |
+      |3    | 1                     | 1              | true           |
       |4    | 2                     | 6              | false          |
 
     And I am logged in as "example1@gmail.com"
 
   Scenario: I should see the number of reactions
     When I am on the notebook page for "Selection Sort"
-    Then I should see "2" inside "#num_likes"
+    #Then the num_likes field within id should contain 2
+    Then I should see "2" inside "num_likes"
     And I should see the like button
     And I do not like this
     #expect css with suit heart
     #do like = sweet heart filled
   Scenario: I should be able to add my reaction
     When I am on the notebook page for "Sorting Algorithms"
-    Then I should see "12" inside "#user_reactions" count for this note
-    And I should see the "Like" button
-    When I follow "Like"
-    Then I should see "13" inside "#user_reactions" count for this note
+    Then I should see "1" inside "num_likes"
+    And I should see the like button
+    When I do like this
+    Then I should see "2" inside "num_likes"
 
   Scenario: I should be able to undo my reaction
     When I am on the notebook page for "Quick Sort"
-    And I should see "15" inside "#user_reactions" count for this note
-    And I follow "#like_button"
-    Then I should see "16" inside "#user_reactions" count for this note
-    When I follow "#like_button"
-    And I should see "15" inside "#user_reactions" count for this note
+    And I should see "0" inside "num_likes"
+    And I do like this
+    Then I should see "1" inside "num_likes"
+    When I do follow this
+    And I should see "0" inside "num_likes"
 
   Scenario: I should be able to see which notes I have reacted to
     When I go to my profile page

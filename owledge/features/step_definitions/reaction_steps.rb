@@ -14,3 +14,14 @@ Then /^(?:|I )should( not)? see the like button$/ do |opposite|
   end
 end
 
+And(/^I do( not)? like this$/) do
+  #select = find(:css, 'class')
+  if opp.nil?
+    expect(page).to have_selector(:i, 'i', text:"bi-suit-heart")
+    #render(class: "bi-suit-heart")
+    #expect(select).to have_text("bi-suit-heart")
+  else
+    expect(page).to have_selector(:i, 'i', text:"bi-suit-heart-filled")
+    #expect(select).to have_text("bi-suit-heart-filled")
+  end
+end
