@@ -20,7 +20,13 @@
     <%= form.label :description, 'Description' %>
     <%= form.text_area :description, class: 'form-control' %>
     </div>
+    <div class="form-group">
+      <%= form.label :tags, 'Tags (Enter a comma (,) to start a new tag)' %>
+      <input type="text" id="tag-input1" id="note_tags" name="tags">
+    </div>
     <%= form.submit class: 'btn btn-submit btn-primary' %>
   <% end %>
   </div>
 </div>
+
+<%= javascript_pack_tag 'tags' %>

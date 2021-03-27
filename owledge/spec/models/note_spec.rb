@@ -156,23 +156,23 @@ RSpec.describe Note, type: :model do
       end
       it 'Sort on all parents count is same' do
         @notes = Note.allParents
-        @note_sorted = @notes.sort_by_column("title-desc")
+        @note_sorted = @notes.sortByColumn("title-desc")
         expect(@note_sorted.count).to eq(@notes.count)
 
       end
       it 'IF no column passed then throw an error' do
         @notes = Note.allParents
         expect {
-          @note_sorted = @notes.sort_by_column()
+          @note_sorted = @notes.sortByColumn()
         }.to raise_error(ArgumentError)
       end
       it 'IF invalid column passed then throw an error' do
         @notes = Note.allParents
-        @note_sorted = @notes.sort_by_column("abc-desc")
+        @note_sorted = @notes.sortByColumn("abc-desc")
       end
       it 'Sort on all parents check title desc order' do
         @notes = Note.allParents
-        @note_sorted = @notes.sort_by_column("title-desc")
+        @note_sorted = @notes.sortByColumn("title-desc")
         @flag = 0
         for @note in @note_sorted
           if @flag == 0
@@ -186,7 +186,7 @@ RSpec.describe Note, type: :model do
       end
       it 'Sort on all parents check title asc order' do
         @notes = Note.allParents
-        @note_sorted = @notes.sort_by_column("title-asc")
+        @note_sorted = @notes.sortByColumn("title-asc")
         @flag = 0
         for @note in @note_sorted
           if @flag == 0

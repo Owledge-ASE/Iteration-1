@@ -11,8 +11,13 @@
         <p class="card-text"><%= note.description.nil?  ? "" : note.description[0..300] %></p>
       </div>
     </a>
+    
     <div class="card-footer">
       <%= render partial: "parts/reaction", locals: { note: note } %>
+      <div class="tag-wrapper">
+          <%= render partial: "parts/tag_display", locals: { note: note } %>
       </div>
+    </div>
+    
   </div>
 </div>
