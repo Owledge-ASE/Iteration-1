@@ -23,7 +23,8 @@ Feature: React to a note
       |1    | 1                     | 5              | true           |
       |2    | 2                     | 5              | ture           |
       |3    | 1                     | 1              | true           |
-      |4    | 2                     | 6              | false          |
+      |4    | 2                     | 3              | true           |
+      |5    | 1                     | 3              | true           |
 
     And I am logged in as "example1@gmail.com"
 
@@ -43,10 +44,9 @@ Feature: React to a note
 
   Scenario: I should be able to undo my reaction
     When I am on the notebook page for "Quick Sort"
-    And I should see "0" inside "num_likes"
-    Then I should see "1" inside "num_likes"
+    And I should see "2" inside "num_likes"
     When I follow the like button
-    And I should see "0" inside "num_likes"
+    Then I should see "1" inside "num_likes"
     #And I do like this (after And)
 
   Scenario: I should be able to see which notes I have reacted to
