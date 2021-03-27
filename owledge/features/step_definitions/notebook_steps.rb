@@ -9,7 +9,6 @@
 # Then I should see the label "Description"
 # Then I should see the "Save" button
 
-require 'pry'
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
 
 
@@ -84,23 +83,3 @@ Then /^I should( not)? see "([^"]+)" in(?:side)? "([^"]+)"$/ do | opp, needle, h
     expect(page).not_to have_css(haystack, text: needle)
   end
 end
-
-Then /^debug$/ do
-  binding.pry
-end
-
-# Andrea
-
-
-#Andrea
-#When /^I am logged in as "([^"]+)"/ do | user_email |
-#  @user = User.new(:email => email)
-#  @user.save!
-# basic_authorize(:email => email)
-#end
-
-#When /^I am logged in as "([^"]+)"/ do | email |
-#encoded_login = ["#{email}"].pack("m*")
-#page.driver.header 'Authorization', "Basic #{encoded_login}"
-#end
-

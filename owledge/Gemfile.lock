@@ -181,6 +181,8 @@ GEM
     nokogiri (1.11.2-x64-mingw32)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pg (1.2.3)
+    pg (1.2.3-x64-mingw32)
     popper_js (2.8.6)
     protobuf-cucumber (3.10.8)
       activesupport (>= 3.2)
@@ -339,6 +341,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.3)
+  pg
   pry-byebug
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
