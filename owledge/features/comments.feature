@@ -73,9 +73,20 @@ Feature: Comment on a note
     Then I should be on the notebook page for "Sorting Algorithms"
     And I should see "Comment added!" in "#success_message"
 
-  Scenario: I should not be able to add a blank comment
+  Scenario: I should not be able to add a blank comment when adding
     When I am on the new comment page for "Sorting Algorithms"
     And I press "Create Comment"
     And I should see "Could not save comment." in "#error_message"
     And I should see "Comment can't be blank" in "#error_message li"
     And I should see "Comment is too short (minimum is 10 characters)" in "#error_message li"
+
+  Scenario: I should not be able to add a blank comment when editing
+    When I am on the edit comment page for comment 1
+    And I fill in "comment_comment" with "tooshort"
+    And I press "Update Comment"
+    And I should see "Could not save comment." in "#error_message"
+    And I should see "Comment is too short (minimum is 10 characters)" in "#error_message li"
+
+  Scenario: When I try to go to the comments index page, I get redirected.
+    When I am on the comment page for "Sorting Algorithms"
+    Then I should be on the notebook page for "Sorting Algorithms"
