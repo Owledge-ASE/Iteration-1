@@ -6,6 +6,8 @@
         this.arr = [];
         this.wrapper = document.createElement('div');
         this.input = document.createElement('input');
+        this.input.setAttribute("id", "input-tag-"+this.options.selector);
+        this.wrapper.setAttribute("id", "tags-input-wrapper-"+this.options.selector);
         buildUI(this);
         addEvents(this);
     }

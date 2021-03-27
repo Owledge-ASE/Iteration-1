@@ -4,7 +4,7 @@
     <div class="row top-header mt-0 pt-0">
       <h1 class="col-10 mt-0" id="title"><%= @note.title %></h1>
 
-    <div id="<%= @note.id %>_tag_wrapper">
+    <div id="<%= @note.id %>_tag_wrapper" class="tag_wrapper_inputcheck">
         <%= render partial: "parts/tag_display", locals: { note: @note } %>
     </div>
       <a href="<%= new_notebook_path({parent: @note}) %>" class="card-link col-2">
