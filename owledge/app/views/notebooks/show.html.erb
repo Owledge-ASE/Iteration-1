@@ -32,7 +32,8 @@
       <div class="card-body" id="reactions">
         <div class="card-title"><h3>Reactions</h3></div>
         <a href="<%= notebook_likes_path(@note.likes) %>" class="btn btn-xs" id="like_button">
-          <i class="bi bi-suit-heart<%= current_user.likes_note(@note) ? "-filled" : ""%>"></i>
+          <button type="button" class="btn btn-secondary" id="click_like">
+            <i class="bi bi-suit-heart<%= current_user.likes_note(@note) ? "-filled" : ""%>"></i></button>
           <span id="num_likes"><%= @note.likes%></span></a>
       </div>
     </div>

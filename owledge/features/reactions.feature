@@ -29,26 +29,25 @@ Feature: React to a note
 
   Scenario: I should see the number of reactions
     When I am on the notebook page for "Selection Sort"
-    #Then the num_likes field within id should contain 2
     Then I should see "2" inside "num_likes"
     And I should see the like button
-    And I do not like this
+    #And I do not like this
     #expect css with suit heart
     #do like = sweet heart filled
   Scenario: I should be able to add my reaction
     When I am on the notebook page for "Sorting Algorithms"
     Then I should see "1" inside "num_likes"
-    And I should see the like button
-    When I do like this
+    And I follow the like button
     Then I should see "2" inside "num_likes"
+    #When I do like this (after And)
 
   Scenario: I should be able to undo my reaction
     When I am on the notebook page for "Quick Sort"
     And I should see "0" inside "num_likes"
-    And I do like this
     Then I should see "1" inside "num_likes"
-    When I do follow this
+    When I follow the like button
     And I should see "0" inside "num_likes"
+    #And I do like this (after And)
 
   Scenario: I should be able to see which notes I have reacted to
     When I go to my profile page
