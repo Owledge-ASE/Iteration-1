@@ -13,9 +13,10 @@
     </a>
     
     <div class="card-footer">
-    <div class="tag-wrapper">
-        <%= render partial: "parts/tag_display", locals: { note: note } %>
-    </div>
+      <%= render partial: "parts/reaction", locals: { note: note } %>
+      <div class="tag-wrapper">
+          <%= render partial: "parts/tag_display", locals: { note: note } %>
+      </div>
     </div>
     
   </div>
