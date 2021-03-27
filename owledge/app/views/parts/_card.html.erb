@@ -13,6 +13,14 @@
     </a>
     <div class="card-footer">
       <%= render partial: "parts/reaction", locals: { note: note } %>
-      </div>
+    </div>
+    
+  </div>
+  <div class="tag-wrapper">
+      <% NotebooksHelper.getTagsForNotebook(note).each do |tagRow| %>
+        <div class="tag-display">
+        <%= tagRow.tag %>
+        </div>
+      <% end %>
   </div>
 </div>

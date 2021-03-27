@@ -41,17 +41,17 @@
   flex: 1;
   display: flex;
   .main-panel, .contents-panel {
-    min-width: 80vh;
-    overflow-y: scroll;
+    min-width: 80vw;
+    overflow-y: auto;
     flex: 3;
   }
   .comments-panel {
     flex: 1;
     min-width: 30em;
     min-height: min-content;
-    overflow-y: scroll;
+    overflow-y: auto;
     .list-group {
-      overflow-y: scroll;
+      overflow-y: auto;
       flex: 1;
     }
     .comment-container {

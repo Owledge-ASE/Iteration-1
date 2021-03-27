@@ -32,7 +32,7 @@ class Note < ApplicationRecord
     return result
   end
 
-  def self.sort_by_column(sort_by_col)
+  def self.sortByColumn(sort_by_col)
     @sort_string = sort_by_col.gsub("-", " ")
     return self.order(@sort_string)
   end

@@ -1,12 +1,14 @@
 class NotebooksController < ApplicationController
   def create
     @note = Note.new(allowed_params)
-    print("\n=================\n")
-    print(params[:tags])
-    print("\n=================\n")
     @ancestors = @note.ancestors
     if @note.valid?
       if @note.save
+        #setting up the tags and then tagging the notebook
+        unless params[:tags].nil? or params[:tags].empty?
+          NotebooksHelper.setupTags(params[:tags])
+          NotebooksHelper.setupNotebookTags(@note,params[:tags])
+        end
         redirect_to notebook_path @note
         return
       end
@@ -60,7 +62,7 @@ class NotebooksController < ApplicationController
     sort_by_col = params[:sort_by_col]
     @notes = Note.allParents
     if !(sort_by_col.nil? || sort_by_col.empty?)
-      @notes = @notes.sort_by_column(sort_by_col)
+      @notes = @notes.sortByColumn(sort_by_col)
     end
   end
 
