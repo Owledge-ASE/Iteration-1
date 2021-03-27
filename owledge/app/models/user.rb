@@ -12,6 +12,11 @@ class User < ApplicationRecord
   end
 
   def likes_note(note_id)
-    UserReaction.where(user_id: self.id, note_id: note_id)
+    @reaction = UserReaction.where(user_id: self.id, note_id: note_id)
+    if @reaction[:like] == true
+      @reaction[:like] = false
+    else
+      @reaction[:like] = true
+    end
   end
 end
