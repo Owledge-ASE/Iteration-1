@@ -80,7 +80,7 @@ Scenario: If I clicks the Owledge logo, then redirect back to Home page
     When I follow "owledge_logo"
     Then I should be on the homepage
 
-
+#code to enter tags check
 
 
 
