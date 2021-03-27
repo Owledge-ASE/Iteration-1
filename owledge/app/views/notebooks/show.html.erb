@@ -7,6 +7,9 @@
       <a href="<%= edit_notebook_path(@note) %>" class="card-link col-2">
         <button type="button" class="btn btn-secondary" id="edit-note">Edit Note</button>
       </a>
+    <div>
+        <%= render partial: "parts/tag_display", locals: { note: @note } %>
+    </div>
       <a href="<%= new_notebook_path({parent: @note}) %>" class="card-link col-2">
         <button type="button" class="btn btn-secondary" id="add-note">Add Note</button>
       </a>

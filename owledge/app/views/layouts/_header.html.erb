@@ -1,4 +1,4 @@
-<div class="d-flex bd-highlight mb-3 p-2">
+<div class="d-flex bd-highlight mb-3 p-2 header">
   <div class="me-auto main-header-section">
     <div class="header">
         <a href="/" class="header-title owledge_logo" id="owledge_logo"><h1>Owledge</h1></a>
@@ -15,6 +15,7 @@
     <%= render 'layouts/login_section' %>
   </div>
 </div>
+
 <% if flash[:error].present? %>
 <div class="alert alert-warning" id="error_message" class="m-0">
   <%= flash[:error]  %>
