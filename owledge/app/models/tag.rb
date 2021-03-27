@@ -6,7 +6,6 @@ class Tag < ApplicationRecord
   end
 
   def self.returnTagsForNote(note)
-
     return Tag.joins(" 
         INNER JOIN 
         notebook_tags 
