@@ -42,9 +42,6 @@ module NotebooksHelper
     NotebookTag.where(:notebook_id => note.id).destroy_all
     
     existing_tags.each do |tagRow|
-      print("\n6=================\n")
-      print(tagRow.tag)
-      print("\n6=================\n")
       NotebookTag.create(notebook_id:note.id,tag_id:tagRow.id)
     end
   end
