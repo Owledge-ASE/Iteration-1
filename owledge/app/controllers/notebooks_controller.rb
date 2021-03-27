@@ -1,6 +1,9 @@
 class NotebooksController < ApplicationController
   def create
     @note = Note.new(allowed_params)
+    print("\n=================\n")
+    print(params[:tags])
+    print("\n=================\n")
     @ancestors = @note.ancestors
     if @note.valid?
       if @note.save
