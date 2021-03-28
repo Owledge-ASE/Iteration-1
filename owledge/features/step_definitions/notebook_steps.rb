@@ -21,6 +21,20 @@ Given /the following notes exist/ do | notes_table |
     end
 end
 
+
+Given /the following tags exist/ do | tags_table |
+  tags_table.hashes.each do |tag|
+    Tag.create tag
+  end
+end
+
+
+Given /the following notebook tags exist/ do | note_tags_table |
+  note_tags_table.hashes.each do |note_tag|
+    NotebookTag.create note_tag
+  end
+end
+
 Then /^(?:|I )should see the label "(.+)"$/ do |labelname| 
     if page.respond_to? :should
         page.should have_content(labelname)

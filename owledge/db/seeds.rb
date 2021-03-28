@@ -58,6 +58,26 @@ Note.create([{
                               parent_id:child_note.id
                 }])
 
+sortingtag = Tag.create({
+                  tag: 'sorting'
+                })
+                
+graphTag = Tag.create({
+                  tag: 'graph'
+                })
+
+NotebookTag.create([{
+                    notebook_id: graph_theory.id,
+                    tag_id:graphTag.id
+                  },{
+                    notebook_id: child_note.id,
+                    tag_id:sortingtag.id
+                  },{
+                    notebook_id: sorting.id,
+                    tag_id:sortingtag.id
+                  }
+              ])   
+
 users = User.create([{
   id: 1,
   first_name: "Andrew",

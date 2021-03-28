@@ -69,11 +69,6 @@ class NotebooksController < ApplicationController
     end
   end
 
-  def index
-    @ancestors = []
-    @notes = Note.allParents
-  end
-
   def sort
     flash[:error] = nil
     @ancestors = []
@@ -87,7 +82,7 @@ class NotebooksController < ApplicationController
   def index
     flash[:error] = nil
     @ancestors = []
-    @notes = Note.allParents
+    @notes = NotebooksHelper.find()
   end
   def edit
     @note = Note.find(params[:id])

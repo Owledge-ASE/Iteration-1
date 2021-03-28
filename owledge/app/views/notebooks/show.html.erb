@@ -8,6 +8,7 @@
         <button type="button" class="btn btn-secondary" id="edit-note">Edit Note</button>
       </a>
     <div>
+    <div id="<%= @note.id %>_tag_wrapper" class="tag_wrapper_inputcheck">
         <%= render partial: "parts/tag_display", locals: { note: @note } %>
     </div>
       <a href="<%= new_notebook_path({parent: @note}) %>" class="card-link col-2">

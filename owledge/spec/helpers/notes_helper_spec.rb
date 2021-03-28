@@ -48,4 +48,72 @@ RSpec.describe NotebooksHelper, type: :helper do
       end
     end
   end
+
+  
+  describe 'check if setting up tags is working' do
+    context 'Check if tags can be loaded in properly' do
+      before :each do
+        Note.delete_all
+        Rails.application.load_seed 
+      end
+      it 'Passing in a completely new set of tags' do
+        NotebooksHelper.setupTags('bootstrap,layout,test')
+        tags = Tag.all
+        expect(tags.count).to eq(5)
+      end
+      it 'Passing in only an old set of tags' do
+        NotebooksHelper.setupTags('sorting,graph')
+        tags = Tag.all
+        expect(tags.count).to eq(2)
+      end
+      it 'Passing in both new and old set of tags' do
+        NotebooksHelper.setupTags('sorting,bootstrap')
+        tags = Tag.all
+        expect(tags.count).to eq(3)
+      end
+    end
+
+
+    describe 'check if fetching tags for a notebook is working' do
+      context 'check if fetching tags for a notebook is working' do
+        before :each do
+          Note.delete_all
+          Rails.application.load_seed 
+        end
+        it 'Check for 1 tag' do
+          note = Note.where(title:"Sorting Algorithms").first()
+          note_tag_list = NotebooksHelper.getTagsForNotebook(note)
+          expect(note_tag_list.count).to eq(1)
+        end
+        it 'Check no tags' do
+          note = Note.where(title:"Directed Acyclic Graph").first()
+          note_tag_list = NotebooksHelper.getTagsForNotebook(note)
+          expect(note_tag_list.count).to eq(0)
+        end
+      end
+    end
+
+    describe 'check if assigning tags is working' do
+      context 'Check if assigning the tags to note is working' do
+        before :each do
+          Note.delete_all
+          Rails.application.load_seed 
+        end
+        it 'Adding 1 tag' do
+          note = Note.create(title:"Test",description:"Tag Test")
+          NotebooksHelper.setupNotebookTags(note,'sorting')
+          note_tag_list = NotebooksHelper.getTagsForNotebook(note)
+          expect(note_tag_list.count).to eq(1)
+        end
+        it 'Adding multiple tags' do
+          note = Note.create(title:"Test",description:"Tag Test")
+          NotebooksHelper.setupNotebookTags(note,'sorting,graph')
+          note_tag_list = NotebooksHelper.getTagsForNotebook(note)
+          expect(note_tag_list.count).to eq(2)
+        end
+      end
+    end
+
+  end
+  
 end

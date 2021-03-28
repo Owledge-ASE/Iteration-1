@@ -18,6 +18,17 @@ Background: notes have been added to the database
  |9  | Recursive merge          | 8        | Runs recursively                                                                                                                                                                                  |
  |10 | For merge                | 8        | Runs recursively                                                                                                                                                                                  |
 
+Given the following tags exist:
+    |id |tag      |
+    |1  |sorting  |
+    |2  |graph    |
+    |3  |bootstrap|
+
+Given the following notebook tags exist:
+    |id |notebook_id  |tag_id |
+    |1  |9            |1      |
+    |2  |9            |3      |
+
 
 Scenario: User should be able to access edit page when they are on show page
   When I go to the notebook page for "Recursive merge"
@@ -34,24 +45,35 @@ Scenario: User should see the title, description, and tags in the edit page
   Then I should see the label "add new tags"
   Then I should see the "Update Note" button
 
+# use javascript to see the tag
+@javascript
 Scenario: User should see the content of saved title, description, and tags in the edit page
   When I go to the notebook page for "Recursive merge"
   When I follow "Edit Note"
   Then I should be on the edit page for "Recursive merge"
   Then I should see "Recursive merge"
   Then I should see "Runs recursively"
+  And I should see "sorting" in "#tags-input-wrapper-tag-input1"
+  And I should see "bootstrap" in "#tags-input-wrapper-tag-input1"
 
+
+@javascript
 Scenario: User should be able to change the fill in, and update node with new value
   When I go to the notebook page for "Recursive merge"
   When I follow "Edit Note"
   Then I should be on the edit page for "Recursive merge"
-  And I fill in "note_title" with "Code Testing"
+  When I fill in "note_title" with "Code Testing"
   And I fill in "note_description" with "Understanding the different paths and creating test cases to evaluate features"
+  And I fill in "input-tag-tag-input1" with "somenewtag,"
+  Then I should see "somenewtag" in "#tags-input-wrapper-tag-input1"
+  When I fill in "input-tag-tag-input1" with "othernewtag,"
+  Then I should see "othernewtag" in "#tags-input-wrapper-tag-input1"
   Then I press "Update Note"
   Then I should be on the details page for "Code Testing"
 
+
 Scenario: User should be able to see the changed data
-    When I go to the notebook page for "Recursive merge"
+  When I go to the notebook page for "Recursive merge"
   When I follow "Edit Note"
   Then I should be on the edit page for "Recursive merge"
   And I fill in "note_title" with "Code Testing"
@@ -60,3 +82,6 @@ Scenario: User should be able to see the changed data
   Then I should be on the details page for "Code Testing"
   Then I should see "Code Testing"
   Then I should see "Understanding the different paths and creating test cases to evaluate features" 
+  And I should see "sorting" inside "#9_tag_wrapper"
+  And I should see "bootstrap" inside "#9_tag_wrapper"
+  And I should not see "graph" inside "#9_tag_wrapper"
