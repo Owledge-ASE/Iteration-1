@@ -25,6 +25,23 @@ class NotebooksController < ApplicationController
       #redirect_to new_notebook_path(:parent=> allowed_params[:parent_id])
     end
   end
+  def update
+    # update the note part
+    id = params[:id]
+    @note = Note.find(id)
+    puts(params[:note][:parent_id])
+    puts("test")
+    puts(allowed_params[:parent_id])
+    @note.update(allowed_params)
+    flash[:notice] = "#{@note.title} was successfully updated."
+    # upate tags part
+    unless params[:tags].nil? or params[:tags].empty?
+      NotebooksHelper.setupTags(params[:tags])
+      NotebooksHelper.setupNotebookTags(@note,params[:tags])
+    end
+    # finish update and return
+    redirect_to notebook_path(@note)
+  end
   def new
     @ancestors = []
     parent = params[:parent]
@@ -44,7 +61,12 @@ class NotebooksController < ApplicationController
   end
   def search
     @ancestors = []
-    @notes = NotebooksHelper.find(params[:search_by_contain])
+    searchContent = params[:search_by_contain]
+    if searchContent.nil? || searchContent.empty?
+      @notes = Note.allParents
+    else
+      @notes = Note.search(searchContent)
+    end
   end
 
   def sort
@@ -59,6 +81,18 @@ class NotebooksController < ApplicationController
   def index
     @ancestors = []
     @notes = NotebooksHelper.find()
+  end
+  def edit
+    @note = Note.find(params[:id])
+    puts("parentid")
+    puts(@note.parent_id)
+    tags = NotebooksHelper.getTagsForNotebook(@note)
+    @tag_str = ""
+    if !(tags.nil? || tags.empty?)
+      tags.each do |t|
+        @tag_str = @tag_str+t.tag+","
+      end
+    end
   end
 
   private

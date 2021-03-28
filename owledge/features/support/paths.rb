@@ -14,6 +14,7 @@ module NavigationHelpers
     when /^the notebooks sort page$/ then '/notebook-sort'
     when /^the (?:notebook|details) page for "(.+)"$/
       notebook_path(Note.find_by_title($1))
+    when /^the edit page for "(.+)"/ then edit_notebook_path(Note.find_by_title($1))
     when /^the create page$/ then '/notebooks/new'
     when /^the notebook with ID ([0-9]+)$/ then notebook_path $1
     when /^the registration page$/ then "/register"
