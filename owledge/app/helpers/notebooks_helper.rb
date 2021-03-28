@@ -50,4 +50,12 @@ module NotebooksHelper
     return Tag.returnTagsForNote(note)
   end
 
+  def self.find(searchContent = nil)
+    if searchContent.nil? || searchContent.empty?
+      return Note.allParents
+    else
+      return Note.search(searchContent)
+    end
+  end
+
 end
