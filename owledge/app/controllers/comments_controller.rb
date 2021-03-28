@@ -3,11 +3,6 @@ class CommentsController < ApplicationController
 
   def new
     @user = current_user
-    if flash.key?(:comment)
-      @comment = flash[:comment]
-    else
-      @comment = UserComment.new
-    end
   end
 
   def destroy
@@ -44,18 +39,10 @@ class CommentsController < ApplicationController
       end
     end
     flash[:error] = "Could not save comment."
-    flash[:error_details] = generate_error_messages @comment
+    flash[:error_details] = CommentsHelper.generate_error_messages @comment
 
     @user = current_user
     render action: "edit"
-  end
-
-  def generate_error_messages(comment)
-    error_details ||= []
-    comment.errors.objects.each do |err|
-      error_details << err.full_message
-    end
-    error_details
   end
 
   def create
@@ -67,7 +54,7 @@ class CommentsController < ApplicationController
       end
     end
     flash[:error] = "Could not save comment."
-    flash[:error_details] = generate_error_messages @comment
+    flash[:error_details] = CommentsHelper.generate_error_messages @comment
     @user = current_user
     render action: "new"
   end

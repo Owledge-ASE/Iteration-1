@@ -70,7 +70,6 @@ class NotebooksController < ApplicationController
   end
 
   def sort
-    flash[:error] = nil
     @ancestors = []
     sort_by_col = params[:sort_by_col]
     @notes = Note.allParents
@@ -80,7 +79,6 @@ class NotebooksController < ApplicationController
   end
 
   def index
-    flash[:error] = nil
     @ancestors = []
     @notes = NotebooksHelper.find()
   end
