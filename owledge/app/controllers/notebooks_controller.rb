@@ -29,7 +29,9 @@ class NotebooksController < ApplicationController
     # update the note part
     id = params[:id]
     @note = Note.find(id)
-    puts(params[:parent_id])
+    puts(params[:note][:parent_id])
+    puts("test")
+    puts(allowed_params[:parent_id])
     @note.update(allowed_params)
     flash[:notice] = "#{@note.title} was successfully updated."
     # upate tags part

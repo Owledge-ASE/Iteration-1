@@ -7,7 +7,7 @@
 <div class="card bg-dark-l0 col-12 main-card">
   <div class="card-body bg-dark-l0">
   <%= form_with scope: :note, url: notebook_path(@note),:method => :put , model: @note do |form| %>
-    <%= form.hidden_field :parent_id, value: params[:parent] %>
+    <%= form.hidden_field :parent_id, value: @note.parent_id %>
     <div class="form-group">
     <%= form.label :title, 'Title' %>
     <%= form.text_field :title, class: 'form-control' %>
