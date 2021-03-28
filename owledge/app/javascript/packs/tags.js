@@ -134,9 +134,13 @@
 
 
 var tagInput1 = new TagsInput({
-    selector: 'tag-input1',
+    selector: "tag-input1",
     duplicate : false,
     max : 10
 });
-//tagInput1.addData(["Python","Ruby","Go"])
-//console.log(tagInput1.arr)
+let tags_list = document.querySelector("#fake_input").value
+if(tags_list){
+    tags_list = tags_list.split(",")
+    tags_list.pop()
+    tagInput1.addData(tags_list)
+}
