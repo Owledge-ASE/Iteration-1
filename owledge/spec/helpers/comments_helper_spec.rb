@@ -11,5 +11,21 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe CommentsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "return issues" do
+    it "has issues" do
+      comment = UserComment.create({
+        comment: "",
+        user_id: 1,
+        note_id: 1,
+      })
+      comment.valid?
+      expect(CommentsHelper.generate_error_messages(comment)).to eq(
+        [
+          "User must exist",
+          "Comment can't be blank",
+          "Comment is too short (minimum is 10 characters)",
+        ]
+      )
+    end
+  end
 end
