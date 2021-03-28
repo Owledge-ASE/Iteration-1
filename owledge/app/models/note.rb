@@ -41,6 +41,7 @@ class Note < ApplicationRecord
     self.parent.ancestors + [self.parent]
   end
 
+  #Counts the number of total likes by unique users for a given note
   def likes()
     UserReaction.where(note_id: self.id).count
   end

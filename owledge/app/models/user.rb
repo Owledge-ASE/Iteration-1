@@ -11,12 +11,46 @@ class User < ApplicationRecord
     first_name + " " + last_name
   end
 
-  def likes_note(note_id)
-    @reaction = UserReaction.where(user_id: self.id, note_id: note_id)
-    if @reaction[:like] == true
-      @reaction[:like] = false
+  #Checks if user has already reacted to this note
+  # Creates reaction if new user
+  # Inverts 'like' boolean based on user click
+  def is_like_clicked(note_id)
+    reaction = UserReaction.where(user_id: self.id, note_id: note_id).first
+    if reaction.nil? or reaction.empty?
+      print("1=========(reaction is nil/empty)========\n")
+      reaction = UserReaction.create(note_id: note_id, user_id: self.id, like: false)
+      reaction.save
     else
-      @reaction[:like] = true
+    #reaction[:like] = !reaction[:like]
+    #reaction.save
+
+    print("\n00===========(errors count)==============\n")
+    print(reaction.errors)
+    print("\n000=============(reaction.note_id)============\n")
+    print(reaction.note_id)
+    print("\n0000=============(reaction.errors.invalid?[:like])============\n")
+    print(reaction.invalid?)
+    print("\n0000===========================================\n")
+
+    return reaction[:like]
     end
+  end
+
+  #Unnecessary?
+  def likes_click(note_id)
+    reaction = UserReaction.where(user_id: self.id, note_id: note_id).first
+
+    print("\n================(reaction.invalid?)===============\n")
+    print(reaction.nil?)
+    print("\n================================================\n")
+
+    reaction[:like] = !reaction[:like]
+
+    print("\n================(reaction.like)===============\n")
+    print(reaction.like)
+    print("\n===============================================\n")
+
+    reaction.save
+    return reaction[:like]
   end
 end

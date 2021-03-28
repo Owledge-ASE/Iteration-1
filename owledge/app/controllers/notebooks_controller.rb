@@ -32,12 +32,19 @@ class NotebooksController < ApplicationController
     end
     @ancestors = @note.ancestors
   end
+
   def search
     
   end
 
   def likes
-
+    #print("\n66============================\n")
+    #print(current_user)
+    #print(params)
+    #print("\n=66===========================\n")
+    current_user.likes_click(params[:notebook_id])
+    redirect_to notebook_path(params[:notebook_id])
+    return
   end
 
   def index

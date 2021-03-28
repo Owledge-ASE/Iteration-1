@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  def likes_note(note_id)
+  end
+
   def show
     id = params[:id]
     if current_user.nil? and id.nil?
@@ -15,9 +18,5 @@ class UsersController < ApplicationController
       flash[:error] = "Could not find a profile with ID #{id}"
       redirect_to 'index' and return
     end
-  end
-
-  def likes_note(note_id)
-
   end
 end

@@ -32,9 +32,10 @@
       <div class="card-body" id="reactions">
         <div class="card-title"><h3>Reactions</h3></div>
         <% unless current_user.nil? %>
-        <a href="<%= notebook_likes_path(@note.likes) %>" class="btn btn-xs" id="like_button">
+        <a href="<%= notebook_likes_path(@note.id) %>" class="btn btn-xs" id="like_button">
           <button type="button" class="btn btn-secondary" id="click_like">
-            <i class="bi bi-suit-heart<%= current_user.likes_note(@note) ? "-filled" : ""%>">
+            <!--<i class="bi bi-suit-heart< current_user.is_like_clicked(@note.id) ? "-filled" : ""%>">-->
+            <i class=<%= current_user.is_like_clicked(@note.id) ? "bi bi-suit-heart-filled" : "bi bi-suit-heart-filled"%>
             </i>
           </button>
         </a>
