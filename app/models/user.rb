@@ -26,36 +26,28 @@ class User < ApplicationRecord
       reaction.save
       return reaction[:like]
     else
-    #reaction[:like] = !reaction[:like]
-    #reaction.save
-
-    print("\n00===========(errors count)==============\n")
-    print(reaction.errors)
-    print("\n000=============(reaction.note_id)============\n")
-    print(reaction.note_id)
-    print("\n0000=============(reaction.errors.invalid?[:like])============\n")
-    print(reaction.invalid?)
-    print("\n0000===========================================\n")
-
-    return reaction[:like]
+      return reaction[:like]
     end
   end
 
   #Unnecessary?
   def likes_click(note_id)
     reaction = UserReaction.where(user_id: self.id, note_id: note_id).first
-
-    print("\n================(reaction.invalid?)===============\n")
-    print(reaction.nil?)
-    print("\n================================================\n")
-
     reaction[:like] = !reaction[:like]
-
-    print("\n================(reaction.like)===============\n")
-    print(reaction.like)
-    print("\n===============================================\n")
-
     reaction.save
     return reaction[:like]
   end
 end
+
+    #reaction[:like] = !reaction[:like]
+    #reaction.save
+
+    #print("\n00===========(errors count)==============\n")
+    #print(reaction.errors)
+    #print("\n000=============(reaction.note_id)============\n")
+    #print(reaction.note_id)
+    #print("\n0000=============(reaction.errors.invalid?[:like])============\n")
+    #print(reaction.invalid?)
+    #print("\n0000===========================================\n")
+
+
