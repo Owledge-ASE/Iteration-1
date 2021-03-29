@@ -79,7 +79,6 @@ NotebookTag.create([{
               ])   
 
 users = User.create([{
-  id: 1,
   first_name: "Andrew",
   last_name: "Peterson",
   email: "apeterson@fakeu.edu",
@@ -87,7 +86,6 @@ users = User.create([{
   affiliation: "Student",
   organization: "Fake University"
 }, {
- id: 2,
  first_name: "Hannah",
  last_name: "Ritter",
  email: "hritter@fakeu.edu",
@@ -96,14 +94,26 @@ users = User.create([{
  organization: "Fake University",
 
 },{
- id: 3,
  first_name: "Riley",
  last_name: "Smith",
  email: "rsmith@fakeu.edu",
  password: "thisisasafepasswordbecauseitislong",
  affiliation: "Student",
  organization: "Fake University",
-}])
+},{
+                       last_name: "Prince",
+                       email: "prince@fakeu.edu",
+                       password: "thisisasafepasswordbecauseitislong",
+                       affiliation: "Student",
+                       organization: "Fake University",
+                     },{
+                       first_name: "George",
+                       last_name: "",
+                       email: "geo@fakeu.edu",
+                       password: "thisisasafepasswordbecauseitislong",
+                       affiliation: "Student",
+                       organization: "Fake University",
+                     }])
 
 UserComment.create([{
   user_id: users[0].id,
@@ -111,18 +121,30 @@ UserComment.create([{
   comment: "This is great info!"
 }])
 
-UserReaction.create([{
-  like: true,
+@reactions = UserReaction.create([{
+  like: false,
   user_id: users[0].id,
   note_id: graph_theory.id
   },
                      {
-  like: true,
+  like: false,
   user_id: users[1].id,
   note_id: graph_theory.id
   },
                      {
-  like: true,
+  like: false,
   user_id: users[2].id,
   note_id: graph_theory.id
-  }])
+  }, {
+                                   like: true,
+                                   user_id: users[2].id,
+                                   note_id: sorting.id
+                                 }, {
+                                    like: false,
+                                    user_id: users[0].id,
+                                    note_id: sorting.id
+                                  }])
+@reactions.each do |reaction|
+  reaction.do_like
+  reaction.save
+end

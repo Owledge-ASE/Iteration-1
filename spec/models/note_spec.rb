@@ -208,24 +208,22 @@ RSpec.describe Note, type: :model do
       Rails.application.load_seed
     end
     it 'Check likes count of a note without any user reactions' do
-      @note = Note.find(Note.find_by_title("Sorting Algorithms").id)
-      count = UserReaction.where(note_id: @note.id).count
+      @note = Note.find(Note.find_by_title("Sorting Algorithms 6").id)
+      count = @note.likes
       expect(count).to eq(0)
 
     end
-    it 'Check that count increases by one when a user likes that note' do
-      @note = Note.find(Note.find_by_title("Sorting Algorithms").id)
-      @reaction = UserReaction.create(user_id: 1, note_id: @note, like: true)
-      count = UserReaction.where(note_id: @note.id).count
+    it 'Number of likes for a note for a user is correct' do
+      note = Note.find(Note.find_by_title("Sorting Algorithms").id)
+      user = User.find(User.find_by_email("apeterson@fakeu.edu").id)
+      reaction = UserReaction.where(note_id:note.id,user_id:user.id).first()
+      count = note.likes
       expect(count).to eq(1)
-
     end
-    it 'IF invalid note passed then throw an error' do
+    it 'IF invalid note passed then expect count to be 0' do
       # Trying to get the count of an invalid note_id
-      count_likes = UserReaction.where(note_id: 5).count
-      expect {
-        count_likes = UserReaction.where(note_id: 5).count
-      }.to raise_error(ArgumentError)
+       count_likes = UserReaction.where(note_id: 101).count
+       expect(count_likes).to eq(0)
     end
   end
 end

@@ -61,12 +61,7 @@ class NotebooksController < ApplicationController
   end
   def search
     @ancestors = []
-    searchContent = params[:search_by_contain]
-    if searchContent.nil? || searchContent.empty?
-      @notes = Note.all_parents
-    else
-      @notes = Note.search(searchContent)
-    end
+    @notes = NotebooksHelper.find(params[:search_by_contain])
   end
 
   def sort
