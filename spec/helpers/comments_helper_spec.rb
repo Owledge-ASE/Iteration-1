@@ -15,7 +15,7 @@ RSpec.describe CommentsHelper, type: :helper do
     it "has issues" do
       comment = UserComment.create({
         comment: "",
-        user_id: 1,
+        user_id: 1000,
         note_id: 1,
       })
       comment.valid?

@@ -3,11 +3,13 @@ class UserReaction < ApplicationRecord
   belongs_to :note
 
   def self.get_like(user_id, note_id)
+    User.find(user_id).nil?
+    Note.find(note_id).nil?
     reaction = UserReaction.where(user_id: user_id, note_id: note_id).first
     if reaction.nil?
       reaction = UserReaction.create(note_id: note_id, user_id: user_id, like: false)
     end
-    reaction
+      reaction
   end
 
   def get_like

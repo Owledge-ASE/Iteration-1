@@ -26,5 +26,6 @@ class User < ApplicationRecord
     reaction = UserReaction.get_like(self.id, note_id)
     reaction.do_like
     reaction.save
+    reaction.like
   end
 end
