@@ -14,11 +14,13 @@ class UserReaction < ApplicationRecord
     if self.like.nil?
       0
     else
-      self.like ? 1 : 0
+      # for binding.pry, which passes as boolean (even if provided as int)
+      self.like == true || self.like == 1 ? 1 : 0
     end
   end
 
   def do_like
+    #require 'pry'; binding.pry
     self.like = self.get_like.zero?
   end
 end

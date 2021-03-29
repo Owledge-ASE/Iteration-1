@@ -48,6 +48,8 @@ Feature: React to a note
     And I should see "2" inside "#num_likes"
     When I follow "like_button"
     Then I should see "1" inside "#num_likes"
+    When I follow "like_button"
+    Then I should see "2" inside "#num_likes"
     #And I do like this (after And)
 
   #Scenario: I should be able to see which notes I have reacted to
