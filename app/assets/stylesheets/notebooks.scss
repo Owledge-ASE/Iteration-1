@@ -12,9 +12,6 @@
     height:150px;
     overflow: hidden;
 }
-.top-header{
-    margin:0 20px;
-}
 .form-group{
   margin:10px 0;
 }
@@ -28,6 +25,7 @@
     max-width:50%;
     min-width: 15em;
     padding: 0 0.25em;
+    display: flex;
   }
 }
 
@@ -42,7 +40,7 @@
   }
   .comments-panel {
     flex: 1;
-    min-width: 22em;
+    min-width: 16em;
     min-height: min-content;
     overflow-y: auto;
     .list-group {
@@ -65,5 +63,29 @@
 .search{
   .bar-button{
     margin:10px;
+  }
+}
+
+.likes {
+  font-size: 1.4em;
+  display: flex;
+  .like-wrapper {
+    background-color: rgba($color-white, 0.1);
+    padding: 0.2em 1em;
+    flex-shrink: 1;
+  }
+}
+.like-button {
+  color: $color-white;
+  text-decoration: none;
+  padding-right: 1em;
+}
+.top-header {
+  margin: 0 20px;
+  .note-title {
+    flex: 2;
+  }
+  .note-buttons {
+    flex: 1;
   }
 }
