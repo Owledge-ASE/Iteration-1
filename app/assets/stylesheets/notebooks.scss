@@ -67,3 +67,18 @@
     margin:10px;
   }
 }
+
+.likes {
+  font-size: 1.4em;
+  display: flex;
+  .like-wrapper {
+    background-color: rgba($color-white, 0.1);
+    padding: 0.2em 1em 0.2em 0;
+    flex-shrink: 1;
+  }
+}
+.like-button {
+  color: $color-white;
+  text-decoration: none;
+  padding: 0 1em;
+}

@@ -25,8 +25,19 @@
           <%= @note.description %>
         </div>
       </div>
+      <div class="card-footer likes">
+        <div class="like-wrapper">
+          <% unless current_user.nil? %>
+            <a href="<%= notebook_likes_path(@note.id) %>" id="like_button" class="like-button">
+                <!--<i class="bi bi-suit-heart< current_user.is_like_clicked(@note.id) ? "-filled" : ""%>">-->
+              <%= fa_icon "thumbs-up", type: current_user.is_like_clicked?(@note.id) ? :far : :fas %>
+            </a>
+          <% end %>
+          <span id="num_likes"><%= @note.likes %></span>
+        </div>
+      </div>
     </div>
-    <% if @note.children.length > 0 %>
+      <% if @note.children.length > 0 %>
     <h3>Children</h3>
     <div class="row notes" id="children">
       <% @note.children.each do |note| %>
@@ -50,21 +61,4 @@
       </div>
     </div>
   </div>
-    <div class="col-md-3">
-      <div class="card bg-dark-l0">
-        <div class="card-body" id="reactions">
-          <div class="card-title"><h3>Reactions</h3></div>
-          <% unless current_user.nil? %>
-            <a href="<%= notebook_likes_path(@note.id) %>" class="btn btn-xs" id="like_button">
-              <button type="button" class="btn btn-secondary" id="click_like">
-                <!--<i class="bi bi-suit-heart< current_user.is_like_clicked(@note.id) ? "-filled" : ""%>">-->
-                <i class=<%= current_user.is_like_clicked(@note.id) ? "bi bi-suit-heart-filled" : "bi bi-suit-heart-filled"%>
-                     </i>
-              </button>
-            </a>
-          <% end %>
-          <span id="num_likes"><%= @note.likes %></span>
-        </div>
-      </div>
-    </div>
 </div>

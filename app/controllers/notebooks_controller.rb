@@ -63,7 +63,7 @@ class NotebooksController < ApplicationController
     @ancestors = []
     searchContent = params[:search_by_contain]
     if searchContent.nil? || searchContent.empty?
-      @notes = Note.allParents
+      @notes = Note.all_parents
     else
       @notes = Note.search(searchContent)
     end
@@ -72,9 +72,9 @@ class NotebooksController < ApplicationController
   def sort
     @ancestors = []
     sort_by_col = params[:sort_by_col]
-    @notes = Note.allParents
+    @notes = Note.all_parents
     if !(sort_by_col.nil? || sort_by_col.empty?)
-      @notes = @notes.sortByColumn(sort_by_col)
+      @notes = @notes.sort_by_column(sort_by_col)
     end
   end
 

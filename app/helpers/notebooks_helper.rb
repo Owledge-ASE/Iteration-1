@@ -52,7 +52,7 @@ module NotebooksHelper
 
   def self.find(searchContent = nil)
     if searchContent.nil? || searchContent.empty?
-      return Note.allParents
+      return Note.all_parents
     else
       return Note.search(searchContent)
     end

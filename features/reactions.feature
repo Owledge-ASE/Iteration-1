@@ -25,28 +25,29 @@ Feature: React to a note
       |3    | 1                     | 1              | true           |
       |4    | 2                     | 3              | true           |
       |5    | 1                     | 3              | true           |
+      |6    | 2                     | 6              | true           |
 
     And I am logged in as "example1@gmail.com"
 
   Scenario: I should see the number of reactions
     When I am on the notebook page for "Selection Sort"
-    Then I should see "2" inside "num_likes"
+    Then I should see "2" inside "#num_likes"
     And I should see the like button
     #And I do not like this
     #expect css with suit heart
     #do like = sweet heart filled
   Scenario: I should be able to add my reaction
-    When I am on the notebook page for "Sorting Algorithms"
-    Then I should see "1" inside "num_likes"
-    And I follow the like button
-    Then I should see "2" inside "num_likes"
+    When I am on the notebook page for "Directed Acyclic Graph"
+    Then I should see "1" inside "#num_likes"
+    And I follow "like_button"
+    Then I should see "2" inside "#num_likes"
     #When I do like this (after And)
 
   Scenario: I should be able to undo my reaction
     When I am on the notebook page for "Quick Sort"
-    And I should see "2" inside "num_likes"
-    When I follow the like button
-    Then I should see "1" inside "num_likes"
+    And I should see "2" inside "#num_likes"
+    When I follow "like_button"
+    Then I should see "1" inside "#num_likes"
     #And I do like this (after And)
 
   #Scenario: I should be able to see which notes I have reacted to

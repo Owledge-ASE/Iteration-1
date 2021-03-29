@@ -31,7 +31,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'jquery-rails'
 gem 'bootstrap', '~> 5.0.0.beta2'
 gem 'bcrypt', '~> 3.1.7'
-gem 'font-awesome-sass'
+gem 'font_awesome5_rails'
 
 group :production do
   gem 'pg'

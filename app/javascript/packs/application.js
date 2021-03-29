@@ -6,13 +6,17 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require font_awesome5
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import MarkdownIt from 'markdown-it'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 
+library.add(faThumbsUp)
 
 Rails.start()
 Turbolinks.start()

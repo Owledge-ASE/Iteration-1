@@ -14,10 +14,6 @@ Then /^(?:|I )should( not)? see the like button$/ do |opposite|
   end
 end
 
-And(/^I follow the like button$/) do
-  click_button("click_like")
-end
-
 #And(/^I do( not)? like this$/) do |opp|
 #select = find(:css, 'class')
 #if opp.nil?

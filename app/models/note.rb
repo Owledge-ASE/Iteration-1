@@ -5,7 +5,7 @@ class Note < ApplicationRecord
   has_many :user_comments
   has_many :user_reactions, dependent: :destroy
 
-  def self.allParents
+  def self.all_parents
     return self.where('parent_id is null')
   end
 
@@ -33,12 +33,12 @@ class Note < ApplicationRecord
     return result
   end
 
-  def self.sortByColumn(sort_by_col)
+  def self.sort_by_column(sort_by_col)
     @sort_string = sort_by_col.gsub("-", " ")
     return self.order(@sort_string)
   end
   def children
-    return Note.where(parent_id: self.id).all
+    Note.where(parent_id: self.id).all
   end
 
   def parent
@@ -57,7 +57,7 @@ class Note < ApplicationRecord
   end
 
   #Counts the number of total likes by unique users for a given note
-  def likes()
-    UserReaction.where(note_id: self.id).count
+  def likes
+    UserReaction.where(note_id: self.id, like: 1).count
   end
 end
