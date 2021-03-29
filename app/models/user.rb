@@ -18,36 +18,13 @@ class User < ApplicationRecord
   #Checks if user has already reacted to this note
   # Creates reaction if new user
   # Inverts 'like' boolean based on user click
-  def is_like_clicked(note_id)
-    reaction = UserReaction.where(user_id: self.id, note_id: note_id).first
-    if reaction.nil? or reaction.empty?
-      print("1=========(reaction is nil/empty)========\n")
-      reaction = UserReaction.create(note_id: note_id, user_id: self.id, like: false)
-      reaction.save
-      return reaction[:like]
-    else
-      return reaction[:like]
-    end
+  def is_like_clicked?(note_id)
+    UserReaction.get_like(self.id, note_id)
   end
 
-  #Unnecessary?
   def likes_click(note_id)
-    reaction = UserReaction.where(user_id: self.id, note_id: note_id).first
-    reaction[:like] = !reaction[:like]
+    reaction = UserReaction.get_like(self.id, note_id)
+    reaction.do_like
     reaction.save
-    return reaction[:like]
   end
 end
-
-    #reaction[:like] = !reaction[:like]
-    #reaction.save
-
-    #print("\n00===========(errors count)==============\n")
-    #print(reaction.errors)
-    #print("\n000=============(reaction.note_id)============\n")
-    #print(reaction.note_id)
-    #print("\n0000=============(reaction.errors.invalid?[:like])============\n")
-    #print(reaction.invalid?)
-    #print("\n0000===========================================\n")
-
-

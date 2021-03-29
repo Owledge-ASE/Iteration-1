@@ -19,7 +19,7 @@ RSpec.describe Note, type: :model do
         Note.delete_all
       end
       it 'Checks the list of parents' do
-        @notes = Note.allParents
+        @notes = Note.all_parents
         expect(@notes.count).to eq(0)
       end
     end
@@ -29,7 +29,7 @@ RSpec.describe Note, type: :model do
         Note.create(@note_list_only_parents)
       end
       it 'Checks the list of parents' do
-        @notes = Note.allParents
+        @notes = Note.all_parents
         @notes_all = Note.all
         expect(@notes.count).to eq(@notes_all.count)
       end
@@ -40,12 +40,12 @@ RSpec.describe Note, type: :model do
         Rails.application.load_seed 
       end
       it 'Checks the list of parents count is not equal to list count' do
-        @notes = Note.allParents
+        @notes = Note.all_parents
         @notes_all = Note.all
         expect(@notes.count).not_to eq(@notes_all.count)
       end
       it 'Checks the list of parents count is 2' do
-        @notes = Note.allParents
+        @notes = Note.all_parents
         expect(@notes.count).to eq(2)
       end
     end
@@ -155,24 +155,24 @@ RSpec.describe Note, type: :model do
         Rails.application.load_seed 
       end
       it 'Sort on all parents count is same' do
-        @notes = Note.allParents
-        @note_sorted = @notes.sortByColumn("title-desc")
+        @notes = Note.all_parents
+        @note_sorted = @notes.sort_by_column("title-desc")
         expect(@note_sorted.count).to eq(@notes.count)
 
       end
       it 'IF no column passed then throw an error' do
-        @notes = Note.allParents
+        @notes = Note.all_parents
         expect {
-          @note_sorted = @notes.sortByColumn()
+          @note_sorted = @notes.sort_by_column()
         }.to raise_error(ArgumentError)
       end
       it 'IF invalid column passed then throw an error' do
-        @notes = Note.allParents
-        @note_sorted = @notes.sortByColumn("abc-desc")
+        @notes = Note.all_parents
+        @note_sorted = @notes.sort_by_column("abc-desc")
       end
       it 'Sort on all parents check title desc order' do
-        @notes = Note.allParents
-        @note_sorted = @notes.sortByColumn("title-desc")
+        @notes = Note.all_parents
+        @note_sorted = @notes.sort_by_column("title-desc")
         @flag = 0
         for @note in @note_sorted
           if @flag == 0
@@ -185,8 +185,8 @@ RSpec.describe Note, type: :model do
         end
       end
       it 'Sort on all parents check title asc order' do
-        @notes = Note.allParents
-        @note_sorted = @notes.sortByColumn("title-asc")
+        @notes = Note.all_parents
+        @note_sorted = @notes.sort_by_column("title-asc")
         @flag = 0
         for @note in @note_sorted
           if @flag == 0

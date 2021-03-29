@@ -33,9 +33,6 @@ module NavigationHelpers
     when /^edit my profile$/
       edit_user_registration_path current_user
     when /^the edit comment page for comment ([0-9]+)$/
-      edit_notebook_comments_path(UserComment.find($1).note_id, $1)
-      #when /^see "(.+)" inside "(.+)" for "(.+)"$/
-      # likes_path(Note.find($3).note_id)
       edit_notebook_comment_path(UserComment.find($1).note_id, $1)
     when /^the new comment page for "([^"]+)"$/
       new_notebook_comment_path(Note.find_by_title($1).id)

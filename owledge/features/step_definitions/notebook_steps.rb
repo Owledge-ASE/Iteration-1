@@ -9,6 +9,7 @@
 # Then I should see the label "Description"
 # Then I should see the "Save" button
 
+require 'pry'
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
 
 
@@ -18,20 +19,6 @@ Given /the following notes exist/ do | notes_table |
     notes_table.hashes.each do |note|
       Note.create note
     end
-end
-
-
-Given /the following tags exist/ do | tags_table |
-  tags_table.hashes.each do |tag|
-    Tag.create tag
-  end
-end
-
-
-Given /the following notebook tags exist/ do | note_tags_table |
-  note_tags_table.hashes.each do |note_tag|
-    NotebookTag.create note_tag
-  end
 end
 
 Then /^(?:|I )should see the label "(.+)"$/ do |labelname| 
@@ -50,27 +37,6 @@ Then /^(?:|I )should( not)? see the "(.+)" button$/ do |opposite, buttonname|
   end
 end
 
-Then /^I should( not)? see "(.+)" before "(.+)" in "(.+)"$/ do | opposite,first,second,container |
-  step %{I should see "#{first}" inside "#{container}"}
-  step %{I should see "#{second}" inside "#{container}"}
-  if opposite.nil?
-    page.body.index(first).should < page.body.index(second)
-  else
-    page.body.index(first).should >= page.body.index(second)
-  end
-
-end
-
-Then /^I should( not)? see "(.+)" before "(.+)" in the note grid$/ do | opposite,first,second |
-  step %{I should see "#{first}" inside "#note-grid"}
-  step %{I should see "#{second}" inside "#note-grid"}
-  if opposite.nil?
-    page.body.index(first).should < page.body.index(second)
-  else
-    page.body.index(first).should >= page.body.index(second)
-  end
-
-end
 
 Then /^I should see "(.+)" in(?:side)? list of nodes$/ do | needle |
   step %{I should see "#{needle}" inside "#notes"}
@@ -90,7 +56,6 @@ Then /^"(.+)" should not exist$/ do | id |
   expect(page).not_to have_css(id)
 end
 
-
 Then /^I should( not)? see "([^"]+)" in(?:side)? "([^"]+)"$/ do | opp, needle, haystack |
   if opp.nil?
     expect(page).to have_css(haystack, text: needle)
@@ -98,4 +63,23 @@ Then /^I should( not)? see "([^"]+)" in(?:side)? "([^"]+)"$/ do | opp, needle, h
     expect(page).not_to have_css(haystack, text: needle)
   end
 end
+
+Then /^debug$/ do
+  binding.pry
+end
+
+# Andrea
+
+
+#Andrea
+#When /^I am logged in as "([^"]+)"/ do | user_email |
+#  @user = User.new(:email => email)
+#  @user.save!
+# basic_authorize(:email => email)
+#end
+
+#When /^I am logged in as "([^"]+)"/ do | email |
+#encoded_login = ["#{email}"].pack("m*")
+#page.driver.header 'Authorization', "Basic #{encoded_login}"
+#end
 
