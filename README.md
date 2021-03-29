@@ -11,9 +11,9 @@ Zhengyi Li (zl3029)
 
 ## File Location
 
-Code present at : https://github.com/Owledge-ASE/Iteration-1/tree/iteration-2-submission
+Code for iteration-2 present at : https://github.com/Owledge-ASE/Iteration-1/tree/iteration-2-submission
 
-The branch name being used is iteration-2
+The branch name being used is iteration-2-submission
 
 RSpec tests are in https://github.com/Owledge-ASE/Iteration-1/tree/iteration-2-submission/spec
 
