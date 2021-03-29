@@ -21,23 +21,18 @@ class User < ApplicationRecord
   def is_like_clicked(note_id)
     reaction = UserReaction.where(user_id: self.id, note_id: note_id).first
     if reaction.nil? or reaction.empty?
-      print("1=========(reaction is nil/empty)========\n")
       reaction = UserReaction.create(note_id: note_id, user_id: self.id, like: false)
       reaction.save
       return reaction[:like]
     else
-    #reaction[:like] = !reaction[:like]
-    #reaction.save
+      #reaction[:like] = !reaction[:like]
+      #reaction.save
 
-    print("\n00===========(errors count)==============\n")
-    print(reaction.errors)
-    print("\n000=============(reaction.note_id)============\n")
-    print(reaction.note_id)
-    print("\n0000=============(reaction.errors.invalid?[:like])============\n")
-    print(reaction.invalid?)
-    print("\n0000===========================================\n")
+      print(reaction.errors)
+      print(reaction.note_id)
+      print(reaction.invalid?)
 
-    return reaction[:like]
+      reaction[:like]
     end
   end
 

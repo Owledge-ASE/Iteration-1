@@ -92,12 +92,12 @@ end
 
 Then /^I should( not)? see "([^"]+)" in(?:side)? "([^"]+)"$/ do | opp, num, select|
   if opp.nil?
-    within("span[@id='#{select}']"){expect(page).to_not have_content(num)}
-    #expect(page).not_to have_selector(:id, 'id', text:"num_likes")
+    #within("span[@id='#{select}']"){expect(page).to_not have_content(num)}
+    expect(page).not_to have_selector(:id, 'id', text:"num_likes")
     #expect(find(haystack)).to have_text(needle)
   else
-    within("span[@id='#{select}']"){expect(page).to_not have_content(num)}
-    #expect(page).to have_selector(:id, 'id', text:"num_likes")
+    #within("span[@id='#{select}']"){expect(page).to_not have_content(num)}
+    expect(page).to have_selector(:id, 'id', text:"num_likes")
     #expect(find(haystack)).not_to have_text(needle)
   end
 end
