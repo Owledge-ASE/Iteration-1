@@ -19,7 +19,7 @@ RSpec tests are in https://github.com/Owledge-ASE/Iteration-1/tree/iteration-2/s
 
 Cucumber tests and execution code in https://github.com/Owledge-ASE/Iteration-1/tree/iteration-2/features
 
-Coverage report(100%) is present at: https://github.com/Owledge-ASE/Iteration-1/tree/iteration-2/coverage/index.html
+Coverage report(100%) will be generated after executing cucumber and then rspec tests at: ./coverage/index.html
 
 ## Heroku Link
 
