@@ -11,24 +11,26 @@ Zhengyi Li (zl3029)
 
 ## File Location
 
-Code present at : https://github.com/Owledge-ASE/Iteration-1
+Code present at : https://github.com/Owledge-ASE/Iteration-1/tree/iteration-2
 
-Main code is in the /owledge folder
+The branch name being used is iteration-2
 
-RSpec tests are in https://github.com/Owledge-ASE/Iteration-1/tree/main/owledge/spec
+RSpec tests are in https://github.com/Owledge-ASE/Iteration-1/tree/iteration-2/spec
 
-Cucumber tests and execution code in https://github.com/Owledge-ASE/Iteration-1/tree/main/owledge/features
+Cucumber tests and execution code in https://github.com/Owledge-ASE/Iteration-1/tree/iteration-2/features
+
+Coverage report(100%) is present at: https://github.com/Owledge-ASE/Iteration-1/tree/iteration-2/coverage/index.html
 
 ## Heroku Link
 
-Server present on: https://peaceful-meadow-90102.herokuapp.com/notebooks
+Server present on: https://boiling-taiga-26082.herokuapp.com/notebooks
 
 ## Preinstall
 
 
 Run
 ```
-cd owledge
+npm install
 bundle install 
 rake db:create 
 rake db:migrate
