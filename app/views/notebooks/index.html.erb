@@ -1,0 +1,16 @@
+<div class="row top-header">
+      <h1 class="col-10">Notebooks</h1>
+
+      <a href="<%= new_notebook_path %>" class="card-link col-2 btn btn-secondary" id="add-note">
+        <button type="button" class="btn btn-secondary" >Add Note</button>
+      </a>
+</div>
+<div class="search bar row">
+    <%= link_to "Sort", notebooks_sort_path(:sort_by_col=>"title-asc",:search_by_contain=>params[:search_by_contain]), method: :get,class:"col-2 bar-button btn btn-secondary",id:"sort_button" %>
+</div>
+<div class="row card-container notes" id="notes">
+    <% @notes.each do |note| %>
+    <%= render partial: 'parts/card', locals: { note: note } %>
+    <% end %>
+</div>
+</div>

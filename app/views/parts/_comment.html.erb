@@ -1,0 +1,14 @@
+<li class="list-group-item" id="email">
+  <user-comment author="<%= comment.user.email %>">
+    <div class="markdown comment">
+    <%= comment.comment %>
+    </div>
+    <%= render partial: "parts/user_card", locals: { user: comment.user } %>
+
+    <% if comment.user == current_user %>
+    <a class="edit btn btn-xs btn-secondary"
+       id="comment_<%= comment.id %>_edit"
+       href="<%= edit_notebook_comment_path comment.note_id, comment.id %>">Edit</a>
+    <% end %>
+  </user-comment>
+</li>

@@ -1,0 +1,48 @@
+
+@import "application";
+.tags-input-wrapper {
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+    input {
+                border: none;
+                background: transparent;
+                outline: none;
+                width: 150px;
+    }
+    
+    .tag {
+                display: inline-block;
+                background-color: #009432;
+                color: white;
+                border-radius: 40px;
+                padding: 0px 3px 0px 7px;
+                margin-right: 5px;
+                margin-bottom: 5px;
+        a {
+                    margin: 0 7px 3px;
+                    display: inline-block;
+                    cursor: pointer;
+        }
+    }
+    
+}
+.tag-wrapper{
+    overflow:hidden;
+    height:  35px;
+}
+.tag-display {
+    display: inline-block;
+    background-color: #009432;
+    color: white;
+    border-radius: 40px;
+    padding: 3px 7px 3px 7px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    a {
+            margin: 0 7px 3px;
+            display: inline-block;
+            cursor: pointer;
+    }
+}

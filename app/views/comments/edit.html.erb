@@ -1,0 +1,15 @@
+<%= form_with scope: :comment, url: notebook_comment_path(params[:notebook_id], params[:id]), model: @comment do |f| %>
+  <%= f.hidden_field :user_id, value: @user.id %>
+  <%= f.hidden_field :note_id, value: params[:notebook_id] %>
+  <%= f.hidden_field :id, value: @comment.id %>
+  <div class="form-group">
+    <%= f.label :comment, "Comment" %>
+    <%= f.text_area :comment, :class => "form-control" %>
+  </div>
+  <div class="btn-group mt-3" role="group">
+    <%= link_to 'Delete', notebook_comment_path(params[:notebook_id], params[:id]),
+                method: :delete, class: "delete btn btn-submit btn-danger me-2",
+                data: { confirm: "Are you sure?" } %>
+    <%= f.submit 'Update Comment', class: 'btn btn-submit btn-primary' %>
+  </div>
+<% end %>

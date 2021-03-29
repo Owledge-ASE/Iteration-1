@@ -1,0 +1,23 @@
+<div class="note-card">
+  <div class="card bg-dark-l2 main-card">
+    <% if current_page?(notebooks_search_url) %>
+      <%= render partial: "parts/card-breadcrumbs", locals: { note: note } %>
+    <% end %>
+    <a href="<%= notebook_path(note.id) %>" class="card-link" id="note_<%= note.id %>">
+      <div class="card-body">
+        <h5 class="card-title">
+          <%= note.title %>
+        </h5>
+        <p class="card-text"><%= note.description.nil?  ? "" : note.description[0..300] %></p>
+      </div>
+    </a>
+    
+    <div class="card-footer">
+      <%= render partial: "parts/reaction", locals: { note: note } %>
+      <div class="tag-wrapper" id="<%= note.id %>_tag_wrapper">
+          <%= render partial: "parts/tag_display", locals: { note: note } %>
+      </div>
+    </div>
+    
+  </div>
+</div>

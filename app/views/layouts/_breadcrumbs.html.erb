@@ -1,0 +1,17 @@
+<% unless current_page?(notebooks_path) or current_page?(notebooks_search_url) or current_page?(notebooks_sort_path) or @ancestors.nil? %>
+  <nav aria-label="breadcrumb" id="breadcrumbs" class="crumb-holder">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="<%= notebooks_path %>">Home</a></li>
+    <% @ancestors.each do |note| %>
+      <li class="breadcrumb-item"><a href="<%= notebook_path note.id %>"><%= note.title %></a></li>
+    <% end %>
+    <% if !@note.nil? and !@note.id.nil? %>
+    <li class="breadcrumb-item"><a href="<%= notebook_path @note.id %>"><%= @note.title %></a></li>
+    <% elsif ! params[:show_breadcrumb_header].nil? and ! params[:show_breadcrumb_header].nil? %>
+    <li class="breadcrumb-item"><%=  params[:show_breadcrumb_header] %> </li>
+    <% elsif current_page?(new_notebook_path) %>
+    <li class="breadcrumb-item">New <% unless @ancestors.empty? %>Sub-<% end %>Note</li>
+    <% end %>
+  </ol>
+</nav>
+<% end %>

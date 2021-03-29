@@ -1,0 +1,9 @@
+@import "application";
+
+form {
+  input[type=text], input[type=email], input[type=password] {
+    &:not(.no-form-control) {
+      @extend .form-control;
+    }
+  }
+}

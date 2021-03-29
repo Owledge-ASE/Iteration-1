@@ -1,0 +1,70 @@
+
+<div class="row show-notes">
+  <div class="main-panel">
+    <div class="row top-header mt-0 pt-0">
+      <h1 class="col-10 mt-0" id="title"><%= @note.title %></h1>
+
+      <a href="<%= edit_notebook_path(@note) %>" class="card-link col-2">
+        <button type="button" class="btn btn-secondary" id="edit-note">Edit Note</button>
+      </a>
+    <div>
+    <div id="<%= @note.id %>_tag_wrapper" class="tag_wrapper_inputcheck">
+        <%= render partial: "parts/tag_display", locals: { note: @note } %>
+    </div>
+      <a href="<%= new_notebook_path({parent: @note}) %>" class="card-link col-2">
+        <button type="button" class="btn btn-secondary" id="add-note">Add Note</button>
+      </a>
+      
+    </div>
+    <div class="card bg-dark-l1 col-12 main-card">
+      <div class="card-body">
+        <div class="card-title">
+          <h3>Description</h3>
+        </div>
+        <div class="card-text" id="description">
+          <%= @note.description %>
+        </div>
+      </div>
+    </div>
+    <% if @note.children.length > 0 %>
+    <h3>Children</h3>
+    <div class="row notes" id="children">
+      <% @note.children.each do |note| %>
+      <%= render partial:"parts/card", locals: {note: note} %>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+  <div class="comments-panel">
+    <div class="card bg-dark-l3 comment-container">
+      <div class="card-body comments" id="comments">
+        <div class="card-title"><h3>Comments</h3></div>
+        <ul class="list-group comments-body">
+          <% @note.user_comments.each do |user_comment| %>
+            <%= render partial:"parts/comment", locals: { comment: user_comment } %>
+          <% end %>
+        </ul>
+        <div class="card-footer">
+          <a href="<%= new_notebook_comment_path @note %>" class="btn btn-primary btn-md mt-4">Add Comment</a>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="col-md-3">
+      <div class="card bg-dark-l0">
+        <div class="card-body" id="reactions">
+          <div class="card-title"><h3>Reactions</h3></div>
+          <% unless current_user.nil? %>
+            <a href="<%= notebook_likes_path(@note.id) %>" class="btn btn-xs" id="like_button">
+              <button type="button" class="btn btn-secondary" id="click_like">
+                <!--<i class="bi bi-suit-heart< current_user.is_like_clicked(@note.id) ? "-filled" : ""%>">-->
+                <i class=<%= current_user.is_like_clicked(@note.id) ? "bi bi-suit-heart-filled" : "bi bi-suit-heart-filled"%>
+                     </i>
+              </button>
+            </a>
+          <% end %>
+          <span id="num_likes"><%= @note.likes %></span>
+        </div>
+      </div>
+    </div>
+</div>
