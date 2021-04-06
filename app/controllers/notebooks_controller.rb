@@ -97,6 +97,20 @@ class NotebooksController < ApplicationController
     end
   end
 
+  def dashboard
+    #Only for finding notes that are created by the given user
+    #@notes = []
+    #user_id = current_user.id
+    #filter = param[:filter]
+    #if filter = 'my notebooks'
+    #  @notes =
+    #end
+    #@notes = Note.all_parents
+    #if !(sort_by_fil.nil? || sort_by_fil.empty?)
+    # @notes = @notes.sort_by_filter(sort_by_fil)
+    #end
+  end
+
   private
   def allowed_params
     params.require(:note).permit(:title, :description, :parent_id)

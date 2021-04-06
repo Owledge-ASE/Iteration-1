@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :comments
     get 'search', to: 'notebooks#search', as: :search_notebooks
     get 'likes', to: 'notebooks#likes', as: :likes
+    #get 'dashboard', to: 'notebooks#dashboard', as: notebooks_dashboard
   end
 
   root to: redirect('/notebooks')
