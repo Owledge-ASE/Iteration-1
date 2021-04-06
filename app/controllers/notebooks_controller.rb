@@ -58,6 +58,7 @@ class NotebooksController < ApplicationController
       redirect_to '/' and return
     end
     @ancestors = @note.ancestors
+    @children = @note.children
   end
   def search
     @ancestors = []
