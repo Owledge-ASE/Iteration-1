@@ -21,7 +21,12 @@ var myDiagram = GOJS(go.Diagram, "children", {
     "undoManager.isEnabled":true,
     layout: GOJS(go.TreeLayout, {angle: 90, layerSpacing: 40})
 })
-
+function redirectTo(s) {
+    window.location.pathname = "/notebooks/"+s
+    // url_head = window.location.protocol + "//" + window.location.host + "/notebooks/" + s
+    // console.log(url_head)
+    // document.location.href = url_head
+}
 myDiagram.nodeTemplate  = 
     GOJS(go.Node, "Auto",
         GOJS(go.Shape, "RoundedRectangle", {fill: "#505050"}),
@@ -35,6 +40,9 @@ myDiagram.nodeTemplate  =
                 { alignment: go.Spot.Center, margin:10, stroke: "white", font: "bold 16px sans-serif" },
                 new go.Binding("text", "description"),
             ),
+            {
+                click: function(e, obj) { redirectTo(obj.part.data.key) }
+            }
         )
     )
 
