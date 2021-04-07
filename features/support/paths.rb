@@ -38,7 +38,7 @@ module NavigationHelpers
       new_notebook_comment_path(Note.find_by_title($1).id)
     when /^the comment page for "([^"]+)"$/
       notebook_comments_path(Note.find_by_title($1).id)
-    when /^the notebooks dashboard page$/ then "/dashboard"
+    when /^the notebooks dashboard( page)?$/ then "/dashboard"
 
     #Andrea
     #when /^the profile page for "([^"]+)"/ then
