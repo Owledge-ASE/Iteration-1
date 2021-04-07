@@ -77,7 +77,6 @@
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.5.7, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.11.2, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.5.0, rbenv: 2.6.6) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="pg (v1.2.3, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="popper_js (v2.8.6, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="protobuf-cucumber (v3.10.8, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pry (v0.13.1, rbenv: 2.6.6) [gem]" level="application" />

@@ -51,6 +51,7 @@ Background: User is logged in
 
 Scenario: I should see the notes I created on the dashbaord Page
   When I am on the notebooks dashboard page
+  And debug
   And I select "my_notes" inside "notes_filter"
   Then I should see "Graph Theory" in the note grid
   And I should see "Selection Sort" in the note grid
