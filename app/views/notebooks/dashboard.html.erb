@@ -1,30 +1,50 @@
 <div class="row top-header">
   <h1 class="col-10">My Notebooks Dashboard</h1>
-
   <a href="<%= new_notebook_path %>" class="card-link col-2 btn btn-secondary" id="add-note">
     <button type="button" class="btn btn-secondary" >Add Note</button>
   </a>
 </div>
+
 <div class="search bar row">
-  <%= link_to "Sort", notebooks_sort_path(:sort_by_col=>"title-asc",:search_by_contain=>params[:search_by_contain]), method: :get,class:"col-2 bar-button btn btn-secondary",id:"sort_button" %>
-</div>
-  <div class="row card-container">
-    <form action=" ">
-      <label for="filters">Filter Notes by::</label>
-      <select name="filters" id="notes_filter">
-        <option value="my_notes">Notes Created</option>
-        <option value="liked_notes">Notes Liked</option>
-        <option value="commented_notes">Notes Commented On</option>
-      </select>
-      <br><br>
-      <input type="submit" value="Submit">
-    </form>
+
+  <div id="sort-description">
+    Filter your Notebooks by:
   </div>
+</div>
+<div class="grid-notes" id="note-grid">
+
+  <%= render partial: 'parts/grid-header' %>
+  <% @notes.each do |note| %>
+    <%= render partial: 'parts/grid', locals: { note: note } %>
+  <% end %>
+</div>
+</div>
 
 
+<div class="row card-container">
+<tbody>
+<% @notes.each do |note| %>
+  <tr>
+    <td><%= book.title %></td>
+    <td><%= book.content %></td>
+    <td><%= link_to "Show", book %></td>
+    <td><%= link_to "Edit", edit_book_path(book) %></td>
+    <td><%= link_to "Destroy", book, method: :delete, data: { confirm: "Are you sure?" } %></td>
+  </tr>
+<% end %>
+</tbody>
+
+
+
+  <div class="row card-container">
+    <% unless current_user.nil? %>
+      <a href="<%= notebooks_dashboard_path %>" id="filter_button" class="filter-button">
+        <% end %>
+  <input type="submit" value="Submit">
+  </div>
 <div class="row card-container notes" id="notes">
   <% @notes.notes_created.each do |note| %>
     <%= render partial: 'parts/card', locals: { note: note } %>
   <% end %>
 </div>
-</div>
+  </div>

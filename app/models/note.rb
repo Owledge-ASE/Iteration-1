@@ -61,8 +61,7 @@ class Note < ApplicationRecord
     UserReaction.where(note_id: self.id, like: 1).count
   end
   #Provides the notes that the given user created
-  def notes_created
-    user_id = current_user.id
-    Note.where(publisher_id: user_id)
-  end
+  #def notes_created(user_id)
+  #Note.where(publisher_id: user_id)
+  #end
 end
