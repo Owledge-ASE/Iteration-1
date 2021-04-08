@@ -1,16 +1,5 @@
-import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
-import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import MarkdownIt from 'markdown-it'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
-
-library.add(faThumbsUp)
-
-Rails.start()
-Turbolinks.start()
-ActiveStorage.start()
 
 class Comment extends HTMLElement {
     // A getter/setter for an open property.

@@ -3,13 +3,19 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-//= require jquery3
-//= require popper
-//= require bootstrap
-//= require font_awesome5
-
+import Rails from "@rails/ujs"
+import Turbolinks from "turbolinks"
+import * as ActiveStorage from "@rails/activestorage"
 import {Dom} from "../app/main";
 import '@rails/ujs';
 import 'bootstrap';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faThumbsUp)
+
+Rails.start()
+Turbolinks.start()
+ActiveStorage.start()
 
 window.addEventListener('DOMContentLoaded', Dom.run);
