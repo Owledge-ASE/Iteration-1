@@ -83,7 +83,7 @@ class NotebooksController < ApplicationController
       @notes = Note.where(id: reaction[:note_id])
     elsif filter == "notes_commented"
       comment = current_user.users_comments
-      @note = Note.where(id: comment[:note_id])
+      @notes = Note.where(id: comment[:note_id])
     else
       @notes = []
     end

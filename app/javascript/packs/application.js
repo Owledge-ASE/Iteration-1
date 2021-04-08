@@ -5,7 +5,7 @@
 
 //= require jquery3
 //= require popper
-//= require bootstrap-sprockets
+//= require bootstrap
 //= require font_awesome5
 
 import Rails from "@rails/ujs"
