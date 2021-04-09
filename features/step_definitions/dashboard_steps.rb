@@ -6,8 +6,8 @@
 #end
 
 And(/^I select "([^"]*)"$/) do |arg_option|
-
-  expect(page).to have_css(text: arg_option) # include homepage
+  find('.dropdown-item', :text => 'Notes Created')
+  #expect(page).to have_css(text: arg_option) # include homepage
   #find(arg_id).find(:xpath, arg_option).select_option
   # find(arg_id).find_field(arg_option).select_option
 end

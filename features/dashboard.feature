@@ -54,29 +54,29 @@ Scenario: I should see the notes I created on the dashboard Page
   And debug
   And I select "Notes Created"
   #And I select "my_notes" inside "notes_filter"
-  Then I should see "Graph Theory" in the note grid
-  And I should see "Selection Sort" in the note grid
-  And I should see "Directed Acyclic Graph" in the note grid
+  Then I should see "Graph Theory" inside list of nodes
+  And I should see "Selection Sort" inside list of nodes
+  And I should see "Directed Acyclic Graph" inside list of nodes
 
 Scenario: I should see the notes I liked if I filter by likes
   When I am on the notebooks dashboard
-  And I follow "liked" inside "filter_button"
-  Then I should see "Selection Sort" in the note grid
-  And I should see "Sorting Algorithms" in the note grid
-  And I should see "Quick Sort" in the note grid
-  And I should see "Directed Acyclic Graph" in the note grid
+  And I select "Notes Liked"
+  Then I should see "Selection Sort" inside list of nodes
+  And I should see "Sorting Algorithms" inside list of nodes
+  And I should see "Quick Sort" inside list of nodes
+  And I should see "Directed Acyclic Graph" inside list of nodes
 
 Scenario: I should see the notes I liked if I filter by likes
   When I am on the notebooks dashboard
-  And I follow "commented on" inside "filter_button"
-  Then I should see "Sorting Algorithms" in the note grid
-  And I should see "Directed Acyclic Graph" in the note grid
-  And I should not see "Quick Sort" in the note grid
-  And I should not see "Selection Sort" in the note grid
+  And I select "Notes Commented"
+  Then I should see "Sorting Algorithms" inside list of nodes
+  And I should see "Directed Acyclic Graph" inside list of nodes
+  And I should not see "Quick Sort" inside list of nodes
+  And I should not see "Selection Sort" inside list of nodes
 
 Scenario: I should see the Add Note button on the Dashboard page
   When I am on the notebooks dashboard
-  And I follow "add note"
+  And I follow "Add note"
   Then I should be on the create notebook page
 
 #Scenario: I should not be able to see the notes that I unlike
