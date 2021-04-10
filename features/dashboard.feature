@@ -72,11 +72,6 @@ Scenario: I should see the notes I liked if I filter by likes
   And I should not see "Quick Sort" inside list of nodes
   And I should not see "Selection Sort" inside list of nodes
 
-Scenario: I should see the Add Note button on the Dashboard page
-  When I am on the notebooks dashboard
-  And I follow "Add note"
-  Then I should be on the create notebook page
-
 #Scenario: I should not be able to see the notes that I unlike
 
 

@@ -72,8 +72,12 @@ Then /^I should( not)? see "(.+)" before "(.+)" in the note grid$/ do | opposite
 
 end
 
-Then /^I should see "(.+)" in(?:side)? list of nodes$/ do | needle |
-  step %{I should see "#{needle}" inside "#notes"}
+Then /^I should( not)? see "(.+)" in(?:side)? list of nodes$/ do | opposite, needle |
+  if opposite.nil?
+    step %{I should see "#{needle}" inside "#notes"}
+  else
+    step %{I should not see "#{needle}" inside "#notes"}
+  end
 end
 
 
