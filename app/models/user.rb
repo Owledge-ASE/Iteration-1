@@ -6,6 +6,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   has_many :user_comments, :foreign_key => :user_id
   has_many :user_reactions, dependent: :destroy, :foreign_key => :user_id
+  has_many :notes_commented, :through => :user_comments, :source => :note
+  has_many :notes_liked, :through => :user_reactions, :source => :note
 
   def display_name
     if first_name.nil?
@@ -27,16 +29,5 @@ class User < ApplicationRecord
     reaction.do_like
     reaction.save
     reaction.like
-  end
-
-  def users_likes
-    UserReaction.where(:user_id => self.id, :like => true)
-    #if !reaction.nil?
-    #return reaction
-    #end
-  end
-
-  def users_comments
-    UserComment.where(:user_id => self.id)
   end
 end

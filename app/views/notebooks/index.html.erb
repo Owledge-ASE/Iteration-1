@@ -14,9 +14,9 @@
     Dropdown button
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="#">Notes Created</a></li>
-    <li><a class="dropdown-item" href="#">Notes Liked</a></li>
-    <li><a class="dropdown-item" href="#">Notes Commented</a></li>
+    <li><a class="dropdown-item" href="<%= notebooks_path({filter:'notes_created'}) %>">Notes Created</a></li>
+    <li><a class="dropdown-item" href="<%= notebooks_path({filter:'notes_liked'}) %>">Notes Liked</a></li>
+    <li><a class="dropdown-item" href="<%= notebooks_path({filter:'notes_commented'}) %>">Notes Commented</a></li>
   </ul>
 </div>
 

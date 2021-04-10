@@ -75,19 +75,8 @@ class NotebooksController < ApplicationController
   end
 
   def dashboard
-    user_id = current_user.id
-    filter = params[:users_filter]
-    if filter == "notes_created"
-      @notes = Note.where(publisher_id: user_id)
-    elsif filter == "notes_liked"
-      reaction = current_user.users_likes
-      @notes = Note.where(id: reaction[:note_id])
-    elsif filter == "notes_commented"
-      comment = current_user.users_comments
-      @notes = Note.where(id: comment[:note_id])
-    else
-      @notes = []
-    end
+
+    render "index"
     #if !Note.notes_created(user_id).nil?
     #@notes = notes_created(user_id)
     #end
@@ -95,8 +84,13 @@ class NotebooksController < ApplicationController
   end
 
   def index
+    filter = params[:filter]
     @ancestors = []
-    @notes = NotebooksHelper.find()
+    if filter and user_signed_in?
+      @notes = NotebooksHelper.notes_with_filters filter, current_user
+    else
+      @notes = NotebooksHelper.find()
+    end
   end
 
   def likes

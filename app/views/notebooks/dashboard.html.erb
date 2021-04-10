@@ -18,17 +18,19 @@
 
 
 <div class="row card-container">
-  <tbody>
-  <% @notes.each do |note| %>
-    <tr>
-      <td><%= book.title %></td>
-      <td><%= book.content %></td>
-      <td><%= link_to "Show", book %></td>
-      <td><%= link_to "Edit", edit_book_path(book) %></td>
-      <td><%= link_to "Destroy", book, method: :delete, data: { confirm: "Are you sure?" } %></td>
-    </tr>
-  <% end %>
-  </tbody>
+  <table>
+    <tbody>
+    <% @notes.each do |note| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.content %></td>
+        <td><%= link_to "Show", book %></td>
+        <td><%= link_to "Edit", edit_book_path(book) %></td>
+        <td><%= link_to "Destroy", book, method: :delete, data: { confirm: "Are you sure?" } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 
   <div class="row card-container">
     <% unless current_user.nil? %>
@@ -37,7 +39,7 @@
     <input type="submit" value="Submit">
   </div>
   <div class="row card-container notes" id="notes">
-    <% @notes.notes_created.each do |note| %>
+    <% @notes.each do |note| %>
       <%= render partial: 'parts/card', locals: { note: note } %>
     <% end %>
   </div>
