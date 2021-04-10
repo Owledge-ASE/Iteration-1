@@ -7,7 +7,10 @@
 
 And /^I select "([^"]*)"(?: inside "([^"]+)")?$/ do |content, container|
   if container.nil?
-    container = page
+    container = 'body'
   end
-  expect(container).to have_css('.dropdown-item', :text => content)
+  find(container)
+    .find('.dropdown-menu')
+    .find_link(content)
+    .click
 end
