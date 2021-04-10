@@ -6,7 +6,6 @@
       <%= form_tag notebooks_search_url, method: :get do %>
         <div class="search-section row">
           <%= text_field_tag :search_by_contain, params[:search_by_contain], id:"search-bar" ,class:"col-7" , placeholder:"Find your notes"%>
-          <%= submit_tag "Search", :id => 'search', :style => "visibility:hidden;" %>
         </div>
       <% end %>
     </div>

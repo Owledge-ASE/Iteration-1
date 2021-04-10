@@ -41,7 +41,6 @@ body {
      display:flex;
 }
 .header-bar{
-    height:10vh;
     margin-left:0px;
 }
 .main-header-section{
@@ -103,7 +102,7 @@ body {
 }
 .crumb-holder{
     padding:20px;
-    height:5vh;    
+    min-height:1.5em;
     color: $color-white;
 }
 

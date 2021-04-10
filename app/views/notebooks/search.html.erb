@@ -5,7 +5,7 @@
         <button type="button" class="btn btn-secondary" >Add Note</button>
       </a>
 </div>
-<div class="row card-container notes" id="notes">
+<div class="card-container notes" id="notes">
     <% @notes.each do |note| %>
     <%= render partial: 'parts/card', locals: { note: note } %>
     <% end %>

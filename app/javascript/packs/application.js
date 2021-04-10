@@ -11,6 +11,7 @@ import '@rails/ujs';
 import 'bootstrap';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import 'app/tree';
 
 library.add(faThumbsUp)
 

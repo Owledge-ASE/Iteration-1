@@ -42,10 +42,10 @@
       </div>
       <% if @note.children.length > 0 %>
       <h3>Sub-notes</h3>
-      <div id="children" style="width: 2000px; height: 400px;">
-      <%= content_tag :div, class: "parentinfo", data: {parentinfo: @note} do %>
+      <div id="children" style="width: 80vw; height: 400px;">
+      <%= content_tag :div, id: "parentinfo", data: {parentinfo: @note} do %>
       <% end %>
-      <%= content_tag :div, class: "childreninfo", data: {childreninfo: @children} do %>
+      <%= content_tag :div, id: "childreninfo", data: {childreninfo: @children} do %>
       <% end %>
       </div>
       <% end %>
@@ -67,7 +67,3 @@
     </div>
   </div>
 </div>
-
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script src="https://unpkg.com/gojs/release/go.js"></script>
-<%= javascript_pack_tag 'tree' %>

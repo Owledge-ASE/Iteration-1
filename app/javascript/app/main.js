@@ -1,5 +1,6 @@
 import "channels"
 import MarkdownIt from 'markdown-it'
+import {buildTrees} from 'app/tree';
 
 class Comment extends HTMLElement {
     // A getter/setter for an open property.
@@ -26,6 +27,7 @@ class Dom {
     run() {
         this.markdown();
         this.comments();
+        buildTrees();
     }
     static run() {
         new Dom().run();
