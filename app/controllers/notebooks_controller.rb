@@ -74,15 +74,6 @@ class NotebooksController < ApplicationController
     end
   end
 
-  def dashboard
-
-    render "index"
-    #if !Note.notes_created(user_id).nil?
-    #@notes = notes_created(user_id)
-    #end
-    #redirect_to notebook_path(@note[:notebook_id])
-  end
-
   def index
     filter = params[:filter]
     @ancestors = []
@@ -91,12 +82,12 @@ class NotebooksController < ApplicationController
     else
       @notes = NotebooksHelper.find()
     end
+    @current_filter = filter.gsub('_', ' ').titleize || "Top-level Notebooks"
   end
 
   def likes
     current_user.likes_click(params[:notebook_id])
     redirect_to notebook_path(params[:notebook_id])
-    return
   end
 
   def edit
