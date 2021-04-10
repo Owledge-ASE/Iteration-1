@@ -14,3 +14,7 @@ And /^I select "([^"]*)"(?: inside "([^"]+)")?$/ do |content, container|
     .find_link(content)
     .click
 end
+
+Then 'I should see all the notes' do
+  expect(page).to have_css('#notes .note-card', count: Note.all_parents.count)
+end

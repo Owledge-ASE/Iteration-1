@@ -36,18 +36,10 @@ Background: User is logged in
 
   And I am logged in as "example1@gmail.com"
 
-#Scenario: I should see the notebooks that I created by default
-#When I am on the notebooks dashboard
-#And I see "My Created Notes" inside #filer"
-#Then I should see "Graph Theory" inside "#title"
-
-#Scenario: Once user clicks on the filter button then they should be on the Dashboard Page
-  #When I go to the homepage
-  #And I select "my_notes" inside "#notes_filter"
-  #Then I should be on the notebooks dashboard page
-  #And I should see "Graph Theory" in the note grid
-  #And I should see "Selection Sort" in the note grid
-  #And I should see "Directed Acyclic Graph" in the note grid
+Scenario: I should see all the notes on the dashboard Page
+  When I am on the notebooks dashboard page
+  And I select "All Notebooks"
+  Then I should see all the notes
 
 Scenario: I should see the notes I created on the dashboard Page
   When I am on the notebooks dashboard page
