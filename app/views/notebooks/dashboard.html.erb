@@ -18,27 +18,27 @@
 
 
 <div class="row card-container">
-<tbody>
-<% @notes.each do |note| %>
-  <tr>
-    <td><%= book.title %></td>
-    <td><%= book.content %></td>
-    <td><%= link_to "Show", book %></td>
-    <td><%= link_to "Edit", edit_book_path(book) %></td>
-    <td><%= link_to "Destroy", book, method: :delete, data: { confirm: "Are you sure?" } %></td>
-  </tr>
-<% end %>
-</tbody>
+  <tbody>
+  <% @notes.each do |note| %>
+    <tr>
+      <td><%= book.title %></td>
+      <td><%= book.content %></td>
+      <td><%= link_to "Show", book %></td>
+      <td><%= link_to "Edit", edit_book_path(book) %></td>
+      <td><%= link_to "Destroy", book, method: :delete, data: { confirm: "Are you sure?" } %></td>
+    </tr>
+  <% end %>
+  </tbody>
 
   <div class="row card-container">
     <% unless current_user.nil? %>
       <a href="<%= notebooks_dashboard_path %>" id="filter_button" class="filter-button">
-        <% end %>
-  <input type="submit" value="Submit">
+    <% end %>
+    <input type="submit" value="Submit">
   </div>
-<div class="row card-container notes" id="notes">
-  <% @notes.notes_created.each do |note| %>
-    <%= render partial: 'parts/card', locals: { note: note } %>
-  <% end %>
+  <div class="row card-container notes" id="notes">
+    <% @notes.notes_created.each do |note| %>
+      <%= render partial: 'parts/card', locals: { note: note } %>
+    <% end %>
+  </div>
 </div>
-  </div>

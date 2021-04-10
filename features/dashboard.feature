@@ -51,9 +51,7 @@ Background: User is logged in
 
 Scenario: I should see the notes I created on the dashboard Page
   When I am on the notebooks dashboard page
-  And debug
   And I select "Notes Created"
-  #And I select "my_notes" inside "notes_filter"
   Then I should see "Graph Theory" inside list of nodes
   And I should see "Selection Sort" inside list of nodes
   And I should see "Directed Acyclic Graph" inside list of nodes
