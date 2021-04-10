@@ -20,9 +20,9 @@ Feature: Comment on a note
       |6  | Directed Acyclic Graph | 2          | 101            | A Directed Acyclic Graph is a directed graph with no directed cycles. That is, it consists of vertices and edges (also called arcs), with each edge directed from one vertex to another, such that following those directions will never form a closed loop.                                                                                                                                                                                                                                  |
 
     And the following comments exist:
-      | user_id               | note_id        | comment                                                    |
-      | 101                     | 1              | Thanks, this helped me a lot!                              |
-      | 102                     | 6              | What if a graph has cycles but it's directed?              |
+      | user_id               | note_id        | comment                                                |
+      | 101                     | 1              | Thanks, this helped me a lot!                        |
+      | 102                     | 6              | What if a graph has cycles but it's directed?        |
       | 101                     | 6              | You can still use some DAG concepts if you use SCC.  |
       | 102                     | 6              | Oh, I see, thanks!                                   |
 

@@ -8,9 +8,24 @@
 <div class="search bar row">
     <%= link_to "Sort", notebooks_sort_path(:sort_by_col=>"title-asc",:search_by_contain=>params[:search_by_contain]), method: :get,class:"col-2 bar-button btn btn-secondary",id:"sort_button" %>
 </div>
+
+<div class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown link
+  </a>
+
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <li><a class="dropdown-item" href="#">Notes Created</a></li>
+    <li><a class="dropdown-item" href="#">Notes Liked</a></li>
+    <li><a class="dropdown-item" href="#">Notes Commented</a></li>
+  </ul>
+</div>
+
 <div class="row card-container notes" id="notes">
     <% @notes.each do |note| %>
     <%= render partial: 'parts/card', locals: { note: note } %>
     <% end %>
 </div>
 </div>
+
+

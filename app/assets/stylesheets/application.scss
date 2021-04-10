@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap";
+@import "bootstrap/scss/bootstrap";
 @import 'font_awesome5_webfont';
 @import 'font_awesome5'; //application.scss
 $color-white: #F5F5F5;

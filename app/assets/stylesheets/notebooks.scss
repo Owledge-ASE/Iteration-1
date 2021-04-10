@@ -69,6 +69,16 @@
   }
 }
 
+.filter{
+  display: flex;
+  .filter_button{
+    margin: 10px;
+    background-color: #7c7c7c;
+    text-decoration-color: #0c0c0c;
+    flex-shrink: 1;
+  }
+}
+
 .likes {
   font-size: 1.4em;
   display: flex;

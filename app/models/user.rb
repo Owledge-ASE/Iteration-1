@@ -28,4 +28,15 @@ class User < ApplicationRecord
     reaction.save
     reaction.like
   end
+
+  def users_likes
+    UserReaction.where(:user_id => self.id, :like => true)
+    #if !reaction.nil?
+    #return reaction
+    #end
+  end
+
+  def users_comments
+    UserComment.where(:user_id => self.id)
+  end
 end

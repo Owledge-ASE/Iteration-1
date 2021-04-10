@@ -74,6 +74,26 @@ class NotebooksController < ApplicationController
     end
   end
 
+  def dashboard
+    user_id = current_user.id
+    filter = params[:users_filter]
+    if filter == "notes_created"
+      @notes = Note.where(publisher_id: user_id)
+    elsif filter == "notes_liked"
+      reaction = current_user.users_likes
+      @notes = Note.where(id: reaction[:note_id])
+    elsif filter == "notes_commented"
+      comment = current_user.users_comments
+      @notes = Note.where(id: comment[:note_id])
+    else
+      @notes = []
+    end
+    #if !Note.notes_created(user_id).nil?
+    #@notes = notes_created(user_id)
+    #end
+    #redirect_to notebook_path(@note[:notebook_id])
+  end
+
   def index
     @ancestors = []
     @notes = NotebooksHelper.find()
@@ -97,6 +117,26 @@ class NotebooksController < ApplicationController
       end
     end
   end
+
+  #def dashboard
+  #user_id = current_user.id
+  #sort_by_filter = params[:sort_by_filter]
+  #@notes = Note.where(publisher_id: user_id)
+    #if !Note.notes_created(user_id).nil?
+    #@notes = notes_created(user_id)
+    #end
+    #redirect_to notebook_path(@note[:notebook_id])
+  #end
+
+  #def notes_liked
+  #reaction = current_user.users_likes
+  #redirect_to notebook_path(reaction[:notebook_id])
+  #end
+
+  #def notes_commented
+  #comment = current_user.users_comments
+  #redirect_to notebook_path(comment[:notebook_id])
+  #end
 
   private
   def allowed_params
