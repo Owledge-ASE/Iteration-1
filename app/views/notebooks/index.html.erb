@@ -11,12 +11,16 @@
 
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    <%= @current_filter %>
+    <%= @current_filter.gsub('_', ' ').titleize %>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="<%= notebooks_path({filter:'notes_created'}) %>">Notes Created</a></li>
-    <li><a class="dropdown-item" href="<%= notebooks_path({filter:'notes_liked'}) %>">Notes Liked</a></li>
-    <li><a class="dropdown-item" href="<%= notebooks_path({filter:'notes_commented'}) %>">Notes Commented</a></li>
+    <% %w[all_notebooks notes_created notes_liked notes_commented].each do |filter| %>
+    <li>
+      <%= link_to filter.gsub('_', ' ').titleize,
+                  notebooks_path({filter: filter}),
+                  class: NotebooksHelper.dropdown_class(filter == @current_filter) %>
+    </li>
+    <% end %>
   </ul>
 </div>
 

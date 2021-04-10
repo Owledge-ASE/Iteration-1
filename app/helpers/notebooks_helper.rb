@@ -66,6 +66,8 @@ module NotebooksHelper
     end
 
     case filter
+    when 'all_notebooks'
+      Note.all_parents
     when 'notes_created'
       Note.where(publisher_id: user.id)
     when 'notes_liked'
@@ -75,5 +77,9 @@ module NotebooksHelper
     else
       []
     end
+  end
+
+  def self.dropdown_class(active)
+    "dropdown-item" + (active ? " active" : "")
   end
 end

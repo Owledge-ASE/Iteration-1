@@ -82,7 +82,14 @@ class NotebooksController < ApplicationController
     else
       @notes = NotebooksHelper.find()
     end
-    @current_filter = filter.gsub('_', ' ').titleize || "Top-level Notebooks"
+    if filter.nil?
+      filter = 'all_notebooks'
+    end
+    @current_filter = filter
+
+    if filter == 'all_notebooks' and params[:filter] == 'all_notebooks'
+      redirect_to notebooks_path
+    end
   end
 
   def likes
