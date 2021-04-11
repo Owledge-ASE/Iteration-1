@@ -71,12 +71,13 @@
           <div class="card-title">
             <div class="button-group" id="comment-header">
               <h3>Comments</h3>
+              <% if !current_user.nil? %>
               <a href="<%= new_notebook_comment_path @note %>"
                  class="btn btn-primary btn-xs ms-2"
                  aria-label="comment-header add-comment">
-
                 <%= fa_icon "plus", class: "icon", type: :fas %>
                 <span style="visibility: hidden; position: absolute;" id="add-comment">Add Comment</span></a>
+              <% end %>
             </div>
           </div>
         </div>
