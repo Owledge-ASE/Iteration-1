@@ -19,14 +19,7 @@ class Note < ApplicationRecord
     parent.ancestors + [parent]
   end
 
-  def as_json(options)
-    super(options).merge({
-      'short_description' => self.short_description
-    })
-  end
-
   def self.search(content)
-    
     result = Note.union(
       Note.where('title LIKE ?', "%#{content}%"),Note.joins("
       INNER JOIN 
@@ -63,13 +56,21 @@ class Note < ApplicationRecord
     self.parent.ancestors + [self.parent]
   end
 
-  def short_description(chars = 200)
-    desc = self.description.nil?  ? "" : self.description[0..chars]
-    if desc < self.short_description
-      desc + '...'
+  def short_description(words = 30)
+    description = self.description
+    desc = description.nil?  ? "" : description.split(' ')[0..words].join(' ')
+    if not description.nil? and desc.length < description.length
+      return desc + '...'
     end
     desc
   end
+
+  def as_json(options)
+    super(options).merge({
+      'short_description' => self.short_description
+    })
+  end
+
   #Counts the number of total likes by unique users for a given note
   def likes
     UserReaction.where(note_id: self.id, like: 1).count
