@@ -1,9 +1,5 @@
-/**
- * Handles tree structures on each new page load.
- *
- * Plays nicely with TurboLinks.
- */
 import * as go from "gojs";
+import MarkdownIt from "markdown-it";
 
 function getDataFor(dataType) {
     const elem = document.getElementById(dataType);
