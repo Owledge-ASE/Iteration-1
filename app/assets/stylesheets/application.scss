@@ -35,6 +35,9 @@ body {
     display: flex;
     flex-direction: column;
   }
+  * {
+    color: $color-white;
+  }
 }
 .header{
      color:$color-white;

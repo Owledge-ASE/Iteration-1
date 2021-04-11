@@ -12,10 +12,15 @@
     </div>
 </div>
 <div class="grid-notes" id="note-grid">
-  
+  <table class="table table-striped table-dark table-bordered">
+    <thead>
       <%= render partial: 'parts/grid-header' %>
-    <% @notes.each do |note| %>
-      <%= render partial: 'parts/grid', locals: { note: note } %>
-    <% end %>
+    </thead>
+    <tbody>
+      <% @notes.each do |note| %>
+        <%= render partial: 'parts/grid', locals: { note: note } %>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 </div>
