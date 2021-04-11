@@ -42,11 +42,16 @@
       </div>
       <% if @note.children.length > 0 %>
       <h3>Sub-notes</h3>
-      <div id="children" style="width: 2000px; height: 400px;">
+      <div id="children-graph" style="width: 2000px; height: 400px;">
       <%= content_tag :div, class: "parentinfo", data: {parentinfo: @note} do %>
       <% end %>
       <%= content_tag :div, class: "childreninfo", data: {childreninfo: @children} do %>
       <% end %>
+      </div>
+      <div class="row notes" id="children" style="display:hidden;">
+        <% @note.children.each do |note| %>
+        <%= render partial:"parts/card", locals: {note: note} %>
+        <% end %>
       </div>
       <% end %>
     </div>

@@ -17,7 +17,7 @@ console.log(dataList)
 
 
 var GOJS = go.GraphObject.make;
-var myDiagram = GOJS(go.Diagram, "children", {
+var myDiagram = GOJS(go.Diagram, "children-graph", {
     "undoManager.isEnabled":true,
     layout: GOJS(go.TreeLayout, {angle: 90, layerSpacing: 40})
 })
