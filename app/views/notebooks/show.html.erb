@@ -35,7 +35,7 @@
               <% end %>
             </div>
 
-            <% unless current_user.nil? || @note.publisher_id == current_user.id %>
+            <% if !current_user.nil? && @note.publisher_id == current_user.id %>
             <div class="note-buttons">
               <a href="<%= edit_notebook_path(@note) %>" class="card-link col-2">
                 <button type="button" class="btn btn-secondary" id="edit-note">Edit Note</button>
