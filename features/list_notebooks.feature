@@ -5,6 +5,11 @@ Feature: List Notebooks
 
 Background: notes have been added to the database
 
+ Given the following users exist:
+      |id	| email 				| first_name     | last_name | affiliation | organization		  | password |
+      |1	| example1@gmail.com  	| Andrea       	 | McCormick | Student     | Columbia University  | abcdef   |
+      |2	| example5@gmail.com  	| Riley          | Casey     | Student     | Columbia University  | goodpass | 
+
  Given the following notes exist:
  |id | title                    |parent_id | description                                                                                                                                                                                       |
  |1  | Sorting Algorithms       |          | In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.                                                                                         |
@@ -17,6 +22,7 @@ Background: notes have been added to the database
  |8  | Merge Sort               | 1        | Merges sorted arrays                                                                                                                                                                              |
  |9  | Recursive merge          | 8        | Runs recursively                                                                                                                                                                                  |
  |10 | For merge                | 8        | Runs recursively                                                                                                                                                                                  |
+ 
 
 Scenario: Once user navigates to Owledge then they should be on the homepage
   When I go to the homepage
@@ -30,11 +36,17 @@ Scenario: On the homepage there should be a list of notebooks
   Then I should see "Distributed Computing" inside list of nodes
   Then I should see "Big Data" inside list of nodes
 
-Scenario: On the homepage there should be an add button
-  When I go to the homepage
+Scenario: On the homepage there should be an add button if user login 
+  When I am logged in as "example1@gmail.com"
+  When I go to the homepage  
   Then I should see "Add Note"
 
-Scenario: If I click on the add button then they can navigate to the add page (Create page)
+Scenario: On the homepage there should be no add button if user not login 
+  When I go to the homepage  
+  Then I should not see "Add Note"
+
+Scenario: If I click on the add button then they can navigate to the add page (Create page) only if user login  
+  When I am logged in as "example1@gmail.com"
   When I go to the homepage
   And I follow "add-note"
   Then I should be on the create page
