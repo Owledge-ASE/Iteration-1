@@ -90,7 +90,7 @@
             return true;
         }
     
-        if (!this.options.duplicate && this.arr.indexOf(string) != -1) {
+        if (!this.options.duplicate && this.arr.indexOf(string) >= 0) {
             errorPopup('Duplicate found " ' + string + ' " ');
             return true;
         }
@@ -133,15 +133,26 @@
         tags.wrapper.addEventListener('click' ,function(){
             tags.input.focus();           
         });
-        tags.input.addEventListener('keydown' , function(e){
-            const key = e.key;
+        tags.input.addEventListener('keydown' , (e) => {
             const str = tags.input.value.trim().replace(',', '')
             if( !!(~['Tab' , 'Enter' , ',', ' '].indexOf( e.key ))  ) {
                 tags.input.value = "";
-                if(str !== "")
+                if (str !== "")
                     tags.addTag(str);
                 e.preventDefault();
             }
+        });
+        tags.input.addEventListener('keyup', e => {
+            if (e.key === 'Backspace') {
+                tags.deleteTag(e.target.previousSibling);
+            }
+            console.log(e.key);
+        })
+        tags.input.addEventListener('focusout', (e) => {
+            const str = tags.input.value.trim().replace(',', '');
+            tags.input.value = "";
+            if (str !== "")
+                tags.addTag(str);
         });
     }
 
