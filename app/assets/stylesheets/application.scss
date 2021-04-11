@@ -26,6 +26,9 @@ $background-black-l2: rgba($background-black, 0.80);
 $accent-color: lighten(adjust-color($base-color, $red: 15, $blue: 150, $green: 50), 4%);
 $background-black-l3: rgba($accent-color, 0.1);
 
+$body-bg: $background-black;
+$body-color: $color-white;
+
 $theme-colors: (
         "light":      $color-white,
         "dark":       $background-black,
@@ -43,9 +46,6 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-  }
-  * {
-    color: $color-white;
   }
 }
 .header{
@@ -139,7 +139,8 @@ body {
 }
 
 .list-group-item {
-  background-color: rgba($base-color, 30%);
+  background-color: darken($color-white, 20%);
+  color: $base-color;
 }
 
 a:hover {

@@ -34,6 +34,9 @@
                 </a>
               <% end %>
             </div>
+            <div class="author-box" style="flex-grow: 1;margin: 0 1em;">
+              <%= render partial: "parts/user_card", locals: { user: @note.publisher } %>
+            </div>
 
             <% if !current_user.nil? && @note.publisher_id == current_user.id %>
             <div class="note-buttons">
