@@ -100,12 +100,6 @@ body {
   padding:10px;
   padding-left:30px;
 }
-.crumb-holder{
-    padding:20px;
-    min-height:1.5em;
-    color: $color-white;
-}
-
 body {
   background-color: $base-color;
 }
@@ -121,12 +115,16 @@ body {
 .crumb-holder {
   background-color: darken($base-color, 10%);
   border-bottom: darken($base-color, 15%);
-  padding-bottom: 3rem;
+
   a {
     color: $accent-color;
     text-decoration: none;
   }
+  padding: 1.5em;
+  height: 2em;
+  color: $color-white;
 }
+
 .list-group-item {
   background-color: rgba($base-color, 30%);
 }

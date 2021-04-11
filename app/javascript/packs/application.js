@@ -19,4 +19,5 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+
 window.addEventListener('DOMContentLoaded', Dom.run);

@@ -1,19 +1,6 @@
 
 <div class="row show-notes">
   <div class="main-panel">
-    <div class="row top-header mt-0 pt-0">
-      <div class="note-title">
-        <h1 class="col-10 mt-0" id="title"><%= @note.title %></h1>
-      </div>
-      <div class="note-buttons">
-        <a href="<%= edit_notebook_path(@note) %>" class="card-link col-2">
-          <button type="button" class="btn btn-secondary" id="edit-note">Edit Note</button>
-        </a>
-        <a href="<%= new_notebook_path({parent: @note}) %>" class="card-link col-2">
-          <button type="button" class="btn btn-secondary" id="add-note">Add Note</button>
-        </a>
-      </div>
-    </div>
     <div class="note-main-section">
       <div id="<%= @note.id %>_tag_wrapper" class="tag_wrapper_inputcheck">
           <%= render partial: "parts/tag_display", locals: { note: @note } %>
@@ -22,7 +9,9 @@
       <div class="card bg-dark-l1 col-12 main-card">
         <div class="card-body">
           <div class="card-title">
-            <h3>Description</h3>
+            <div class="note-title">
+              <h1 class="col-10 mt-0" id="title"><%= @note.title %></h1>
+            </div>
           </div>
           <div class="card-text" id="description">
             <%= @note.description %>
@@ -30,13 +19,24 @@
         </div>
         <div class="card-footer likes">
           <div class="like-wrapper">
-            <% unless current_user.nil? %>
+              <% unless current_user.nil? %>
               <a href="<%= notebook_likes_path(@note.id) %>" id="like_button" class="like-button">
+              <% end %>
                   <!--<i class="bi bi-suit-heart< current_user.is_like_clicked(@note.id) ? "-filled" : ""%>">-->
-                <%= fa_icon "thumbs-up", type: current_user.is_like_clicked?(@note.id) ? :far : :fas %>
+                <%= fa_icon "thumbs-up", class: "icon", type: current_user.is_like_clicked?(@note.id) ? :far : :fas %>
+                <span id="num_likes"><%= @note.likes %></span>
+              <% unless current_user.nil? %>
               </a>
-            <% end %>
-            <span id="num_likes"><%= @note.likes %></span>
+              <% end %>
+          </div>
+
+          <div class="note-buttons">
+            <a href="<%= edit_notebook_path(@note) %>" class="card-link col-2">
+              <button type="button" class="btn btn-secondary" id="edit-note">Edit Note</button>
+            </a>
+            <a href="<%= new_notebook_path({parent: @note}) %>" class="card-link col-2">
+              <button type="button" class="btn btn-secondary" id="add-note">Add Note</button>
+            </a>
           </div>
         </div>
       </div>

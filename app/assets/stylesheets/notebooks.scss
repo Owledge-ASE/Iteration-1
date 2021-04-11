@@ -3,6 +3,13 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import "application";
 
+.main-card {
+  background-image: asset-url("glasses.png");
+  background-repeat: no-repeat;
+  background-color: transparent;
+  opacity: 50%;
+  background-position: center bottom;
+}
 .card-link{
     color:$color-white;
     text-decoration: none;
@@ -64,11 +71,14 @@
   .comments-body {
     height: 40vh;
     min-height: 80%;
+    * {
+      color: $color-white;
+    }
   }
 
 }
 
-.search{
+.search {
   .bar-button{
     margin:10px;
   }
@@ -96,14 +106,10 @@
 .like-button {
   color: $color-white;
   text-decoration: none;
-  padding-right: 1em;
+  .icon {
+    padding-right: 1em;
+  }
 }
-.top-header {
-  margin: 0 20px;
-  .note-title {
-    flex: 2;
-  }
-  .note-buttons {
-    flex: 1;
-  }
+.like-wrapper {
+  margin-right: auto;
 }
