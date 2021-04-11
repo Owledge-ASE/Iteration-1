@@ -112,5 +112,22 @@ RSpec.describe NotebooksHelper, type: :helper do
     end
 
   end
+
+  
+  describe 'check if notes with filter' do
+    context 'check if notes with filter working properly' do
+      before :each do
+        Rails.application.load_seed 
+      end
+      it 'What happens if unkown tag is passed' do
+        notes = NotebooksHelper.notes_with_filters('',1)
+        expect(notes.count).to eq(0)
+      end
+      it 'What hapens if passed user as nil' do
+        notes = NotebooksHelper.notes_with_filters('all_notebooks',nil)
+        expect(notes.count).to eq(0)
+      end
+    end
+  end
   
 end

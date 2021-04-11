@@ -89,3 +89,9 @@ Scenario: User should be able to see the changed data
   And I should see "sorting" inside "#9_tag_wrapper"
   And I should see "bootstrap" inside "#9_tag_wrapper"
   And I should not see "graph" inside "#9_tag_wrapper"
+
+  
+Scenario: click on Owledge logo
+  When I go to the notebook page for "Recursive merge"
+  When I follow "owledge_logo"
+  Then I should be on the homepage
