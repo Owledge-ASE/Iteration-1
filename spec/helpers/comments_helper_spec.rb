@@ -22,6 +22,7 @@ RSpec.describe CommentsHelper, type: :helper do
       expect(CommentsHelper.generate_error_messages(comment)).to eq(
         [
           "User must exist",
+          "Note must exist",
           "Comment can't be blank",
           "Comment is too short (minimum is 10 characters)",
         ]
