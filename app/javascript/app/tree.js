@@ -1,5 +1,4 @@
 /**
- * Handles tree structures on each new page load.
  *
  * Plays nicely with TurboLinks.
  */
@@ -27,7 +26,6 @@ function buildTreesEachPage() {
 
     const parent = getDataFor('parentinfo');
     const children = getDataFor('childreninfo');
-
     if (!parent) {
         return;
     }
