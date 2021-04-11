@@ -19,7 +19,12 @@ class Note < ApplicationRecord
     parent.ancestors + [parent]
   end
 
-  
+  def as_json(options)
+    super(options).merge({
+      'short_description' => self.short_description
+    })
+  end
+
   def self.search(content)
     
     result = Note.union(
@@ -59,7 +64,11 @@ class Note < ApplicationRecord
   end
 
   def short_description(chars = 200)
-    self.description.nil?  ? "" : self.description[0..chars]
+    desc = self.description.nil?  ? "" : self.description[0..chars]
+    if desc < self.short_description
+      desc + '...'
+    end
+    desc
   end
   #Counts the number of total likes by unique users for a given note
   def likes

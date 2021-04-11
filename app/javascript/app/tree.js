@@ -18,7 +18,7 @@ function buildTrees() {
             dataList.push(child)
         });
     }
-
+    console.log(dataList);
     const GOJS = go.GraphObject.make;
     const myDiagram = GOJS(go.Diagram, "children", {
         "undoManager.isEnabled": true,
@@ -37,14 +37,14 @@ function buildTrees() {
             GOJS(go.Shape, "RoundedRectangle", {fill: "#505050"}),
             GOJS(
                 go.Panel, go.Panel.Vertical,
-                {defaultAlignment: go.Spot.Left, margin: 4, width: 200},
+                {defaultAlignment: go.Spot.Left, margin: 4, width: 300},
                 GOJS(go.TextBlock,
                     {
                         alignment: go.Spot.Center,
                         margin: 12,
                         stroke: "white",
                         font: "bold 16px sans-serif",
-                        width: 200
+                        width: 300
                     },
                     new go.Binding("text", "title")),
                 GOJS(go.TextBlock,
@@ -53,7 +53,7 @@ function buildTrees() {
                         margin: 10,
                         stroke: "white",
                         font: "bold 16px sans-serif",
-                        width: 200
+                        width: 300
                     },
                     new go.Binding("text", "short_description"),
                 ),
