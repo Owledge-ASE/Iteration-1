@@ -54,7 +54,7 @@
         <%= content_tag :div, id: "childreninfo", data: {childreninfo: @children} do %>
         <% end %>
       </div>
-      <div class="row notes" id="children" style="display:hidden;">
+      <div class="row notes" id="children" style="visibility:hidden;">
         <% @note.children.each do |note| %>
         <%= render partial:"parts/card", locals: {note: note} %>
         <% end %>
