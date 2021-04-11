@@ -27,7 +27,7 @@ ai_search = Note.create({
                    environment. This category of search algorithms will often have to operate real-time, and often accepts suboptimal solutions.
                    }.join( " ")
                  })
-Note.create([{
+Note.create({
                title: 'Two-Player Zero-Sum Games',
                description: %w{Two agents, turn-taking, deterministic, perfect information (fully observable), zero-sum
                (p1 wins = p2 loses and vice-versa). Includes states (current state of the game), actions (set of legal moves in a state S),
@@ -35,27 +35,27 @@ Note.create([{
                Utility function: A player's "score" or payoff at a terminal state:
                Utility(s, P1) = -Utility(s, P2)
                }.join(" "),
-              parent_id: ai_search
-              }])
-minimax = Note.create([{
+              parent_id: ai_search.id
+              })
+minimax = Note.create({
               title: 'Minimax Search Algorithm',
               description: %w{
               The vale of each state depends on each player's move. If we know that each player plays optimally, the entire game tree's values are known! Each level in the
               minimax tree alternates turns between the min-player or max-player; thus, whichever player's turn it is always plays optimally.
               This algorithm executes DFS-style search of the game tree. It is optimal if both players play perfectly, and it is complete if the game eventually ends.
               }.join(" "),
-                parent_id: ai_search
-                           }])
-Note.create([{
+                parent_id: ai_search.id
+                           })
+Note.create({
                title: 'Minimax Value',
 description: %w{
 Utility of a state assuming BOTH players play optimally until the end of the game.
 This value is calculated at each step in the minimax tree, and it is dependent upon whether
 player's turn it is (i.e. max-player or min-player).
 }.join(" "),
-  parent_id: minimax
-             }])
-Note.create([{
+  parent_id: minimax.id
+             })
+Note.create({
                title: 'Alpha-Beta Pruning',
 description: %w{
 General idea: Keep track of the highest (alpha) and lowest (beta) values seen so far
@@ -66,17 +66,17 @@ root is a MAX node.
 Pruning does not change the true minimax value of the root. Intermediate (children) node values might be wrong!
 If pruning, game tree values cannot be reused, and you must rerun minimax after each move.
 }.join(" "),
-  parent_id: ai_search
-             }])
-Note.create([{
+  parent_id: ai_search.id
+             })
+Note.create({
                title: 'Directed Acyclic Graph',
                description: %w{
                   A Directed Acyclic Graph is a directed graph with no directed cycles. That is, it consists of
                   vertices and edges (also called arcs), with each edge directed from one vertex to another, such
                   that following those directions will never form a closed loop.
                }.join(" "),
-               parent_id: graph_theory
-             }])
+               parent_id: graph_theory.id
+             })
 
              
 Note.create([{
@@ -84,28 +84,28 @@ Note.create([{
           description: %w{
             In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
           }.join(" "),
-          parent_id: sorting
+          parent_id: sorting.id
         },{
           title: 'Sorting Algorithms 4',
           description: %w{
             In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
           }.join(" "),
-          parent_id: sorting
+          parent_id: sorting.id
         }])
 child_note = Note.create({
           title: 'Sorting Algorithms 5',
           description: %w{
             In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
           }.join(" "),
-          parent_id: sorting
+          parent_id: sorting.id
         })
-Note.create([{
+Note.create({
                               title: 'Sorting Algorithms 6',
                               description: %w{
                                 In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
                               }.join(" "),
-                              parent_id:child_note
-                }])
+                              parent_id:child_note.id
+                })
 
 sortingtag = Tag.create({
                   tag: 'sorting'
@@ -116,14 +116,14 @@ graphTag = Tag.create({
                 })
 
 NotebookTag.create([{
-                    notebook_id: graph_theory,
-                    tag_id:graphTag
+                    notebook_id: graph_theory.id,
+                    tag_id:graphTag.id
                   },{
-                    notebook_id: child_note,
-                    tag_id:sortingtag
+                    notebook_id: child_note.id,
+                    tag_id:sortingtag.id
                   },{
-                    notebook_id: sorting,
-                    tag_id:sortingtag
+                    notebook_id: sorting.id,
+                    tag_id:sortingtag.id
                   }
               ])   
 
@@ -165,33 +165,33 @@ users = User.create([{
 }])
 
 UserComment.create([{
-  user_id: users[0],
-  note_id: graph_theory,
+  user_id: users[0].id,
+  note_id: graph_theory.id,
   comment: "This is great info!"
 }])
 
 @reactions = UserReaction.create([{
   like: false,
-  user_id: users[0],
-  note_id: graph_theory
+  user_id: users[0].id,
+  note_id: graph_theory.id
 },
 {
   like: false,
-  user_id: users[1],
-  note_id: graph_theory
+  user_id: users[1].id,
+  note_id: graph_theory.id
 },
 {
   like: false,
-  user_id: users[2],
-  note_id: graph_theory
+  user_id: users[2].id,
+  note_id: graph_theory.id
 }, {
  like: true,
- user_id: users[2],
- note_id: sorting
+ user_id: users[2].id,
+ note_id: sorting.id
 }, {
   like: false,
-  user_id: users[0],
-  note_id: sorting
+  user_id: users[0].id,
+  note_id: sorting.id
 }])
 @reactions.each do |reaction|
   reaction.do_like
