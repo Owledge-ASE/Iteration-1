@@ -53,7 +53,6 @@ RSpec.describe NotebooksHelper, type: :helper do
   describe 'check if setting up tags is working' do
     context 'Check if tags can be loaded in properly' do
       before :each do
-        Note.delete_all
         Rails.application.load_seed 
       end
       it 'Passing in a completely new set of tags' do
@@ -77,7 +76,6 @@ RSpec.describe NotebooksHelper, type: :helper do
     describe 'check if fetching tags for a notebook is working' do
       context 'check if fetching tags for a notebook is working' do
         before :each do
-          Note.delete_all
           Rails.application.load_seed 
         end
         it 'Check for 1 tag' do
@@ -96,7 +94,6 @@ RSpec.describe NotebooksHelper, type: :helper do
     describe 'check if assigning tags is working' do
       context 'Check if assigning the tags to note is working' do
         before :each do
-          Note.delete_all
           Rails.application.load_seed 
         end
         it 'Adding 1 tag' do

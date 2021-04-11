@@ -10,6 +10,7 @@
                 background: transparent;
                 outline: none;
                 width: 150px;
+                color:black;
     }
     
     .tag {
@@ -31,6 +32,7 @@
 .tag-wrapper{
     overflow:hidden;
     height:  35px;
+    padding-left: 10px;
 }
 .tag-display {
     display: inline-block;

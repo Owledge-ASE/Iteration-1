@@ -5,7 +5,7 @@ RSpec.describe Tag, type: :model do
   describe 'check if fetching tags based on array works' do
     context 'check if fetching tags for a notebook is working' do
       before :each do
-        Note.delete_all
+        
         Rails.application.load_seed 
       end
       it 'Check for multiple tags' do
