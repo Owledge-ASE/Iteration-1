@@ -35,7 +35,7 @@ Note.create([{
                Utility function: A player's "score" or payoff at a terminal state:
                Utility(s, P1) = -Utility(s, P2)
                }.join(" "),
-              parent_id: ai_search.id
+              parent_id: ai_search
               }])
 minimax = Note.create([{
               title: 'Minimax Search Algorithm',
@@ -44,7 +44,7 @@ minimax = Note.create([{
               minimax tree alternates turns between the min-player or max-player; thus, whichever player's turn it is always plays optimally.
               This algorithm executes DFS-style search of the game tree. It is optimal if both players play perfectly, and it is complete if the game eventually ends.
               }.join(" "),
-                parent_id: ai_search.id
+                parent_id: ai_search
                            }])
 Note.create([{
                title: 'Minimax Value',
@@ -53,7 +53,7 @@ Utility of a state assuming BOTH players play optimally until the end of the gam
 This value is calculated at each step in the minimax tree, and it is dependent upon whether
 player's turn it is (i.e. max-player or min-player).
 }.join(" "),
-  parent_id: minimax.id
+  parent_id: minimax
              }])
 Note.create([{
                title: 'Alpha-Beta Pruning',
@@ -66,7 +66,7 @@ root is a MAX node.
 Pruning does not change the true minimax value of the root. Intermediate (children) node values might be wrong!
 If pruning, game tree values cannot be reused, and you must rerun minimax after each move.
 }.join(" "),
-  parent_id: ai_search.id
+  parent_id: ai_search
              }])
 Note.create([{
                title: 'Directed Acyclic Graph',
@@ -75,7 +75,7 @@ Note.create([{
                   vertices and edges (also called arcs), with each edge directed from one vertex to another, such
                   that following those directions will never form a closed loop.
                }.join(" "),
-               parent_id: graph_theory.id
+               parent_id: graph_theory
              }])
 
              
@@ -84,27 +84,27 @@ Note.create([{
           description: %w{
             In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
           }.join(" "),
-          parent_id: sorting.id
+          parent_id: sorting
         },{
           title: 'Sorting Algorithms 4',
           description: %w{
             In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
           }.join(" "),
-          parent_id: sorting.id
+          parent_id: sorting
         }])
 child_note = Note.create({
           title: 'Sorting Algorithms 5',
           description: %w{
             In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
           }.join(" "),
-          parent_id: sorting.id
+          parent_id: sorting
         })
 Note.create([{
                               title: 'Sorting Algorithms 6',
                               description: %w{
                                 In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.
                               }.join(" "),
-                              parent_id:child_note.id
+                              parent_id:child_note
                 }])
 
 sortingtag = Tag.create({
@@ -116,14 +116,14 @@ graphTag = Tag.create({
                 })
 
 NotebookTag.create([{
-                    notebook_id: graph_theory.id,
-                    tag_id:graphTag.id
+                    notebook_id: graph_theory,
+                    tag_id:graphTag
                   },{
-                    notebook_id: child_note.id,
-                    tag_id:sortingtag.id
+                    notebook_id: child_note,
+                    tag_id:sortingtag
                   },{
-                    notebook_id: sorting.id,
-                    tag_id:sortingtag.id
+                    notebook_id: sorting,
+                    tag_id:sortingtag
                   }
               ])   
 
@@ -150,49 +150,49 @@ users = User.create([{
  affiliation: "Student",
  organization: "Fake University",
 },{
-                       last_name: "Prince",
-                       email: "prince@fakeu.edu",
-                       password: "thisisasafepasswordbecauseitislong",
-                       affiliation: "Student",
-                       organization: "Fake University",
-                     },{
-                       first_name: "George",
-                       last_name: "",
-                       email: "geo@fakeu.edu",
-                       password: "thisisasafepasswordbecauseitislong",
-                       affiliation: "Student",
-                       organization: "Fake University",
-                     }])
+ last_name: "Prince",
+ email: "prince@fakeu.edu",
+ password: "thisisasafepasswordbecauseitislong",
+ affiliation: "Student",
+ organization: "Fake University",
+},{
+ first_name: "George",
+ last_name: "",
+ email: "geo@fakeu.edu",
+ password: "thisisasafepasswordbecauseitislong",
+ affiliation: "Student",
+ organization: "Fake University",
+}])
 
 UserComment.create([{
-  user_id: users[0].id,
-  note_id: graph_theory.id,
+  user_id: users[0],
+  note_id: graph_theory,
   comment: "This is great info!"
 }])
 
 @reactions = UserReaction.create([{
   like: false,
-  user_id: users[0].id,
-  note_id: graph_theory.id
-  },
-                     {
+  user_id: users[0],
+  note_id: graph_theory
+},
+{
   like: false,
-  user_id: users[1].id,
-  note_id: graph_theory.id
-  },
-                     {
+  user_id: users[1],
+  note_id: graph_theory
+},
+{
   like: false,
-  user_id: users[2].id,
-  note_id: graph_theory.id
-  }, {
-                                   like: true,
-                                   user_id: users[2].id,
-                                   note_id: sorting.id
-                                 }, {
-                                    like: false,
-                                    user_id: users[0].id,
-                                    note_id: sorting.id
-                                  }])
+  user_id: users[2],
+  note_id: graph_theory
+}, {
+ like: true,
+ user_id: users[2],
+ note_id: sorting
+}, {
+  like: false,
+  user_id: users[0],
+  note_id: sorting
+}])
 @reactions.each do |reaction|
   reaction.do_like
   reaction.save
