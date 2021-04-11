@@ -26,6 +26,12 @@ $background-black-l2: rgba($background-black, 0.80);
 $accent-color: lighten(adjust-color($base-color, $red: 15, $blue: 150, $green: 50), 4%);
 $background-black-l3: rgba($accent-color, 0.1);
 
+$theme-colors: (
+        "light":      $color-white,
+        "dark":       $background-black,
+        "warning":    mix($background-black-l2, $warning),
+        "alert":      mix($background-black-l2, $danger),
+);
 html, body {
   height: 100%;
   width: 100%;

@@ -57,17 +57,45 @@
 
 
     TagsInput.prototype.anyErrors = function (string) {
+        function errorPopup(message) {
+            console.error(message);
+            const error = document.createTextNode(message);
+            const dismiss = document.createElement('button');
+            dismiss.classList.add('close', 'float-end', 'btn', 'btn-lg', 'btn-icon', 'p-0');
+            dismiss.dataset.dismiss = 'alert';
+            dismiss.setAttribute('aria-label', 'Close');
+            dismiss.innerHTML = '<i class="far fa-window-close" style="color: black;"></i>';
+            const alert = document.createElement('div');
+            alert.classList.add("alert", "alert-warning", "alert-dismissible", "fade", "show");
+            alert.setAttribute('role', 'alert');
+            alert.id = 'flash-alert';
+            alert.appendChild(error);
+            alert.appendChild(dismiss);
+            const flashAlert = document.getElementById('flash-alert');
+            if (flashAlert) {
+                flashAlert.remove();
+            }
+            document.getElementById('app-header-section').appendChild(alert);
+            dismiss.onclick = () => {
+                $(alert).fadeOut();
+            }
+            setTimeout(() => {
+                $(alert).fadeOut();
+            }, 5000);
+        }
+
         if (this.options.max != null && this.arr.length >= this.options.max) {
-            console.error('max tags limit reached');
+            errorPopup('Max tags limit reached.');
+
             return true;
         }
     
         if (!this.options.duplicate && this.arr.indexOf(string) != -1) {
-            console.error('duplicate found " ' + string + ' " ')
+            errorPopup('Duplicate found " ' + string + ' " ');
             return true;
         }
     
-        if (this.options.validator != undefined && !this.options.validator(string)) {
+        if (this.options.validator !== undefined && !this.options.validator(string)) {
             console.error('Invalid input: ' + string)
             return true;
         }
@@ -106,13 +134,13 @@
             tags.input.focus();           
         });
         tags.input.addEventListener('keydown' , function(e){
-            var str = tags.input.value.trim(); 
-            str = str.replace(',',''); 
-            if( !!(~[9 , 13 , 188].indexOf( e.keyCode ))  )
-            {
+            const key = e.key;
+            const str = tags.input.value.trim().replace(',', '')
+            if( !!(~['Tab' , 'Enter' , ',', ' '].indexOf( e.key ))  ) {
                 tags.input.value = "";
-                if(str != "")
+                if(str !== "")
                     tags.addTag(str);
+                e.preventDefault();
             }
         });
     }
