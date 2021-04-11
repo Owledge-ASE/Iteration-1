@@ -4,19 +4,22 @@ Feature: Edit Note
   I want to edit node
 
 Background: notes have been added to the database
-
+  Given the following users exist:
+    |id	| email 				| first_name     | last_name | affiliation | organization		  | password |
+    |1	| example1@gmail.com  	| Andrea       	 | McCormick | Student     | Columbia University  | abcdef   |
+    |2	| example5@gmail.com  	| Riley          | Casey     | Student     | Columbia University  | goodpass | 
  Given the following notes exist:
- |id | title                    |parent_id | description                                                                                                                                                                                       |
- |1  | Sorting Algorithms       |          | In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.                                                                                         |
- |2  | Graph Theory             |          | In mathematics, graph theory is the study of graphs, which are mathematical structures used to model pairwise relations between objects.                                                          |
- |3  | Analysis of Algorithms   |          | In computer science, the analysis of algorithms is the process of finding the computational complexity of algorithms.                                                                             |
- |4  | Distributed Computing    |          | A distributed system is a system whose components are located on different networked computers, which communicate and coordinate their actions by passing messages to one another from any system |
- |5  | Big Data                 |          | Big data is a field that treats ways to analyze, systematically extract information from, or otherwise deal with data sets that are too large.                                                    |
- |6  | Sorting Algorithms Child | 1         | test                                                                                                                                                                                              |
- |7  | Bubble Sort              | 1        | Compares adjacent elements and moves them                                                                                                                                                         |
- |8  | Merge Sort               | 1        | Merges sorted arrays                                                                                                                                                                              |
- |9  | Recursive merge          | 8        | Runs recursively                                                                                                                                                                                  |
- |10 | For merge                | 8        | Runs recursively                                                                                                                                                                                  |
+ |id | title                    |parent_id |publisher_id| description                                                                                                                                                                                       |
+ |1  | Sorting Algorithms       |          |1           | In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.                                                                                         |
+ |2  | Graph Theory             |          |1           | In mathematics, graph theory is the study of graphs, which are mathematical structures used to model pairwise relations between objects.                                                          |
+ |3  | Analysis of Algorithms   |          |1           | In computer science, the analysis of algorithms is the process of finding the computational complexity of algorithms.                                                                             |
+ |4  | Distributed Computing    |          |1           | A distributed system is a system whose components are located on different networked computers, which communicate and coordinate their actions by passing messages to one another from any system |
+ |5  | Big Data                 |          |1           | Big data is a field that treats ways to analyze, systematically extract information from, or otherwise deal with data sets that are too large.                                                    |
+ |6  | Sorting Algorithms Child | 1        |1           | test                                                                                                                                                                                              |
+ |7  | Bubble Sort              | 1        |1           | Compares adjacent elements and moves them                                                                                                                                                         |
+ |8  | Merge Sort               | 1        |1           | Merges sorted arrays                                                                                                                                                                              |
+ |9  | Recursive merge          | 8        |1           | Runs recursively                                                                                                                                                                                  |
+ |10 | For merge                | 8        |1           | Runs recursively                                                                                                                                                                                  |
 
 Given the following tags exist:
     |id |tag      |
@@ -29,6 +32,7 @@ Given the following notebook tags exist:
     |1  |9            |1      |
     |2  |9            |3      |
 
+When I am logged in as "example1@gmail.com"
 
 Scenario: User should be able to access edit page when they are on show page
   When I go to the notebook page for "Recursive merge"
