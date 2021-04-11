@@ -16,7 +16,7 @@ RSpec.describe Note, type: :model do
   describe 'check if Only parents function is working as expected' do
     context 'No records so count is 0' do
       before :each do
-        Note.delete_all
+        
       end
       it 'Checks the list of parents' do
         @notes = Note.all_parents
@@ -25,7 +25,7 @@ RSpec.describe Note, type: :model do
     end
     context 'Only parents so count of function is equal to count of all' do
       before :each do
-        Note.delete_all
+        
         Note.create(@note_list_only_parents)
       end
       it 'Checks the list of parents' do
@@ -36,7 +36,7 @@ RSpec.describe Note, type: :model do
     end
     context 'parents and children so counts shouldnt match' do
       before :each do
-        Note.delete_all
+        
         Rails.application.load_seed 
       end
       it 'Checks the list of parents count is not equal to list count' do
@@ -44,9 +44,9 @@ RSpec.describe Note, type: :model do
         @notes_all = Note.all
         expect(@notes.count).not_to eq(@notes_all.count)
       end
-      it 'Checks the list of parents count is 2' do
+      it 'Checks the list of parents count is 3' do
         @notes = Note.all_parents
-        expect(@notes.count).to eq(2)
+        expect(@notes.count).to eq(3)
       end
     end
   end
@@ -54,7 +54,7 @@ RSpec.describe Note, type: :model do
   describe 'check if search function is working' do
     context 'Check search function return the expected node with titles contain keywords' do
       before :each do
-        Note.delete_all
+        
         Rails.application.load_seed  
       end
       it "search graph, will only get two node" do
@@ -78,7 +78,7 @@ RSpec.describe Note, type: :model do
   describe 'check if the ancestors function is working' do
     context 'No records so ancestors should return an error' do
       before :each do
-        Note.delete_all
+        
       end
       it 'No records so ancestors should return an error' do
           expect {
@@ -88,13 +88,13 @@ RSpec.describe Note, type: :model do
     end
     context 'IF records exist in the table then check ancestors' do
       before :each do
-        Note.delete_all
+        
         Rails.application.load_seed 
 
       end
       it 'Check non existent record' do
         expect {
-          Note.ancestors (8)
+          Note.ancestors (1200)
         }.to raise_error(ActiveRecord::RecordNotFound)
       end
       it 'Check ancestors of a parent' do
@@ -116,7 +116,7 @@ RSpec.describe Note, type: :model do
   describe 'check if the child function is working' do
     context 'IF records exist in the table then check the children for them' do
       before :each do
-        Note.delete_all
+        
         Rails.application.load_seed 
       end
       it 'Check children of parent notebook' do
@@ -151,7 +151,7 @@ RSpec.describe Note, type: :model do
   describe 'check if the sort function is working' do
     context 'Check sort based on specific columns' do
       before :each do
-        Note.delete_all
+        
         Rails.application.load_seed 
       end
       it 'Sort on all parents count is same' do
@@ -204,7 +204,7 @@ RSpec.describe Note, type: :model do
   describe 'check if the likes function is working'
   context 'check likes count based on a specific note_id' do
     before :each do
-      Note.delete_all
+      
       Rails.application.load_seed
     end
     it 'Check likes count of a note without any user reactions' do

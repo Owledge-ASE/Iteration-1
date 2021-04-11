@@ -20,15 +20,16 @@ class Note < ApplicationRecord
   end
 
   def self.search(content)
+    content = content.downcase
     result = Note.union(
-      Note.where('title LIKE ?', "%#{content}%"),Note.joins("
+      Note.where('LOWER(title) LIKE ?', "%#{content}%"),Note.joins("
       INNER JOIN 
       notebook_tags 
       ON notes.id = notebook_tags.notebook_id
       INNER JOIN 
       tags 
       ON tags.id = notebook_tags.tag_id
-      AND tag  LIKE ('%#{content}%')")
+      AND LOWER(tag)  LIKE ('%#{content}%')")
     )
     return result
   end
