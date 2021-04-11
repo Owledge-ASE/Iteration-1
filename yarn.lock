@@ -3380,6 +3380,11 @@ globule@^1.0.0:
     lodash "~4.17.10"
     minimatch "~3.0.2"
 
+gojs@^2.1.38:
+  version "2.1.38"
+  resolved "https://registry.yarnpkg.com/gojs/-/gojs-2.1.38.tgz#ad0fc329677ee3a0a194e33aca37d58ef875cd88"
+  integrity sha512-lPTw8G98/cCWzQdLkvAp5d9nwR6TUccazBgtbFU18qxtQrh4k6mkuqvLj3No43sV1MXXjwmUfZlgRgaOR5T/ag==
+
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2:
   version "4.2.6"
   resolved "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.6.tgz"

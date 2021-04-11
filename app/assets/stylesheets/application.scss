@@ -35,13 +35,15 @@ body {
     display: flex;
     flex-direction: column;
   }
+  * {
+    color: $color-white;
+  }
 }
 .header{
      color:$color-white;
      display:flex;
 }
 .header-bar{
-    height:10vh;
     margin-left:0px;
 }
 .main-header-section{
@@ -101,12 +103,6 @@ body {
   padding:10px;
   padding-left:30px;
 }
-.crumb-holder{
-    padding:20px;
-    height:5vh;    
-    color: $color-white;
-}
-
 body {
   background-color: $base-color;
 }
@@ -122,12 +118,30 @@ body {
 .crumb-holder {
   background-color: darken($base-color, 10%);
   border-bottom: darken($base-color, 15%);
-  padding-bottom: 3rem;
+
   a {
     color: $accent-color;
     text-decoration: none;
   }
+  padding: 1.5em;
+  height: 2em;
+  color: $color-white;
 }
+
 .list-group-item {
   background-color: rgba($base-color, 30%);
+}
+
+a:hover {
+  color: mix($accent-color, $color-white);
+}
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+  div {
+    flex-shrink: 1;
+    offset-distance: 1em;
+    margin: 0 1em;
+  }
 }

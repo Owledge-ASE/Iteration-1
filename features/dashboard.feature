@@ -36,24 +36,14 @@ Background: User is logged in
 
   And I am logged in as "example1@gmail.com"
 
-#Scenario: I should see the notebooks that I created by default
-#When I am on the notebooks dashboard
-#And I see "My Created Notes" inside #filer"
-#Then I should see "Graph Theory" inside "#title"
-
-#Scenario: Once user clicks on the filter button then they should be on the Dashboard Page
-  #When I go to the homepage
-  #And I select "my_notes" inside "#notes_filter"
-  #Then I should be on the notebooks dashboard page
-  #And I should see "Graph Theory" in the note grid
-  #And I should see "Selection Sort" in the note grid
-  #And I should see "Directed Acyclic Graph" in the note grid
+Scenario: I should see all the notes on the dashboard Page
+  When I am on the notebooks dashboard page
+  And I select "All Notebooks"
+  Then I should see all the notes
 
 Scenario: I should see the notes I created on the dashboard Page
   When I am on the notebooks dashboard page
-  And debug
   And I select "Notes Created"
-  #And I select "my_notes" inside "notes_filter"
   Then I should see "Graph Theory" inside list of nodes
   And I should see "Selection Sort" inside list of nodes
   And I should see "Directed Acyclic Graph" inside list of nodes
@@ -73,11 +63,6 @@ Scenario: I should see the notes I liked if I filter by likes
   And I should see "Directed Acyclic Graph" inside list of nodes
   And I should not see "Quick Sort" inside list of nodes
   And I should not see "Selection Sort" inside list of nodes
-
-Scenario: I should see the Add Note button on the Dashboard page
-  When I am on the notebooks dashboard
-  And I follow "Add note"
-  Then I should be on the create notebook page
 
 #Scenario: I should not be able to see the notes that I unlike
 

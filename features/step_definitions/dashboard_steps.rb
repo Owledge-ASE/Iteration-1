@@ -5,9 +5,16 @@
   # find(arg_id).find_field(arg_option).select_option
 #end
 
-And(/^I select "([^"]*)"$/) do |arg_option|
-  find('.dropdown-item', :text => 'Notes Created')
-  #expect(page).to have_css(text: arg_option) # include homepage
-  #find(arg_id).find(:xpath, arg_option).select_option
-  # find(arg_id).find_field(arg_option).select_option
+And /^I select "([^"]*)"(?: inside "([^"]+)")?$/ do |content, container|
+  if container.nil?
+    container = 'body'
+  end
+  find(container)
+    .find('.dropdown-menu')
+    .find_link(content)
+    .click
+end
+
+Then 'I should see all the notes' do
+  expect(page).to have_css('#notes .note-card', count: Note.all_parents.count)
 end

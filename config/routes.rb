@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   end
 
   root to: redirect('/notebooks')
-  get 'dashboard', to: 'notebooks#dashboard', as: :notebooks_dashboard
   get 'notebook-sort', to: 'notebooks#sort', as: :notebooks_sort
   get 'notebook-search', to: 'notebooks#search', as: :notebooks_search
 

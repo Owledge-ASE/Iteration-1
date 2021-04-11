@@ -1,5 +1,6 @@
+include Devise::Controllers::Helpers
+
 module NotebooksHelper
-    
   def self.checkSortDirection(curr_col,sort_by_col)
     delimiter = "-"
     if (sort_by_col.nil? || sort_by_col.empty?)
@@ -58,4 +59,27 @@ module NotebooksHelper
     end
   end
 
+  def self.notes_with_filters(filter, user)
+    @notes = []
+    if user.nil?
+      return @notes
+    end
+
+    case filter
+    when 'all_notebooks'
+      Note.all_parents
+    when 'notes_created'
+      Note.where(publisher_id: user.id)
+    when 'notes_liked'
+      user.notes_liked
+    when 'notes_commented'
+      user.notes_commented
+    else
+      []
+    end
+  end
+
+  def self.dropdown_class(active)
+    "dropdown-item" + (active ? " active" : "")
+  end
 end

@@ -4,6 +4,8 @@ class Note < ApplicationRecord
   has_many :tags, :through => :notebook_tags
   has_many :user_comments
   has_many :user_reactions, dependent: :destroy
+  #has_many :user, :through => :user_reactions, :as => :users_liking_note
+  #has_many :user, :through => :user_comments, :as => :users_commenting_on
 
   def self.all_parents
     return self.where('parent_id is null')
@@ -17,9 +19,7 @@ class Note < ApplicationRecord
     parent.ancestors + [parent]
   end
 
-  
   def self.search(content)
-    
     result = Note.union(
       Note.where('title LIKE ?', "%#{content}%"),Note.joins("
       INNER JOIN 
@@ -54,6 +54,21 @@ class Note < ApplicationRecord
       return []
     end
     self.parent.ancestors + [self.parent]
+  end
+
+  def short_description(words = 30)
+    description = self.description
+    desc = description.nil?  ? "" : description.split(' ')[0..words].join(' ')
+    if not description.nil? and desc.length < description.length
+      return desc + '...'
+    end
+    desc
+  end
+
+  def as_json(options)
+    super(options).merge({
+      'short_description' => self.short_description
+    })
   end
 
   #Counts the number of total likes by unique users for a given note

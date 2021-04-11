@@ -74,35 +74,32 @@ class NotebooksController < ApplicationController
     end
   end
 
-  def dashboard
-    user_id = current_user.id
-    filter = params[:users_filter]
-    if filter == "notes_created"
-      @notes = Note.where(publisher_id: user_id)
-    elsif filter == "notes_liked"
-      reaction = current_user.users_likes
-      @notes = Note.where(id: reaction[:note_id])
-    elsif filter == "notes_commented"
-      comment = current_user.users_comments
-      @notes = Note.where(id: comment[:note_id])
-    else
-      @notes = []
-    end
-    #if !Note.notes_created(user_id).nil?
-    #@notes = notes_created(user_id)
-    #end
-    #redirect_to notebook_path(@note[:notebook_id])
-  end
-
   def index
+    filter = params[:filter]
     @ancestors = []
-    @notes = NotebooksHelper.find()
+    if filter and user_signed_in?
+      @notes = NotebooksHelper.notes_with_filters filter, current_user
+    else
+      @notes = NotebooksHelper.find()
+    end
+    if filter.nil?
+      filter = 'all_notebooks'
+    end
+    @current_filter = filter
+
+    if filter == 'all_notebooks' and params[:filter] == 'all_notebooks'
+      redirect_to notebooks_path
+    end
+
+    @filter_options = %w[all_notebooks]
+    if user_signed_in?
+      @filter_options += %w[notes_created notes_liked notes_commented]
+    end
   end
 
   def likes
     current_user.likes_click(params[:notebook_id])
     redirect_to notebook_path(params[:notebook_id])
-    return
   end
 
   def edit
