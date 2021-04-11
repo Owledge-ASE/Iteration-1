@@ -54,7 +54,7 @@
         <%= content_tag :div, id: "childreninfo", data: {childreninfo: @children} do %>
         <% end %>
       </div>
-      <div class="row notes" id="children" style="visibility:hidden;">
+      <div class="row notes" id="children" style="visibility:hidden;position:absolute;">
         <% @note.children.each do |note| %>
         <%= render partial:"parts/card", locals: {note: note} %>
         <% end %>
@@ -65,14 +65,15 @@
   <div class="comments-panel">
     <div class="card bg-dark-l3 comment-container">
       <div class="card-body comments" id="comments">
-        <div class="card-title"><h3>Comments</h3></div>
+        <div class="card-title"><h3 class="float-start me-auto">Comments</h3>
+          <a href="<%= new_notebook_comment_path @note %>" class="btn btn-primary btn-sm ms-2 float-start">Add Comment</a>
+        </div>
         <ul class="list-group comments-body">
           <% @note.user_comments.each do |user_comment| %>
             <%= render partial:"parts/comment", locals: { comment: user_comment } %>
           <% end %>
         </ul>
         <div class="card-footer">
-          <a href="<%= new_notebook_comment_path @note %>" class="btn btn-primary btn-md mt-4">Add Comment</a>
         </div>
       </div>
     </div>
