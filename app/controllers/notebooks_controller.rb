@@ -90,6 +90,11 @@ class NotebooksController < ApplicationController
     if filter == 'all_notebooks' and params[:filter] == 'all_notebooks'
       redirect_to notebooks_path
     end
+
+    @filter_options = %w[all_notebooks]
+    if user_signed_in?
+      @filter_options += %w[notes_created notes_liked notes_commented]
+    end
   end
 
   def likes

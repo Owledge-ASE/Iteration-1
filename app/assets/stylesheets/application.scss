@@ -135,3 +135,13 @@ body {
 a:hover {
   color: mix($accent-color, $color-white);
 }
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+  div {
+    flex-shrink: 1;
+    offset-distance: 1em;
+    margin: 0 1em;
+  }
+}

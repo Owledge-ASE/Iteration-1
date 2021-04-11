@@ -5,25 +5,24 @@
         <button type="button" class="btn btn-secondary" >Add Note</button>
       </a>
 </div>
-<div class="search bar row">
+<div class="button-group">
     <%= link_to "Sort", notebooks_sort_path(:sort_by_col=>"title-asc",:search_by_contain=>params[:search_by_contain]), method: :get,class:"col-2 bar-button btn btn-secondary",id:"sort_button" %>
-</div>
 
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    <%= @current_filter.gsub('_', ' ').titleize %>
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <% %w[all_notebooks notes_created notes_liked notes_commented].each do |filter| %>
-    <li>
-      <%= link_to filter.gsub('_', ' ').titleize,
-                  notebooks_path({filter: filter}),
-                  class: NotebooksHelper.dropdown_class(filter == @current_filter) %>
-    </li>
-    <% end %>
-  </ul>
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      <%= @current_filter.gsub('_', ' ').titleize %>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <% @filter_options.each do |filter| %>
+      <li>
+        <%= link_to filter.gsub('_', ' ').titleize,
+                    notebooks_path({filter: filter}),
+                    class: NotebooksHelper.dropdown_class(filter == @current_filter) %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
-
 <div class="card-container notes" id="notes">
     <% @notes.each do |note| %>
     <%= render partial: 'parts/card', locals: { note: note } %>
