@@ -1,9 +1,12 @@
 import * as go from "gojs";
 
 function buildTrees() {
+    setTimeout(buildTreesDeferred, 1000);
+}
+function buildTreesDeferred() {
     const dataList = []
-    const parent = JSON.parse(document.querySelector('#parentinfo').dataset.parentinfo);
-    const children = JSON.parse(document.querySelector('#childreninfo').dataset.childreninfo);
+    const parent = JSON.parse(document.getElementById('parentinfo').dataset.parentinfo);
+    const children = JSON.parse(document.getElementById('childreninfo').dataset.childreninfo);
 
     if (!parent) {
         return;
