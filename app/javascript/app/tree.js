@@ -1,19 +1,35 @@
 import * as go from "gojs";
+import MarkdownIt from "markdown-it";
 
-function buildTrees() {
-    setTimeout(buildTreesDeferred, 1000);
+function getDataFor(dataType) {
+    const elem = document.getElementById(dataType);
+    if (!elem) {
+        return elem;
+    }
+    const dataset = elem.dataset;
+
+    if (!dataset) {
+        return dataset;
+    }
+    return JSON.parse(dataset[dataType]);
 }
-function buildTreesDeferred() {
+function buildTrees() {
+    buildTreesEachPage();
+    window.addEventListener('turbolinks:load', buildTreesEachPage);
+}
+
+function buildTreesEachPage() {
     const dataList = []
-    const parent = JSON.parse(document.getElementById('parentinfo').dataset.parentinfo);
-    const children = JSON.parse(document.getElementById('childreninfo').dataset.childreninfo);
+
+    const parent = getDataFor('parentinfo');
+    const children = getDataFor('childreninfo');
 
     if (!parent) {
         return;
     }
-
-    parent.key = parent.id.toString()
-    dataList.push(parent)
+    console.log(parent.id, parent);
+    parent.key = parent.id.toString();
+    dataList.push(parent);
     if (children) {
         children.forEach(function (child, index) {
             child.key = child.id.toString();

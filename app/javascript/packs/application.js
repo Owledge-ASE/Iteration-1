@@ -19,5 +19,11 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-
-window.addEventListener('DOMContentLoaded', Dom.run);
+console.log(document.readyState);
+if( document.readyState !== 'loading' ) {
+    console.log('load it');
+    Dom.run();
+} else {
+    console.log('domcontentloaded');
+    window.addEventListener('DOMContentLoaded', Dom.run);
+}

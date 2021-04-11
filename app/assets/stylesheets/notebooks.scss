@@ -8,10 +8,11 @@
   position: relative;
 }
 .highlight.main-card {
-  background-image: asset-url("glasses.png");
-  background-repeat: no-repeat;
+  .card-text {
+    min-height: 6em;
+    height: auto;
+  }
   background-color: $background-black-l2;
-  background-position: center bottom;
   content: "";
   top: 0;
   left: 0;
