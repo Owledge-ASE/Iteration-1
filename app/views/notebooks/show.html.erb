@@ -65,16 +65,24 @@
   <div class="comments-panel">
     <div class="card bg-dark-l3 comment-container">
       <div class="card-body comments" id="comments">
-        <div class="card-title"><h3 class="float-start me-auto">Comments</h3>
-          <a href="<%= new_notebook_comment_path @note %>" class="btn btn-primary btn-sm ms-2 float-start">Add Comment</a>
+        <div class="card-header comment-header">
+          <div class="card-title">
+            <div class="button-group" id="comment-header">
+              <h3>Comments</h3>
+              <a href="<%= new_notebook_comment_path @note %>"
+                 class="btn btn-primary btn-xs ms-2"
+                 aria-label="comment-header add-comment">
+
+                <%= fa_icon "plus", class: "icon", type: :fas %>
+                <span style="visibility: hidden; position: absolute;" id="add-comment">Add Comment</span></a>
+            </div>
+          </div>
         </div>
         <ul class="list-group comments-body">
           <% @note.user_comments.each do |user_comment| %>
             <%= render partial:"parts/comment", locals: { comment: user_comment } %>
           <% end %>
         </ul>
-        <div class="card-footer">
-        </div>
       </div>
     </div>
   </div>
