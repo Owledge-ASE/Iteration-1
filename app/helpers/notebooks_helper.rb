@@ -30,7 +30,7 @@ module NotebooksHelper
         end
       end 
       if flag == 0
-        new_tag = Tag.create(tag:tag)
+        new_tag = Tag.create!(tag:tag)
       end
     end
   end
@@ -43,7 +43,7 @@ module NotebooksHelper
     NotebookTag.where(:notebook_id => note.id).destroy_all
     
     existing_tags.each do |tagRow|
-      NotebookTag.create(notebook_id:note.id,tag_id:tagRow.id)
+      NotebookTag.create!(notebook_id:note.id,tag_id:tagRow.id)
     end
   end
 

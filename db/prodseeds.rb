@@ -3,10 +3,46 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   movies = Movie.create!([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create!(name: 'Luke', movie: movies.first)
+users = User.create!([{
+                        first_name: "Andrew",
+                        last_name: "Peterson",
+                        email: "apeterson@fakeu.edu",
+                        password: "greatpassword",
+                        affiliation: "Student",
+                        organization: "Fake University"
+                      }, {
+                        first_name: "Hannah",
+                        last_name: "Ritter",
+                        email: "hritter@fakeu.edu",
+                        password: "thisisasafepasswordbecauseitislong",
+                        affiliation: "Student",
+                        organization: "Fake University",
 
-ai_search = Note.create({
+                      },{
+                        first_name: "Riley",
+                        last_name: "Smith",
+                        email: "rsmith@fakeu.edu",
+                        password: "thisisasafepasswordbecauseitislong",
+                        affiliation: "Student",
+                        organization: "Fake University",
+                      },{
+                        last_name: "Prince",
+                        email: "prince@fakeu.edu",
+                        password: "thisisasafepasswordbecauseitislong",
+                        affiliation: "Student",
+                        organization: "Fake University",
+                      },{
+                        first_name: "George",
+                        last_name: "",
+                        email: "geo@fakeu.edu",
+                        password: "thisisasafepasswordbecauseitislong",
+                        affiliation: "Student",
+                        organization: "Fake University",
+                      }])
+
+ai_search = Note.create!({
                    title: 'Adversarial Search',
                    description: %w{
                    In artificial intelligence, Adversarial Search provides serveral approaches for competitive multi-agent environments.
@@ -14,7 +50,7 @@ ai_search = Note.create({
                    environment. This category of search algorithms will often have to operate real-time, and often accepts suboptimal solutions.
                    }.join( " ")
                  })
-zerosum = Note.create(
+zerosum = Note.create!(
                title: 'Two-Player Zero-Sum Games',
                description: %w{Two agents, turn-taking, deterministic, perfect information (fully observable), zero-sum
                (p1 wins = p2 loses and vice-versa). Includes states (current state of the game), actions (set of legal moves in a state S),
@@ -24,7 +60,7 @@ zerosum = Note.create(
                }.join(" "),
               parent_id: ai_search.id
               )
-minimax = Note.create(
+minimax = Note.create!(
               title: 'Minimax Search Algorithm',
               description: %w{
               The vale of each state depends on each player's move. If we know that each player plays optimally, the entire game tree's values are known! Each level in the
@@ -33,7 +69,7 @@ minimax = Note.create(
               }.join(" "),
                 parent_id: ai_search.id
                            )
-Note.create({
+Note.create!({
                title: 'Minimax Value',
 description: %w{
 Utility of a state assuming BOTH players play optimally until the end of the game.
@@ -42,7 +78,7 @@ player's turn it is (i.e. max-player or min-player).
 }.join(" "),
   parent_id: minimax.id
              })
-Note.create({
+Note.create!({
                title: 'Alpha-Beta Pruning',
 description: %w{
 General idea: Keep track of the highest (alpha) and lowest (beta) values seen so far
@@ -58,11 +94,11 @@ If pruning, game tree values cannot be reused, and you must rerun minimax after 
 
 
 
-searchtag = Tag.create({
+searchtag = Tag.create!({
                   tag: 'search'
                 })
 
-NotebookTag.create([{
+NotebookTag.create!([{
                     notebook_id: ai_search.id,
                     tag_id:searchtag.id
                   },{
@@ -74,40 +110,4 @@ NotebookTag.create([{
                     }
               ])
 
-users = User.create([{
-  first_name: "Andrew",
-  last_name: "Peterson",
-  email: "apeterson@fakeu.edu",
-  password: "greatpassword",
-  affiliation: "Student",
-  organization: "Fake University"
-}, {
- first_name: "Hannah",
- last_name: "Ritter",
- email: "hritter@fakeu.edu",
- password: "thisisasafepasswordbecauseitislong",
- affiliation: "Student",
- organization: "Fake University",
-
-},{
- first_name: "Riley",
- last_name: "Smith",
- email: "rsmith@fakeu.edu",
- password: "thisisasafepasswordbecauseitislong",
- affiliation: "Student",
- organization: "Fake University",
-},{
- last_name: "Prince",
- email: "prince@fakeu.edu",
- password: "thisisasafepasswordbecauseitislong",
- affiliation: "Student",
- organization: "Fake University",
-},{
- first_name: "George",
- last_name: "",
- email: "geo@fakeu.edu",
- password: "thisisasafepasswordbecauseitislong",
- affiliation: "Student",
- organization: "Fake University",
-}])
 

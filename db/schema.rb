@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_21_223841) do
+ActiveRecord::Schema.define(version: 2021_04_11_194712) do
 
   create_table "notebook_tags", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2021_03_21_223841) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "publisher_id"
     t.index ["parent_id"], name: "index_notes_on_parent_id"
+    t.index ["publisher_id", "title", "parent_id"], name: "index_notes_on_publisher_id_and_title_and_parent_id", unique: true
     t.index ["publisher_id"], name: "index_notes_on_publisher_id"
   end
 

@@ -4,19 +4,24 @@ Feature: Search notebooks using title and tags
   I want to search notes and notebook using keywords
 
 Background: notes have been added to the database
+  Given the following users exist:
+    |id	| email 				| first_name     | last_name | affiliation | organization		  | password |
+    |1	| example1@gmail.com  	| Andrea       	 | McCormick | Student     | Columbia University  | abcdef   |
+    |2	| example5@gmail.com  	| Riley          | Casey     | Student     | Columbia University  | goodpass |
 
- Given the following notes exist:
- |id | title                    |parent_id | description |
- |1  | Sorting Algorithms       |          | test |
- |2  | Graph Theory             |          | test |
- |3  | Analysis of Algorithms   |          | test |
- |4  | Distributed Computing    |          | test |
- |5  | Big Data                 |          | test |
- |6  | Sorting Algorithms Child | 1        | test |
- |7  | Bubble Sort              | 1        | test |
- |8  | Merge Sort               | 1        | test |
- |9  | Recursive merge          | 8        | test |
- |10 | For merge                | 8        | test |
+
+  Given the following notes exist:
+ |id | title                    |parent_id | description | publisher_id |
+ |1  | Sorting Algorithms       |          | test | 1                 |
+ |2  | Graph Theory             |          | test | 1                 |
+ |3  | Analysis of Algorithms   |          | test | 1                 |
+ |4  | Distributed Computing    |          | test | 1                 |
+ |5  | Big Data                 |          | test | 1                 |
+ |6  | Sorting Algorithms Child | 1        | test | 1                 |
+ |7  | Bubble Sort              | 1        | test | 1                 |
+ |8  | Merge Sort               | 1        | test | 1                 |
+ |9  | Recursive merge          | 8        | test | 1                 |
+ |10 | For merge                | 8        | test | 1                 |
 
 Scenario: If I search for "graph", I should see all "graph" nodes in search page
   When I go to the homepage

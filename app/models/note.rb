@@ -4,8 +4,8 @@ class Note < ApplicationRecord
   has_many :tags, :through => :notebook_tags
   has_many :user_comments
   has_many :user_reactions, dependent: :destroy
-  belongs_to :user
-  belongs_to :publisher, :class_name => 'User', :foreign_key => "publisher_id"
+  belongs_to :publisher, :class_name => 'User', :foreign_key => "publisher_id", :optional => true
+  belongs_to :parent, :class_name => 'Note', :foreign_key => 'parent_id', :optional => true
   #has_many :user, :through => :user_reactions, :as => :users_liking_note
   #has_many :user, :through => :user_comments, :as => :users_commenting_on
 

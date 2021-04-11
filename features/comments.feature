@@ -7,8 +7,8 @@ Feature: Comment on a note
   Background: User is logged in
     Given the following users exist:
       |id	| email 				| first_name     | last_name | affiliation | organization		  | password |
-      |101	| example1@gmail.com  	| Andrea       	 | McCormick | Student     | Columbia University  | abcdef   |
-      |102	| example5@gmail.com  	| Riley          | Casey     | Student     | Columbia University  | goodpass |
+      |101	| example1@gmail.com  	| Andrea       	 | McCormick | student     | Columbia University  | abcdef   |
+      |102	| example5@gmail.com  	| Riley          | Casey     | student     | Columbia University  | goodpass |
 
     And the following notes exist:
       |id | title                  | parent_id  | publisher_id | description                                                                                                                                                                                                                                                                                                                                                                                                                                                          |

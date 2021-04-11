@@ -16,21 +16,21 @@ require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "sel
 # George
 Given /the following notes exist/ do | notes_table |
     notes_table.hashes.each do |note|
-      Note.create note
+      Note.create! note
     end
 end
 
 
 Given /the following tags exist/ do | tags_table |
   tags_table.hashes.each do |tag|
-    Tag.create tag
+    Tag.create! tag
   end
 end
 
 
 Given /the following notebook tags exist/ do | note_tags_table |
   note_tags_table.hashes.each do |note_tag|
-    NotebookTag.create note_tag
+    NotebookTag.create! note_tag
   end
 end
 
