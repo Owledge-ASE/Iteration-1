@@ -43,7 +43,7 @@ function buildTreesEachPage() {
     }
     console.log(dataList);
     const GOJS = go.GraphObject.make;
-    const myDiagram = GOJS(go.Diagram, "children", {
+    const myDiagram = GOJS(go.Diagram, "children-graph", {
         "undoManager.isEnabled": true,
         layout: GOJS(go.TreeLayout, {angle: 90, layerSpacing: 40})
     })
