@@ -58,6 +58,9 @@ class Note < ApplicationRecord
     self.parent.ancestors + [self.parent]
   end
 
+  def short_description(chars = 200)
+    self.description.nil?  ? "" : self.description[0..chars]
+  end
   #Counts the number of total likes by unique users for a given note
   def likes
     UserReaction.where(note_id: self.id, like: 1).count

@@ -1,12 +1,14 @@
 @import "application";
 
 .comment-container {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   background-image: asset-url("speech-bubble.png");
   background-repeat: no-repeat;
-  background-color: transparent;
-  opacity: 50%;
-  background-position: left top;
-
+  background-color: $background-black-l2;
+  background-position: center top;
   .list-group-item {
     background-color: rgba($background-black-l3, 0.3);
   }

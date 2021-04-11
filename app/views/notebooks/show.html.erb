@@ -6,40 +6,46 @@
           <%= render partial: "parts/tag_display", locals: { note: @note } %>
       </div>
 
-      <div class="card bg-dark-l1 col-12 main-card">
-        <div class="card-body">
-          <div class="card-title">
-            <div class="note-title">
-              <h1 class="col-10 mt-0" id="title"><%= @note.title %></h1>
+      <div class="highlight-wrapper">
+        <div class="card col-12 main-card highlight">
+          <div class="bg">
+          </div>
+          <div class="card-body">
+            <div class="card-title">
+              <div class="note-title">
+                <h1 class="col-10 mt-0" id="title"><%= @note.title %></h1>
+              </div>
+            </div>
+            <div class="card-text" id="description">
+              <%= @note.description %>
             </div>
           </div>
-          <div class="card-text" id="description">
-            <%= @note.description %>
-          </div>
-        </div>
-        <div class="card-footer likes">
-          <div class="like-wrapper">
-              <% unless current_user.nil? %>
-              <a href="<%= notebook_likes_path(@note.id) %>" id="like_button" class="like-button">
-              <% end %>
-                  <!--<i class="bi bi-suit-heart< current_user.is_like_clicked(@note.id) ? "-filled" : ""%>">-->
+          <div class="card-footer likes">
+            <div class="like-wrapper">
+              <% if current_user.nil? %>
+                <%= fa_icon "thumbs-up", class: "icon", type: :far %>
+              <% else %>
+                <a href="<%= notebook_likes_path(@note.id) %>" id="like_button" class="like-button">
+                <!--<i class="bi bi-suit-heart< current_user.is_like_clicked(@note.id) ? "-filled" : ""%>">-->
                 <%= fa_icon "thumbs-up", class: "icon", type: current_user.is_like_clicked?(@note.id) ? :far : :fas %>
-                <span id="num_likes"><%= @note.likes %></span>
-              <% unless current_user.nil? %>
-              </a>
               <% end %>
-          </div>
+              <span id="num_likes"><%= @note.likes %></span>
+              <% unless current_user.nil? %>
+                </a>
+              <% end %>
+            </div>
 
-          <div class="note-buttons">
-            <a href="<%= edit_notebook_path(@note) %>" class="card-link col-2">
-              <button type="button" class="btn btn-secondary" id="edit-note">Edit Note</button>
-            </a>
-            <a href="<%= new_notebook_path({parent: @note}) %>" class="card-link col-2">
-              <button type="button" class="btn btn-secondary" id="add-note">Add Note</button>
-            </a>
+            <div class="note-buttons">
+              <a href="<%= edit_notebook_path(@note) %>" class="card-link col-2">
+                <button type="button" class="btn btn-secondary" id="edit-note">Edit Note</button>
+              </a>
+              <a href="<%= new_notebook_path({parent: @note}) %>" class="card-link col-2">
+                <button type="button" class="btn btn-secondary" id="add-note">Add Note</button>
+              </a>
+            </div>
           </div>
-        </div>
-      </div>
+        </div><!-- .main-card.highlight -->
+      </div><!-- .highlight-wrapper -->
       <% if @note.children.length > 0 %>
       <h3>Sub-notes</h3>
       <div id="children" style="width: 80vw; height: 400px;">

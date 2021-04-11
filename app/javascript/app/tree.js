@@ -55,7 +55,7 @@ function buildTrees() {
                         font: "bold 16px sans-serif",
                         width: 200
                     },
-                    new go.Binding("text", "description"),
+                    new go.Binding("text", "short_description"),
                 ),
                 {
                     click: function (e, obj) {

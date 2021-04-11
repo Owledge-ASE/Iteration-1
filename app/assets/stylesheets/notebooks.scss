@@ -3,12 +3,20 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import "application";
 
-.main-card {
+.highlight.main-card {
+  background-color: $background-black-l3;
+  position: relative;
+}
+.highlight.main-card {
   background-image: asset-url("glasses.png");
   background-repeat: no-repeat;
-  background-color: transparent;
-  opacity: 50%;
+  background-color: $background-black-l2;
   background-position: center bottom;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 .card-link{
     color:$color-white;
