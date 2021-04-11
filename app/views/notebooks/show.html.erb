@@ -35,6 +35,7 @@
               <% end %>
             </div>
 
+            <% if !current_user.nil? && @note.publisher_id == current_user.id %>
             <div class="note-buttons">
               <a href="<%= edit_notebook_path(@note) %>" class="card-link col-2">
                 <button type="button" class="btn btn-secondary" id="edit-note">Edit Note</button>
@@ -43,6 +44,7 @@
                 <button type="button" class="btn btn-secondary" id="add-note">Add Note</button>
               </a>
             </div>
+            <% end %>
           </div>
         </div><!-- .main-card.highlight -->
       </div><!-- .highlight-wrapper -->
@@ -69,12 +71,13 @@
           <div class="card-title">
             <div class="button-group" id="comment-header">
               <h3>Comments</h3>
+              <% if !current_user.nil? %>
               <a href="<%= new_notebook_comment_path @note %>"
                  class="btn btn-primary btn-xs ms-2"
                  aria-label="comment-header add-comment">
-
                 <%= fa_icon "plus", class: "icon", type: :fas %>
                 <span style="visibility: hidden; position: absolute;" id="add-comment">Add Comment</span></a>
+              <% end %>
             </div>
           </div>
         </div>

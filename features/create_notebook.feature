@@ -5,21 +5,27 @@ Feature: View Details page for Notes
 
 
 Background: notes have been added to the database
+    Given the following users exist:
+        |id	| email 				| first_name     | last_name | affiliation | organization		  | password |
+        |1	| example1@gmail.com  	| Andrea       	 | McCormick | Student     | Columbia University  | abcdef   |
+        |2	| example5@gmail.com  	| Riley          | Casey     | Student     | Columbia University  | goodpass | 
 
-Given the following notes exist:
- |id | title                    |parent_id | description                                                                                                                                                                                       |
- |1  | Sorting Algorithms       |          | In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.                                                                                         |
+    Given the following notes exist:
+    |id | title                    |parent_id | publisher_id| description                                                                                                                                                                                       |
+    |1  | Sorting Algorithms       |          | 1           |In computer science, a sorting algorithm is an algorithm that puts elements of a list in a certain order.                                                                                         |
 
-Given the following tags exist:
-    |id |tag      |
-    |1  |sorting  |
-    |2  |graph    |
-    |3  |bootstrap|
+    Given the following tags exist:
+        |id |tag      |
+        |1  |sorting  |
+        |2  |graph    |
+        |3  |bootstrap|
 
-Given the following notebook tags exist:
-    |id |notebook_id  |tag_id |
-    |1  |1            |1      |
-    |2  |1            |3      |
+    Given the following notebook tags exist:
+        |id |notebook_id  |tag_id |
+        |1  |1            |1      |
+        |2  |1            |3      |
+    
+    When I am logged in as "example1@gmail.com"
 
 Scenario: User should be able to get to the create page from the home page
   When I am on the homepage

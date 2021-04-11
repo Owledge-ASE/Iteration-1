@@ -137,6 +137,6 @@ class NotebooksController < ApplicationController
 
   private
   def allowed_params
-    params.require(:note).permit(:title, :description, :parent_id)
+    params.require(:note).permit(:title, :description, :parent_id, :publisher_id)
   end
 end
