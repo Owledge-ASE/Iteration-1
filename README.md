@@ -11,13 +11,13 @@ Zhengyi Li (zl3029)
 
 ## File Location
 
-Code for iteration-2 present at : https://github.com/Owledge-ASE/Iteration-1/tree/iteration-2-submission
+Code for iteration-2 present at : https://github.com/Owledge-ASE/Iteration-1/
 
 The branch name being used is iteration-2-submission
 
-RSpec tests are in https://github.com/Owledge-ASE/Iteration-1/tree/iteration-2-submission/spec
+RSpec tests are in https://github.com/Owledge-ASE/Iteration-1/spec
 
-Cucumber tests and execution code in https://github.com/Owledge-ASE/Iteration-1/tree/iteration-2-submission/features
+Cucumber tests and execution code in https://github.com/Owledge-ASE/Iteration-1/features
 
 Coverage report(100%) will be generated after executing cucumber and then rspec tests at: ./coverage/index.html
 
