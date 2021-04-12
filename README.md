@@ -26,6 +26,9 @@ Coverage report(100%) will be generated after executing cucumber and then rspec 
 
 Server present on: https://boiling-taiga-26082.herokuapp.com/notebooks
 
+## Video
+
+Youtube link:  https://youtu.be/TA50f0Er68I
 
 ## Preinstall
 
