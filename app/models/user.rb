@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :user_comments, :foreign_key => :user_id
   has_many :user_reactions, dependent: :destroy, :foreign_key => :user_id
   has_many :notes_commented, -> { distinct }, :through => :user_comments, :source => :note
-  has_many :notes_liked, :through => :user_reactions, :source => :note
+  has_many :notes_liked, -> { where 'user_reactions.like': true }, :through => :user_reactions, :source => :note
 
   def display_name
     if first_name.nil?
