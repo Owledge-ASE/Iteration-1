@@ -11,7 +11,7 @@ Zhengyi Li (zl3029)
 
 ## File Location
 
-Code for iteration-2 present at : https://github.com/Owledge-ASE/Iteration-1/
+Code for the demo is present at : https://github.com/Owledge-ASE/Iteration-1/
 
 The branch name being used is iteration-2-submission
 
