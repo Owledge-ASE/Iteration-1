@@ -19,6 +19,25 @@ Feature: Show Notebook
     |5  | Selection Sort         | 1          | 1          | has an O(n2) time complexity, which makes it inefficient on large lists, and generally performs worse than the similar insertion sort.                                                                                                                                                                                                                                                                                                                               |
     |6  | Directed Acyclic Graph | 2          | 2          | A Directed Acyclic Graph is a directed graph with no directed cycles. That is, it consists of vertices and edges (also called arcs), with each edge directed from one vertex to another, such that following those directions will never form a closed loop.                                                                                                                                                                                                                                  |
 
+
+  Given the following tags exist:
+    |id |tag      |
+    |1  |sorting  |
+    |2  |graph    |
+    |3  |algorithm|
+
+
+
+
+  Given the following notebook tags exist:
+    |id |notebook_id  |tag_id |
+    |1  |1            |1      |
+    |2  |1            |3      |
+    |3  |2            |2      |
+    |4  |3            |3      |
+    |5  |4            |3      |
+    |6  |5            |3      |
+
   Scenario: details page for note with children and no parent
     When I go to the notebook page for "Sorting Algorithms"
     Then I should see "Sorting Algorithms" inside "#title"
@@ -38,6 +57,13 @@ Feature: Show Notebook
     And I should see 2 breadcrumbs
     And I should see a breadcrumb link to "Sorting Algorithms"
     But "#children" should not exist
+
+Scenario: If i click on a tag I should be taken to the search page for the tag
+    When I go to the details page for "Sorting Algorithms"
+  And I follow "sorting"
+  Then I should be on the notebooks_search page
+  And I should see "Sorting Algorithms" inside list of nodes
+  And I should not see "Graph Theory"
 
   Scenario: get to a sub-note that does not exist (sad path)
     When I go to the notebook with ID 1010

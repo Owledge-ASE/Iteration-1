@@ -1,5 +1,5 @@
 <% NotebooksHelper.getTagsForNotebook(note).each do |tagRow| %>
-        <div class="tag-display">
+        <a href="<%= notebooks_search_url({search_by_contain: tagRow.tag})%>"><div class="tag-display">
             <%= tagRow.tag %>
-        </div>
+        </div></a>
 <% end %>

@@ -65,6 +65,15 @@ Scenario: Notes which do not have tags should not have any tags in the tag-wrapp
   And I should not see "graph" inside "#5_tag_wrapper"
   And I should not see "algorithm" inside "#5_tag_wrapper"
 
+Scenario: If i click on a tag I should be taken to the search page for the tag
+  When I go to the homepage
+  And I follow "graph"
+  Then I should be on the notebooks_search page
+  And I should see "Graph Theory" inside list of nodes
+  And I should not see "Big Data"
+  And I should not see "Sorting Algorithms"
+  And I should not see "Analysis of Algorithms"
+  And I should not see "Distributed Computing"
 
   Scenario: Check tags for parents
     When I go to the notebook page for "Sorting Algorithms"

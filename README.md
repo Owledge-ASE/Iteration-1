@@ -11,13 +11,13 @@ Zhengyi Li (zl3029)
 
 ## File Location
 
-Code for iteration-2 present at : https://github.com/Owledge-ASE/Iteration-1/tree/iteration-2-submission
+Code for project launch present at : https://github.com/Owledge-ASE/Iteration-1/tree/demo
 
-The branch name being used is iteration-2-submission
+The branch name being used is demo
 
-RSpec tests are in https://github.com/Owledge-ASE/Iteration-1/tree/iteration-2-submission/spec
+RSpec tests are in https://github.com/Owledge-ASE/Iteration-1/tree/demo/spec
 
-Cucumber tests and execution code in https://github.com/Owledge-ASE/Iteration-1/tree/iteration-2-submission/features
+Cucumber tests and execution code in https://github.com/Owledge-ASE/Iteration-1/tree/demo/features
 
 Coverage report(100%) will be generated after executing cucumber and then rspec tests at: ./coverage/index.html
 
@@ -25,6 +25,14 @@ Coverage report(100%) will be generated after executing cucumber and then rspec 
 ## Heroku Link
 
 Server present on: https://boiling-taiga-26082.herokuapp.com/notebooks
+
+
+
+## List of Features
+
+Added in this version:
+
+From Previous versions:
 
 
 ## Preinstall
