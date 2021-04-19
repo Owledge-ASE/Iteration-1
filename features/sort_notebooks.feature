@@ -51,6 +51,11 @@ Scenario: The user should be able to reverse sorting by title
   And I should not see "Big Data" before "Distributed Computing" in the note grid
 
 
+Scenario: The user should be able to reverse sorting by title
+  When I go to the homepage
+  And I follow "sort_button"
+  And I follow "like-sort"
+  Then I should not see "Graph Theory" before "Sorting Algorithms" in the note grid
   
 Scenario: The user should be able to sort by date
   When I go to the homepage
