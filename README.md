@@ -24,7 +24,7 @@ Coverage report(100%) will be generated after executing cucumber and then rspec 
 
 ## Heroku Link
 
-Server present on: https://boiling-taiga-26082.herokuapp.com/notebooks
+Server present on: https://desolate-river-42527.herokuapp.com/
 
 
 
