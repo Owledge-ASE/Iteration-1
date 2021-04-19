@@ -11,13 +11,13 @@ Zhengyi Li (zl3029)
 
 ## File Location
 
-Code for iteration-2 present at : https://github.com/Owledge-ASE/Iteration-1/tree/iteration-2-submission
+Code for project launch present at : https://github.com/Owledge-ASE/Iteration-1/tree/demo
 
-The branch name being used is iteration-2-submission
+The branch name being used is demo
 
-RSpec tests are in https://github.com/Owledge-ASE/Iteration-1/tree/iteration-2-submission/spec
+RSpec tests are in https://github.com/Owledge-ASE/Iteration-1/tree/demo/spec
 
-Cucumber tests and execution code in https://github.com/Owledge-ASE/Iteration-1/tree/iteration-2-submission/features
+Cucumber tests and execution code in https://github.com/Owledge-ASE/Iteration-1/tree/demo/features
 
 Coverage report(100%) will be generated after executing cucumber and then rspec tests at: ./coverage/index.html
 
@@ -25,6 +25,22 @@ Coverage report(100%) will be generated after executing cucumber and then rspec 
 ## Heroku Link
 
 Server present on: https://boiling-taiga-26082.herokuapp.com/notebooks
+
+
+
+## List of Features
+
+Major features added in this version(after iteration-2):
+
+    1. Ability for users to view notes in a tree structure
+    2. Clicking on tags will allow users to find search information for that tag
+    3. Users can filter for only notes created by them
+    4. Users can only add notes if logged in
+    5. Users can filter for only notes liked/commented on by them
+    6. Users can sort by number of likes now as well
+    7. Updated UI of the sorting screen
+    8. Users can click on the notes in the tree and be navigated to the children
+    9. Minor updates to the UI on most screens to deal with formatting changes
 
 
 ## Preinstall
