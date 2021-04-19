@@ -1,6 +1,7 @@
 <div class="row top-header">
       <h1 class="col-10">Notebooks</h1>
 
+      <div><%= current_user.nil? %></div>
       <% if !current_user.nil? %>
       <a href="<%= new_notebook_path %>" class="card-link col-2 btn btn-secondary" id="add-note">
         <button type="button" class="btn btn-secondary" >Add Note</button>
