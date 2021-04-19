@@ -27,6 +27,19 @@
       </a>
       </th>
       <th>
+      <a href="<%= notebooks_sort_path(:sort_by_col=>NotebooksHelper.checkSortDirection("likes",params[:sort_by_col]),:search_by_contain=>params[:search_by_contain]) %>" id="like-sort">
+        <span>Likes</span>
+        <% if params[:sort_by_col].include?("likes") %>
+          <% if params[:sort_by_col].split("-")[1].include?("asc") %>
+            <i class="fa fa-sort-down" aria-hidden="true"></i>
+          <% end %>
+          <% if params[:sort_by_col].split("-")[1].include?("desc") %>
+            <i class="fa fa-sort-up" aria-hidden="true"></i>
+          <% end %>
+        <% end %>
+      </a>
+      </th>
+      <th>
       <a href="<%= notebooks_sort_path(:sort_by_col=>NotebooksHelper.checkSortDirection("created_at",params[:sort_by_col]),:search_by_contain=>params[:search_by_contain]) %>" id="created-sort">
         <span>Created at</span>
         <% if params[:sort_by_col].include?("created_at") %>
