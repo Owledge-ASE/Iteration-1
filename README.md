@@ -31,6 +31,7 @@ Server present on: https://boiling-taiga-26082.herokuapp.com/notebooks
 ## List of Features
 
 Major features added in this version(after iteration-2):
+
     1. Ability for users to view notes in a tree structure
     2. Clicking on tags will allow users to find search information for that tag
     3. Users can filter for only notes created by them
