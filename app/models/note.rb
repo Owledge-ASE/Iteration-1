@@ -39,10 +39,10 @@ class Note < ApplicationRecord
   def self.sort_by_column(sort_by_col)
     if sort_by_col.include? "likes"
       sort_arr = sort_by_col.split("-")
-      return self.joins("
+      return self.joins('
       LEFT OUTER JOIN 
-      user_reactions 
-      ON notes.id = user_reactions.note_id").group("notes.id").order("sum(like) #{sort_arr[1]}")
+      "user_reactions" 
+      ON "notes"."id" = "user_reactions"."note_id"').group("notes.id").order("sum(like) #{sort_arr[1]}")
     else
       @sort_string = sort_by_col.gsub("-", " ")
       return self.order(@sort_string)
