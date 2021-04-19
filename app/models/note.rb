@@ -43,8 +43,7 @@ class Note < ApplicationRecord
       return self.joins("
       LEFT OUTER JOIN 
       user_reactions 
-      ON notes.id = user_reactions.note_id
-      AND like = 1").group("notes.id").order("sum(like) #{sort_arr[1]}")
+      ON notes.id = user_reactions.note_id").group("notes.id").order("sum(like) #{sort_arr[1]}")
     else
       @sort_string = sort_by_col.gsub("-", " ")
       return self.order(@sort_string)
